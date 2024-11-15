@@ -1,0 +1,61 @@
+\documentclass[a4paper,11pt]{article}
+\pdfoutput=1 % if your are submitting a pdflatex (i.e. if you have
+             % images in pdf, png or jpg format)
+
+\usepackage{jheppub} % for details on the use of the package, please
+                     % see the JHEP-author-manual
+
+\usepackage[T1]{fontenc} % if needed
+
+%**************** Utilities **************
+\usepackage{lipsum}
+\usepackage{comment}
+\usepackage{enumitem}
+\usepackage{color}
+
+% *************** Math and Physics *************
+\usepackage{mathtools} % per valore assoluto e norma
+\usepackage{braket} % per i comandi \Set e \Bra e simili
+\usepackage{amsthm} % per teoremi e dimostrazioni
+\usepackage{tensor} % per tensori e indici alto/basso
+\usepackage{physics}
+\usepackage{braket}
+\usepackage{dsfont}
+% ******************************************
+\input{settings.tex}
+
+\bibliographystyle{jhep}
+
+\title{Representations of Poincaré Group}
+
+\author{Gian}
+\author{Gigi}
+\affiliation{University of Bologna}
+\emailAdd{giancarlo.oancia@studio.unibo.it} 
+\emailAdd{gianluigi.paganini@studio.unibo.it}
+
+
+\abstract{This document discusses the finite and infinite dimensional representations of the Poincaré Group. In particular, it gives special attention to the relationship between one-particle states and fields, both before and after quantisation.}
+
+
+\begin{document} 
+\maketitle
+\flushbottom
+
+\pagenumbering{roman}
+\input{sections/introduction.tex}
+\pagenumbering{arabic}
+\input{sections/group.tex}
+\input{sections/quantum-mechanics.tex}
+\input{sections/rotation-group.tex}
+\input{sections/poincare-group.tex}
+\input{sections/finite-dim-rep.tex}
+\input{sections/infinite-dim-rep.tex}
+\input{sections/temp.tex}
+\input{sections/chat.tex}
+
+
+\input{sections/appendix.tex}
+\bibliography{bibliography.bib}
+
+\end{document}

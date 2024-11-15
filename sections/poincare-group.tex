@@ -1,0 +1,467 @@
+\section{Poincaré Group and Algebra and their Representations}
+To study the properties of the Lorentz and Poincaré groups, we start from their defining representations, keeping in mind what properties are representation-independent. In particular, we'll work in a 4-dimensional Minkowski spacetime with metric tensor $\eta = (\eta_{\mu\nu}) = \textup{diag}(+1,-1,-1,-1)$, and scalar product defined by
+\begin{equation}
+    x \cdot y \coloneq x^T \eta y = x^0y^0-\vec{x}\cdot\vec{y} = \eta_{\mu\nu} x^\mu y^\nu = x_\mu y^\mu .
+\end{equation}
+
+
+%%%%%%%%%%%%%%% LORENTZ GROUP %%%%%%%%%%%%%%%%%
+\subsection{Lorentz Group}\label{sec:lorentz-group}
+Lorentz transformation are those transformations $x \to x' = \Lambda x$ which leave the scalar product invariant, i.e.,
+\begin{equation}
+    (\Lambda x) \cdot (\Lambda y) = x \cdot y \implies x^T \Lambda^T \eta \Lambda y = x^T \eta y \implies \Lambda^T \eta \Lambda = \eta .
+\end{equation}
+Written in components, this condition takes the form
+\begin{equation}\label{eq:lorentz-transf-def-components}
+    \eta_{\mu\nu} = \eta_{\alpha\beta} \tensor{\Lambda}{^\alpha_\mu} \tensor{\Lambda}{^\beta_\nu}.
+\end{equation}
+
+Since the metric tensor is symmetric, this gives $10$ constraints. Further, since the Lorentz transformation is a $4 \times 4$ matrix, it depends on $16-10 = 6$ independent parameters, which will be interpreted later as three parameters for the boosts and three for rotations. 
+
+If we consider an infinitesimal transformation
+\begin{equation}
+    \tensor{\Lambda}{^\mu_\nu} \simeq \delta^\mu_\nu + \tensor{\omega}{^\mu_\nu} ,
+\end{equation}
+and we take into account eq.~\eqref{eq:lorentz-transf-def-components}, we can easily see it must be
+\begin{equation}\label{eq:parameters-lorentz}
+    \omega_{\mu\nu} = -\omega_{\nu\mu} .
+\end{equation}
+\begin{proof}
+    \begin{equation}
+    \begin{split}
+        \eta_{\mu\nu} &= \eta_{\alpha\beta} \tensor{\Lambda}{^\alpha_\mu} \tensor{\Lambda}{^\beta_\nu}
+        \simeq \eta_{\alpha\beta} \left( \delta^\alpha_\mu + \tensor{\omega}{^\alpha_\mu} \right) \left(  \delta^\beta_\nu + \tensor{\omega}{^\beta_\nu} \right) 
+        \\ &= \eta_{\alpha\beta} \delta^\alpha_\mu \delta^\beta_\nu + \eta_{\mu\beta} \tensor{\omega}{^\beta_\nu} + \eta_{\alpha\nu} \tensor{\omega}{^\alpha_\mu} + O(\omega^2)
+        = \eta_{\mu\nu} + \omega_{\mu\nu} + \omega_{\nu\mu} + O(\omega^2) . \qedhere
+    \end{split}
+    \end{equation}
+\end{proof}
+
+The transformations of a space with coordinates $\{y_1, \dots y_n, x_1, \dots, x_m\}$ which leave the quadratic form $( {y_1}^2 + \dots + {y_n}^2 ) - ( {x_1}^2 + \dots + {x_m}^2 )$ invariant define the orthogonal group $O(n,m)$. Therefore, the \emph{Lorentz group} is $O(1,3)$.
+
+The group axioms~\ref{def:group-axioms} are satisfied, and in particular there exists a unit element $\1$ and each $\Lambda$ has an inverse since its determinant is different from zero. Further, using that the determinant of a product is the product of the determinants, and that the transpose of a matrix has the same determinant as the matrix, one can verify
+\begin{subequations}
+\begin{gather}
+    \Lambda^T \eta \Lambda = \eta \implies (\det \Lambda)^2 = 1 \implies \det \Lambda = \pm 1 , \\
+    \eta_{\mu\nu} \tensor{\Lambda}{^\mu_0} \tensor{\Lambda}{^\nu_0} = (\tensor{\Lambda}{^0_0})^2 - \sum_k {(\tensor{\Lambda}{^k_0})}^2 = 1 \implies (\tensor{\Lambda}{^0_0})^2 \geq 1 .
+\end{gather}
+\end{subequations}
+
+Depending on the signs of $\det \Lambda$ and $\tensor{\Lambda}{^0_0}$, the Lorentz group has four disconnected components. The subgroup with $\det \Lambda = 1$ and $\tensor{\Lambda}{^0_0} \geq 1$ is called \emph{proper orthochronous} Lorentz group, $SO(1,3)^+$. The other components can be constructed from a given $\Lambda \in SO(1,3)^+$ combined with space and/or time reflection.
+
+
+%%%%%%%%%%%%%%% LORENTZ ALGEBRA %%%%%%%%%%%%%%%%%
+\subsection{Lorentz Algebra}
+We've seen that the Lorentz group is characterised by six independent parameters, collected into the antisymmetric matrix $\omega_{\mu\nu}$ (see eq.~\eqref{eq:parameters-lorentz}). It is then convenient to label the generators as $M^{\mu\nu} = -M^{\nu\mu}$, such that, for each fixed $\mu$ and $\nu$ we have a particular generator. Then, using the exponential map\footnote{As discussed in sec.~\ref{sec:lie-groups-algebras} after eq.~\eqref{eq:exp-map}, recall we assume the exponential map is surjective.}, a generic element $\Lambda \in SO(1,3)^+$ can be written as
+\begin{equation}\label{eq:abstract-lorentz-group-element}
+   \Lambda = e^{-\frac{i}{2} \omega_{\mu\nu} M^{\mu\nu}},
+\end{equation}
+with conventional choice of constants. Then, given a finite dimensional representation $(\rho, V)$ of dimension $n$, the group element~\eqref{eq:abstract-lorentz-group-element} is represented by the $n \times n$ matrix
+\begin{equation}
+    \Lambda_\rho = e^{-\frac{i}{2} \omega_{\mu\nu} M^{\mu\nu}_\rho},
+\end{equation}
+which acts on $V$, where $M^{\mu\nu}_\rho$ are the Lorentz group generators in the representation $\rho$. Further, the elements of $V$ transform, under a Lorentz transformation, as
+\begin{equation}
+    \phi^i \to \tensor{\left[ e^{-\frac{i}{2} \omega_{\mu\nu} M^{\mu\nu}_\rho} \right]}{^i_j}  \, \phi^j .
+\end{equation}
+
+Under an infinitesimal Lorentz transformation, with infinitesimal parameters $\omega_{\mu\nu}$, the variation of $\phi^i$ is
+\begin{equation}\label{eq:action-lorentz-transf}
+    \delta \phi^i = -\frac{i}{2} \omega_{\mu\nu} \tensor{\left(  M^{\mu\nu}_\rho \right)}{^i_j} \, \phi^j, 
+\end{equation}
+where in $\tensor{\left(  M^{\mu\nu}_\rho \right)}{^i_j}$, the indices $\mu,\nu$ identify the generator\footnote{Beware the index $\rho$! It isn't a Lorentz index, but it stands for “representation”.}, while the indices $i,j$ are the matrix indices of the representation which has been considered. We can then classify all physical quantities according to their transformation properties under the Lorentz group.
+
+For clarity, we anticipate the Lie algebra generators' commutation relations, which are representation independent; we'll further compute them explicitly for the four-vector representation. The Lie algebra $\mathfrak{so}(1,3)$ is characterised by
+\begin{equation}\label{eq:lorentz-algebra-relations}
+    \comm{M^{\mu\nu}}{M^{\rho\sigma}} = i \left( \eta^{\nu\rho} M^{\mu\sigma} - \eta^{\mu\rho} M^{\nu\sigma} - \eta^{\sigma\mu} M^{\rho\nu} + \eta^{\sigma\nu} M^{\rho\mu} \right).
+\end{equation}
+
+It is convenient to rearrange the generators into two spatial vectors\footnote{To see how to invert expressions with Levi-Civita symbol, look at appendix~\ref{app:levi-civita}.},
+\begin{equation}\label{eq:redef-lorentz-gen}
+    J^i = \frac{1}{2} \epsilon^{ijk} M^{jk} \iff M^{ij} = \epsilon^{ijk} J^k, \quad K^i = M^{i0} .
+\end{equation}
+
+In terms of $\vec{J}$ and $\vec{K}$, the Lie algebra of the Lorentz group reads
+\begin{subequations}
+\begin{align}
+    \comm{J^i}{J^j} &= i \epsilon^{ijk} J^k \label{eq:lorentz-algebra-rotation} \\ 
+    \comm{J^i}{K^j} &= i \epsilon^{ijk} K^k \label{eq:lorentz-algebra-boost-vector} \\ 
+    \comm{K^i}{K^j} &= -i \epsilon^{ijk} J^k .
+\end{align}
+\end{subequations}
+
+Equation~\eqref{eq:lorentz-algebra-rotation} is the Lie algebra of $SU(2)$ and this shows that $\vec{J}$ can be interpreted as the angular momentum. Instead, eq.~\eqref{eq:lorentz-algebra-boost-vector} expresses the fact that $\vec{K}$ is a spatial vector, since it transforms accordingly under a rotation. 
+
+Defining, further\footnote{To see how to invert expressions with Levi-Civita symbol, look at appendix~\ref{app:levi-civita}.}
+\begin{equation}\label{eq:lorentz-redef-param}
+    \theta^i = \frac{1}{2} \epsilon^{ijk} \omega^{jk} \iff \omega^{ij} = \epsilon^{ijk} \theta^k, \quad \eta^i = \omega^{i0} ,
+\end{equation}
+a generic Lorentz transformation can be written as
+\begin{equation}
+    \Lambda = e^{-i \vec{\theta} \cdot \vec{J} + i \vec{\eta} \cdot \vec{K}} .
+\end{equation}
+\begin{proof}
+    \begin{equation*}
+    \begin{split}
+        \frac{1}{2} \omega_{\mu\nu} M^{\mu\nu} &= \frac{1}{2} \Bigl( \sum_{i=1}^3 \left( \omega_{i0} M^{i0} + \omega_{0i} M^{0i} \right) + \omega_{12} M^{12} + \omega_{21} M^{21} \\
+        &\qquad \quad \; \; + \omega_{13} M^{13} + \omega_{31} M^{31} + \omega_{23} M^{23} + \omega_{32} M^{32} \Bigr) \\
+        &= \omega^{12} M^{12} + \omega^{13} M^{13} + \omega^{23} M^{23} - \sum_{i=1}^3 \omega^{i0} M^{i0} \\
+        &= \vec{\vec{\theta} \cdot \vec{J} - \vec{\eta} \cdot \vec{K}},
+    \end{split}
+    \end{equation*}
+    where we've used at the same time the antisymmetries $\omega_{\mu\nu} = - \omega_{\nu\mu}$ and $M^{\mu\nu}=- M^{\nu\mu}$. Moreover, according to~\eqref{eq:lorentz-redef-param}, $\omega_{i0} = -\omega^{i0}=-\eta^i$, $\omega_{12} = \omega^{12} = \theta^3$, $\omega_{13} = \omega^{13} = - \theta^2$ and $\omega_{23} = \omega^{23} = \theta^1$, and according to~\eqref{eq:redef-lorentz-gen}, $M_{i0} = -M^{i0}=- K^i$, $M_{12} = M^{12} = J^3$, $M_{13} = M^{13} = - J^2$ and $M_{23} = M^{23} = J^1$.
+
+    Substituting into eq.~\eqref{eq:abstract-lorentz-group-element} leads to the result.
+\end{proof}
+
+Let's now classify the representations of the Lorentz group.
+
+
+%%%%%%%%%%%%%%%  TRIVIAL REPRESENTATION %%%%%%%%%%%%%%%%%
+\subsubsection{Trivial Representation}
+This is the one acting on a \emph{scalar} $\phi$, i.e., a quantity which is invariant under a Lorentz transformation, like the rest mass of a particle. By means of~\eqref{eq:action-lorentz-transf}, we have
+\begin{equation}\label{eq:lorentz-transf-scalar}
+    \delta \phi = 0,
+\end{equation}
+so that the generators, which are $1 \times 1$ matrices, identically vanish,
+\begin{equation}
+    \M^{\mu\nu} \equiv 0.
+\end{equation}
+
+The representation is called \emph{trivial}, since the algebra commutation relations~\eqref{eq:structure-contants} are trivially satisfied.
+
+%%%%%%%%%%%%%%%  VECTOR REPRESENTATION %%%%%%%%%%%%%%%%%
+\subsubsection{Vector Representation}
+This is the \emph{defining representation} and acts on a \emph{four-vector} $V^\mu$, which has transformation law
+\begin{equation}\label{eq:lorentz-transf-four-vector}
+    V^\mu \to \tensor{\Lambda}{^\mu_\nu} V^\nu,
+\end{equation}
+where $\Lambda$ satisfy the condition~\eqref{eq:lorentz-transf-def-components}, i.e.,
+\begin{equation*}
+    \eta_{\mu\nu} = \eta_{\alpha\beta} \tensor{\Lambda}{^\alpha_\mu} \tensor{\Lambda}{^\beta_\nu}.
+\end{equation*}
+
+One could generically call the previous vector a \emph{contravariant} one and define a \emph{covariant} four-vector $V_\mu$ as one which transforms as $V_\mu \to \tensor{\Lambda}{_\mu^\nu} V_\nu$, with $\tensor{\Lambda}{_\mu^\nu} = \eta_{\mu\alpha} \eta^{\nu\beta} \tensor{\Lambda}{^\alpha_\beta} = \tensor{(\Lambda^{-1})}{^\mu_\nu}$. However, this distinction is not useful, since the two are related via index raising/lowering by the metric tensor, $V_\mu = \eta_{\mu\nu} V^\nu$. An example of four-vector is given by the four-momentum.
+
+To find the explicit representation acting on $V^\mu$, let's first notice that the indices $i,j$ of eq.~\eqref{eq:action-lorentz-transf} are now Lorentz indices themselves, so that the representation matrix would read $\tensor{(M^{\mu\nu})}{^\alpha_\beta}$. Here, we drop any index referring to the representation. If not explicitly indicated, the context should make evident if we're talking about the abstract generator or a representation. 
+
+Then, a four-vector transforms as
+\begin{equation}\label{eq:variation-lorentz-transf-four-vector}
+   \delta V^\alpha = - \frac{i}{2} \omega_{\mu\nu} \tensor{(M^{\mu\nu})}{^\alpha_\beta} V^\beta ,
+\end{equation}
+where
+\begin{equation}\label{eq:lorentz-transf-matrix-vector-rep}
+    \tensor{(M^{\mu\nu})}{^\alpha_\beta} = i \left( \eta^{\mu\alpha} \delta^\nu_\beta - \eta^{\nu\alpha} \delta^\mu_\beta \right) .
+\end{equation}
+
+\begin{proof}
+    Considering the infinitesimal version of eq.~\eqref{eq:lorentz-transf-four-vector}, we get
+    \begin{equation*}
+        V^\alpha \to \tensor{\Lambda}{^\alpha_\beta} V^\beta \simeq (\delta^\alpha_\beta + \tensor{\omega}{^\alpha_\beta}) V^\beta,
+    \end{equation*}
+    which gives an infinitesimal variation
+    \begin{equation*}
+    \begin{split}
+        \delta V^\alpha &= \tensor{\omega}{^\alpha_\beta} V^\beta = \frac{1}{2} \omega_{\mu\beta} \left( \eta^{\mu\alpha} V^\beta - \eta^{\beta\alpha} V^\mu \right) = \frac{1}{2} \omega_{\mu\nu} \delta^\nu_\beta \left( \eta^{\mu\alpha} V^\beta - \eta^{\beta\alpha} V^\mu \right) \\
+        &= \frac{1}{2} \omega_{\mu\nu} \left( \delta^\nu_\beta \eta^{\mu\alpha} - \delta^\mu_\beta \eta^{\nu\alpha} \right) V^\beta \overset{!}{=} - \frac{i}{2} \omega_{\mu\nu} \tensor{(M^{\mu\nu})}{^\alpha_\beta} V^\beta ,
+    \end{split}
+    \end{equation*}
+    where the second addend was added to ensure the piece within parenthesis is antisymmetric with respect to $\mu$--$\beta$, as should be by eq.~\eqref{eq:parameters-lorentz}. Then, in the second to last passage we relabelled a couple of dummy indices, to compare the expression with eq.~\eqref{eq:variation-lorentz-transf-four-vector}. We obtain the matrix~\eqref{eq:lorentz-transf-matrix-vector-rep}.
+\end{proof}
+
+It's now easy to compute the commutators of~\eqref{eq:lorentz-transf-matrix-vector-rep} to find Lorentz algebra~\eqref{eq:lorentz-algebra-relations}. As already stated, the structure constants don't depend on the representation, so what we find here are the abstract commutation relations.
+\begin{proof}
+    Using eq.~\eqref{eq:lorentz-transf-matrix-vector-rep}, we compute
+    \begin{equation*}
+    \begin{split}
+        \tensor{\comm{M^{\mu\nu}}{M^{\rho\sigma}}}{^\alpha_\beta} &= \tensor{(M^{\mu\nu})}{^\alpha_\gamma} \tensor{(M^{\rho\sigma})}{^\gamma_\beta} - \tensor{(M^{\rho\sigma})}{^\alpha_\gamma} \tensor{(M^{\mu\nu})}{^\gamma_\beta}  \\
+        &= - (\eta^{\mu\alpha} \delta^\nu_\gamma - \eta^{\nu\alpha} \delta^\mu_\gamma) (\eta^{\rho\gamma} \delta^\sigma_\beta - \eta^{\sigma\gamma} \delta^\rho_\beta) + (\rho \leftrightarrow \mu, \; \sigma \leftrightarrow \nu) \\
+        & = -\eta^{\mu\alpha} \eta^{\rho\nu} \delta^\sigma_\beta + \eta^{\mu\alpha} \eta^{\sigma\nu} \delta^\rho_\beta + \eta^{\nu\alpha} \eta^{\rho\mu} \delta^\sigma_\beta - \eta^{\nu\alpha} \eta^{\sigma\mu} \delta^\rho_\beta \\
+        &\quad + \eta^{\rho\alpha} \eta^{\mu\sigma} \delta^\nu_\beta - \eta^{\rho\alpha} \eta^{\nu\sigma} \delta^\mu_\beta - \eta^{\sigma\alpha} \eta^{\mu\rho} \delta^\nu_\beta + \eta^{\sigma\alpha} \eta^{\nu\rho} \delta^\mu_\beta \\
+        &= - \eta^{\nu\rho} ( \eta^{\mu\alpha} \delta^\sigma_\beta - \eta^{\sigma\alpha} \delta^\mu_\beta ) + \eta^{\mu\rho} ( \eta^{\nu\alpha} \delta^\sigma_\beta - \eta^{\sigma\alpha} \delta^\nu_\beta ) \\
+        &\quad + \eta^{\sigma\mu} ( \eta^{\rho\alpha} \delta^\nu_\beta - \eta^{\nu\alpha} \delta^\rho_\beta) - \eta^{\sigma\nu} (\eta^{\rho\alpha} \delta^\mu_\beta - \eta^{\mu\alpha} \delta^\rho_\beta) \\
+        &= i  \eta^{\nu\rho} \tensor{(M^{\mu\sigma})}{^\alpha_\beta}  - i \eta^{\mu\rho} \tensor{(M^{\nu\sigma})}{^\alpha_\beta} - i \eta^{\sigma\mu}  \tensor{(M^{\rho\nu})}{^\alpha_\beta} +  i \eta^{\sigma\nu} \tensor{(M^{\rho\mu})}{^\alpha_\beta} . \qedhere
+    \end{split}
+    \end{equation*}
+\end{proof}
+
+As previously noticed, the Lie algebra $\mathfrak{so}(1,3)$ contains the Lie algebra $\mathfrak{so}(3)$. This is to be expected. Indeed, for Lorentz transformation of the form $\Lambda = \left(\begin{smallmatrix} 1 & 0 \\ 0 & R \end{smallmatrix} \right) \in SO(1,3)^+$, with $R$ a $3 \times 3$ matrix, the defining property~\eqref{eq:lorentz-transf-def-components} reduced to $R^TR = \1$, which is the defining property of $SO(3)$. Then, $SO(3)$ is a subgroup of $SO(1,3)^+$ and consequently the Lie algebras must reflect this property. From the explicit representation of the generators~\eqref{eq:lorentz-transf-matrix-vector-rep}, we can see that $M_{ij}$ are block diagonal matrices of the form $M \sim \left( \begin{smallmatrix} 1 & 0 \\ 0 & N \end{smallmatrix} \right) $, with $N$ a $3 \times 3$ matrix, so the exponentiation conserves this form and produces the expected rotation matrices inside $SO(1,3)^+$.
+
+
+%%%%%%%%%%%%%%%  TENSOR REPRESENTATION %%%%%%%%%%%%%%%%%
+\subsubsection{Tensor Representation}
+Let's briefly recall what a tensor is. If $V$ is an $n$ dimensional real vector space and $V^*$ its dual space, the space of \emph{type $(p,q)$-tensors} is defined as
+\begin{equation}
+    T^{(p,q)}(V) = 
+    \underbrace{V \otimes \dots \otimes V}_\text{$p$ times}
+    \otimes
+    \underbrace{V^* \otimes \dots \otimes V^*}_\text{$q$ times} .
+\end{equation}
+
+As we know from multilinear algebra, if $\{e_i\}$ is any basis for $V$ and $\{\epsilon^j\}$ the corresponding dual basis for $V^*$, a basis for $T^{(p,q)}(V)$ is given by
+\begin{equation}
+    \{ e_{i_1} \otimes \dots \otimes e_{i_p} \otimes \epsilon^{j_1} \otimes \dots \otimes \epsilon^{j_q} : 1 \leq i_1, \dots, i_p, j_1, \dots, j_q \leq n \},
+\end{equation}
+and the tensor can be written as
+\begin{equation}
+    T = \tensor{T}{^{i_1}^\dots^{i_p}_{j_1}_\dots_{j_q}} e_{i_1} \otimes \dots \otimes e_{i_p} \otimes \epsilon^{j_1} \otimes \dots \otimes \epsilon^{j_q}.
+\end{equation}
+
+We can uniquely identify a tensor via its coordinates, so we'll forget about the basis elements from now on. Further, we'll consider only \emph{contravariant} tensors, i.e., tensors with upper indices, since we can easily lower indices via the metric tensor and transform a \emph{covariant} index with the inverse of the metric, as already discussed for vectors, which are rank $1$ tensors.
+
+Then, a Lorentz tensor of \emph{rank} $n$ is defined by the transformation law
+\begin{equation}\label{eq:lorentz-transf-tensor}
+    T^{\mu\nu\dots\tau} \to {T'}^{\mu\nu\dots\tau} = \underbrace{\tensor{\Lambda}{^\mu_\alpha} \tensor{\Lambda}{^\nu_\beta} \dots \tensor{\Lambda}{^\tau_\lambda}}_\text{$n$ times} T^{\alpha\beta\dots\lambda},
+\end{equation}
+so we can always construct the representation matrices $\tensor{\Lambda}{^\mu_\alpha} \tensor{\Lambda}{^\nu_\beta} \dots$ of the Lorentz transformation as the outer product $\vec{4} \otimes \vec{4} \otimes \dots$ of the $4$ dimensional defining representation $\Lambda$. However, these representations are not irreducible. To see why, let's study the simplest case of a $4 \times 4$ tensor $T^{\mu\nu}$, which has $16$ components.
+
+Its trace, its antisymmetric component, and its symmetric and traceless part,
+\begin{equation}
+   S = \tensor{T}{^\alpha_\alpha} , \quad A^{\mu\nu} = \frac{1}{2} (T^{\mu\nu} - T^{\nu\mu}), \quad S^{\mu\nu} = \frac{1}{2} (T^{\mu\nu} + T^{\nu\mu}) - \frac{1}{4} \eta^{\mu\nu} S, 
+\end{equation}
+don't mix under Lorentz transformations, since a (anti-) symmetric tensor is still (anti-) symmetric after the transformation, and the trace is a Lorentz scalar.
+\begin{proof}
+    For the trace, using the property~\eqref{eq:lorentz-transf-def-components}, we can see
+    \begin{equation*}
+       S \coloneq \eta_{\mu\nu} S^{\mu\nu} \to \eta_{\mu\nu} \tensor{\Lambda}{^\mu_\alpha} \tensor{\Lambda}{^\nu_\beta} S^{\alpha\beta} = \eta_{\alpha\beta} S^{\alpha\beta} = S .
+    \end{equation*}
+    A faster way to reach this conclusion is to note that, due to the (absence of) index structure of $S$, it is a Lorentz scalar, and so transforms trivially by~\eqref{eq:lorentz-transf-scalar}.
+
+    Concerning the antisymmetric part, a tensor has this property if $A^{\mu\nu} = - A^{\mu\nu}$. Let's verify this is preserved under a Lorentz transformation. A generic two tensor transforms according to eq.~\eqref{eq:lorentz-transf-tensor}, so
+    \begin{equation*}
+       A^{\mu\nu} \to A'^{\mu\nu} = \tensor{\Lambda}{^\mu_\alpha} \tensor{\Lambda}{^\nu_\beta} A^{\alpha\beta} ,
+    \end{equation*}
+    and using the antisymmetry of $A^{\mu\nu}$
+    \begin{equation*}
+        A'^{\nu\mu} = \tensor{\Lambda}{^\nu_\alpha} \tensor{\Lambda}{^\mu_\beta} A^{\alpha\beta} = - \tensor{\Lambda}{^\nu_\alpha} \tensor{\Lambda}{^\mu_\beta} A^{\beta\alpha} = -A'^{\mu\nu} .
+    \end{equation*}
+    Finally, for the symmetric traceless part,
+    \begin{equation*}
+        S^{\mu\nu} \to S'^{\mu\nu} = \tensor{\Lambda}{^\mu_\alpha} \tensor{\Lambda}{^\nu_\beta} S^{\alpha\beta} ,
+    \end{equation*}
+    and using its symmetry
+    \begin{equation*}
+        S'^{\nu\mu} = \tensor{\Lambda}{^\nu_\alpha} \tensor{\Lambda}{^\mu_\beta} S^{\alpha\beta} = \tensor{\Lambda}{^\nu_\alpha} \tensor{\Lambda}{^\mu_\beta} S^{\beta\alpha} = S'^{\mu\nu} ,
+    \end{equation*}
+    and the facts that it is traceless and the trace it's a scalar,
+    \begin{equation*}
+        S' = S = 0. \qedhere
+    \end{equation*}
+\end{proof}
+
+Then, recalling the definition~\eqref{def:reducible-rep}, the original tensor $T^{\mu\nu}$ lived in a reducible representation, and there are three irreducible subspaces, a one-dimensional subspace, spanned by the trace, a $6$-dimensional one, spanned by the antisymmetric tensors, and a $9$-dimensional one, spanned by traceless symmetric tensors. Using the convention of denoting an irreducible representation with its dimensionality, written in boldface, we have
+\begin{equation}
+    \vec{4} \otimes \vec{4} = \vec{1} \oplus \vec{6} \oplus \vec{9} .
+\end{equation}
+
+A priori, it's not necessary true that those representations are irreducible. One should prove it. Without going into the details, let's just cite that the most general irreducible tensor representations of the Lorentz group are found starting from a generic tensor with an arbitrary number of indices, removing first all traces, and then symmetrizing or antisymmetrising over all pairs of indices.
+
+\color{red}
+\subsubsection{Decomposition of Lorentz tensors under SO(3)}
+Even if the vector representation is an irreducible representation of the Lorentz group, from the point of view of $SO(3)$, which is a subgroup, it is reducible. This will be related to spin.
+\color{black}
+
+
+
+%%%%%%%%%%%%%%%  SPINORIAL REPRESENTATION %%%%%%%%%%%%%%%%%
+\subsubsection{Spinorial Representation}
+\dots
+
+%%%%%%%%%%%%%%%  FIELD REPRESENTATION %%%%%%%%%%%%%%%%%
+\subsubsection{Field Representation}
+Up to know we've seen representations acting on spacetime-independent quantities, which generically transform as
+\begin{equation}
+    \phi'_i  = D_{ij}(\Lambda) \phi_j.
+\end{equation}
+
+A field $\phi_i$ is a function of the coordinates with some definite transformation properties under the Poincaré group. When we consider their transformation we must consider that it acts on their argument too, $x' = \Lambda x$:
+\begin{equation}
+    \phi'_i (x) = D_{ij}(\Lambda) \phi_j(\Lambda^{-1}x) \iff \phi'_i(x') = D_{ij}(\Lambda) \phi_j(x) .
+\end{equation}
+
+We can define two types of infinitesimal variation the field
+\begin{itemize}
+    \item \emph{A change in perspective}:
+    \begin{equation}
+        \delta \phi_i = \phi'_i(x') - \phi_i(x) = \frac{i}{2} \epsilon_{\mu\nu} (\hat{S}^{\mu\nu})_{ij} \phi_j(x) ,
+    \end{equation}
+    with $(\hat{S}^{\mu\nu})_{ij}$ a finite-dimensional matrix representation of the generator $M^{\mu\nu}$. The subscript will stand for \emph{spin}, as will be clear in the following.
+    \item \emph{Functional change}:
+    \begin{equation}\label{eq:total-functional-variation}
+        \delta_0 \phi_i = \phi'_i(x) - \phi(x) = \phi'_i (x' - \delta x) - \phi_i(x) = \delta \phi_i - \delta x_\mu \de^\mu \phi_i ,
+    \end{equation}
+    where we evaluate the field changes at the same position $x$.
+\end{itemize}
+
+An \emph{infinitesimal Lorentz transformation} can be written as $\delta x_\mu = \omega_{\mu\nu} x^\nu$, so
+\begin{equation*}
+    -\delta x_\mu \de^\mu \phi_i = - \omega_{\mu\nu} x^\nu \de^\mu \phi_i = \frac{i}{2} \omega_{\mu\nu} \left[ -i (x^\mu \de^\nu - x^\nu \de^\mu) \right] \phi_i .
+\end{equation*} 
+Defining
+\begin{equation}
+    {\hat{L}}^{\mu\nu} \coloneq -i (x^\mu \de^\nu - x^\nu \de^\mu),
+\end{equation}
+we get
+\begin{equation}
+    -\delta x_\mu \de^\mu \phi_i = \frac{i}{2} \omega_{\mu\nu} {\hat{L}}^{\mu\nu} \phi_i.
+\end{equation}
+
+To generalise this to a Poincaré transformation, let's first consider a pure translation, after which
+\begin{equation}
+    \phi'_i(x) = \phi_i (x-a) \iff \phi'_i(x') = \phi_i(x) ,
+\end{equation}
+and hence $\delta \phi_i = 0$ and $\delta_0 \phi_i = - \epsilon_\mu \de^\mu \phi_i = i \epsilon_\mu \hat{P}^\mu \phi_i$, with $\hat{P}^\mu 0 i \de^\mu$. The total change of the field is then
+\begin{equation}
+    \phi'_i(x) = \phi_i(x) + \left[ \frac{i}{2} \omega_{\mu\nu} ({\hat{S}}^{\mu\nu} + {\hat{L}}^{\mu\nu}) + i \epsilon_\mu \hat{P}^\mu \right]_{ij} \phi_j(x) .
+\end{equation}
+
+Here, $\hat{L}^{\mu\nu}$ and $\hat{P}^\mu$ are differential operators that satisfy Poincaré algebra relations when applied to $\phi_i(x)$. There are diagonal in $i,j$, whereas the spin matrix $\hat{S}^{\mu\nu}$ depends on the representation of the field. Moreover, we can write $\hat{J}^{\mu\nu} = \hat{S}^{\mu\nu} + \hat{L}^{\mu\nu}$ and try to find out the explicit form of those operators in the representation under study. To do so, we use eq.~\eqref{eq:poincare-boosts-rotations} for the abstract generators, and find out that we can divide the generators of the angular momentum and of the boosts in a spin and an orbital angular part too, in particular
+\begin{equation}
+    \vec{L} = \vec{x} \wedge \vec{P}, \quad \vec{K}_L = \vec{x} P^0 - x^0 \vec{P}, \quad P^\mu = i \de^\mu .
+\end{equation}
+
+
+\paragraph{Action}
+One way to study and quantise a theory is starting from the classical action $S$. In order for it to be invariant, it must be a Poincaré scalar. Further, by Noether's theorem, associated to the Poincaré invariance there are some conserved charges. In particular, using eq.~\eqref{eq:total-functional-variation}, we may write
+\begin{equation}
+    \delta S = \int \udq x \, \delta_0 \L + \int \udq x \, \de_\mu \L \delta x^\mu
+\end{equation}
+
+
+
+To construct a Poincaré invariant theory, we start from a \emph{classical} action which has the same property. We can then apply Noether theorem to find out the conserved charges related to the Poincaré symmetry. 
+\dots
+\dots
+
+It turns out that the currents associated to the Poincaré symmetry of a classical action are
+\begin{subequations}
+\begin{gather}
+T^{\mu\alpha} = -i \frac{\de \L}{\de(\de_\mu \phi_i)} P^\alpha \phi_j - g^{\mu\alpha} \L , \\
+m^{\mu,\alpha\beta} = -i \frac{\de \L}{\de (\de_\mu \phi_i)} M^{\alpha\beta}_{ij} \phi_j + (x^\alpha g^{\mu\beta} - x^\beta g^{\mu\alpha}) \L .
+\end{gather}
+\end{subequations}
+
+The corresponding charges are
+\begin{subequations}\label{eq:const-motion}
+\begin{align}
+    \hat{P}^\alpha &= \int \udt x \, T^{0\alpha} , \\
+   \hat{M}^{\alpha\beta} &= \int \udt x \, m^{0 ,\alpha\beta} .
+\end{align}
+\end{subequations}
+
+Those, after quantization, will form a representation of the Poincaré group that acts on the state space.
+
+Further, in the quantum setting, Wigner's theorem states that continuous symmetries must be implemented by unitary operators on the state space. The Lorentz group is not compact because it contains boosts, hence all unitary representations must be infinite-dimensional. 
+
+This is realized in the quantum field theory: the fields $\phi_i(x)$ become operators on the Fock space, and the constants of motion in eq.~\eqref{eq:const-motion} are hermitian operators that define a unitary representation of the Poincaré algebra on the state space:
+\begin{equation}
+    U(\Lambda,a) = e^{\frac{i}{2} \omega_{\mu\nu} \hat{M}^{\mu\nu} + i \epsilon_\mu \hat{P}^\mu} \simeq 1 + \frac{i}{2} \omega_{\mu\nu} \hat{M}^{\mu\nu} + i \epsilon_\mu \hat{P}^\mu .
+\end{equation}
+
+The irreducible state space those operators act on is the one-particle state space we constructed above, using Casimir operators and so on.
+
+\color{red} How, from this, we get to $U(\Lambda,a) \phi_i(x) U(\Lambda,a)^{-1} = D(\Lambda)^{-1}_ij \phi_j (\Lambda x + a)$
+\color{black}
+
+
+
+
+%%%%%%%%%%%%%%% POINCARE GROUP %%%%%%%%%%%%%%%%%
+\subsection{Poincaré Group}
+The Lorentz transformations defined in sec.~\ref{sec:lorentz-group} guarantee that the norm $x^2 \coloneq x_\mu x^\mu$ of a four-vector is invariant under a transformation. However, this in not enough since on physical grounds we need the line element $(\ud x)^2 = \eta_{\mu\nu} \ud x^\mu \ud x^\nu = c^2 (\ud t)^2 - (\ud \vec{x})^2$ to be invariant. This guarantees that the speed of light is the same in each inertial frame, and allows us to add constant translations to a Lorentz transformation, i.e.,
+\begin{equation}
+    x \to x' = T(\Lambda, a) x = \Lambda x + a .
+\end{equation}
+The resulting $10$ parameter group contains translations, rotations and boosts, and is called \emph{Poincaré group} or \emph{inhomogeneous Lorentz group}.
+
+We can check again the group axioms~\ref{def:group-axioms}. The composition of two Poincaré transformations gives another transformations, via the rule
+\begin{equation}\label{eq:poincare-group-multiplication}
+    T(\Lambda', a') T(\Lambda, a) = T(\Lambda' \Lambda, a' + \Lambda' a),
+\end{equation}
+the transformation is associative,
+\begin{equation}
+    (TT')T'' = T(T'T''),
+\end{equation}
+the unit element is
+\begin{equation}\label{eq:poincare-unit-element}
+    \1 = T(1,0)
+\end{equation}
+and by equating eq.~\eqref{eq:poincare-group-multiplication} with eq.~\eqref{eq:poincare-unit-element} one can read off the inverse element
+\begin{equation}\label{eq:poincare-inverse-element}
+    T^{-1}(\Lambda, a) = T(\Lambda^{-1}, -\Lambda^{-1}a).
+\end{equation}
+
+In analogy to the Lorentz group, the component which contains the identity $T(1,0)$ is called $ISO(1,3)^+$, where \emph{I} stands for \emph{inhomogeneous}. This is the fundamental symmetry group of physics that transforms inertial frames into one another.
+
+
+
+%%%%%%%%%%%%%%% POINCARE ALGEBRA %%%%%%%%%%%%%%%%%
+\subsection{Poincaré Algebra}
+Let's use a different notation and denote with $U(\Lambda, a)$ a representation of the Poincaré group on some vector space. Note that it is \emph{not} necessary that $U$ is a unitary representation. In order for it to satisfy the definition~\ref{def:representation}, it must inherit the transformation properties of the group, in this case eq.~\eqref{eq:poincare-group-multiplication} and eq.~\eqref{eq:poincare-inverse-element},
+\begin{subequations}
+\begin{gather}
+    U(\Lambda, a) U(\Lambda',a') = U(\Lambda\Lambda', a' + \Lambda' a) , \label{eq:representation-poincare-group-multiplication} \\
+    U^{-1} (\Lambda, a) = U(\Lambda^{-1},-\Lambda^{-1},a) . \label{eq:representation-poincare-inverse-element}
+\end{gather}
+\end{subequations}
+
+Then, for infinitesimal transformations\footnote{See chapter $2$ of Weinberg~\cite{weinberg} to convince yourself this is possible. Here, we're assuming the exponential map is surjective. As discussed in sec.~\ref{sec:lie-groups-algebras} after eq.~\eqref{eq:exp-map}, it is a non-trivial fact to prove the surjectivity. However, we're not interested in such details, so we'll just ignore it. \color{red} Exponential vs product of exponentials, still to be solved \color{black}},
+\begin{equation}\label{eq:infinitesimal-poicare-transformation}
+    U(\Lambda, a) = e^{\frac{i}{2} \omega_{\mu\nu} M^{\mu\nu} - i \epsilon_\sigma P^\sigma} \simeq \1 + \frac{i}{2} \omega_{\mu\nu} M^{\mu\nu} - i \epsilon_\sigma P^\sigma,
+\end{equation}
+where the explicit forms of $U(\Lambda,a)$ and the generators $M^{\mu\nu}$ and $P^\mu$ depend on the representation. Here, we dropped any index referring to the representation for the generators. Recall that, at the end of the day, the commutation relations defining the Lie algebra are representation independent.
+
+To derive the commutation relations of the generators, we can use the relation
+\begin{equation}
+    U(\Lambda, a) U(\Lambda',a') U^{-1}(\Lambda,a) = U(\Lambda \Lambda' \Lambda^{-1}, a + \Lambda a' - \Lambda \Lambda' \Lambda^{-1}a) ,
+\end{equation}
+which follows from eq.~\eqref{eq:representation-poincare-group-multiplication} and eq.~\eqref{eq:representation-poincare-inverse-element}. Inserting infinitesimal transformations~\eqref{eq:infinitesimal-poicare-transformation} for each $U(\Lambda = 1 + \epsilon, a)$, with $U^{-1} (\Lambda,a) = U(1-\epsilon,-a)$, keeping only linear terms in all group parameters $\epsilon$, $\epsilon'$, $a$ and $a'$, and comparing coefficients of the terms $\sim \epsilon\epsilon'$, $a\epsilon'$, $\epsilon a'$ and $aa'$, leads to the identities
+\begin{subequations}
+\begin{align}
+    i \comm{M^{\mu\nu}}{M^{\rho\sigma}} &= \eta^{\nu\rho} J^{\mu\sigma} - \eta^{\mu\rho} J^{\nu\sigma} - \eta^{\sigma\mu} J^{\rho\nu} + \eta^{\sigma\nu} J^{\rho\mu} , \\
+    i \comm{P^\mu}{M^{\rho\sigma}} &= \eta^{\mu\rho} P^\sigma - \eta^{\mu\sigma} P^\rho , \\
+    \comm{P^\mu}{P^\rho} &= 0 ,
+\end{align}
+\end{subequations}
+which define the Poincaré algebra.
+
+We can recast those relations in a less compact but more useful form. Since $M^{\mu\nu}$ contains six generators, we can define the generator of $SO(3)$ rotations $\vec{J}$ and the generator of the boosts $\vec{K}$ via\footnote{To see how to invert expressions with Levi-Civita symbol, look at apprendix~\ref{app:levi-civita}.}
+\begin{equation}\label{eq:poincare-boosts-rotations}
+    M^{ij} = - \epsilon_{ijk} J^k \iff J^i =- \frac{1}{2} \epsilon_{ijk} M^{jk}, \quad M^{0i} = K^i, 
+\end{equation}
+then the commutation relations takes the form
+
+\begin{subequations}
+\label{eq:poincare-commutation-boosts-rotations}
+\noindent\centering
+    \begin{minipage}{0.48\textwidth}
+        \begin{align}
+        \comm{J^i}{J^j} &= i \epsilon_{ijk} J^k, \\
+        \comm{J^i}{K^j} &= i \epsilon_{ijk} K^k ,\\
+        \comm{K^i}{K^j} &= -i \epsilon_{ijk} J^k, \\
+        \comm{J^i}{P^j} &= i \epsilon_{ijk} P^k ,\\
+        \comm{K^i}{P^j} &= i \delta_{ij} P_0,
+        \end{align}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\textwidth}
+    \label{eq:bell_states}
+        \begin{align}
+        \comm{K^i}{P_0} &= i P^i ,\\
+        \comm{P^i}{P^j} &= 0, \\
+        \comm{J^i}{P_0} &= 0, \\
+        \comm{P^i}{P_0} &= 0 .
+        \end{align}
+    \end{minipage}\bigskip
+    \end{subequations}
+
+If we similarly define $\epsilon_{ij} = - \epsilon_{ijk} \phi^k$ and $\epsilon_{0i} = s^i$, we obtain
+\begin{equation}
+    \frac{i}{2} \epsilon_{\mu\nu} M^{\mu\nu} = i \vec{\phi} \cdot \vec{J} + i \vec{s} \cdot \vec{K}.
+\end{equation}
+
+$\vec{J}$ is hermitian but, because the Lorentz group is not compact, $\vec{K}$ is antihermitian for all finite-dimensional representations which prevents them from being unitary. From~\eqref{eq:poincare-commutation-boosts-rotations} we see that boosts and rotations generally do not commute unless the boost and rotation axes coincide. Moreover, $P_0$ (which becomes the Hamilton operator in the quantum theory) commutes with rotations and spatial translations but not with boosts and therefore the eigenvalues of K cannot be used for labelling physical states.
+
+
+%%%%%%%%%%%%%%% CASIMIR OPERATORS %%%%%%%%%%%%%%%%%
+\subsection{Casimir Operators}
