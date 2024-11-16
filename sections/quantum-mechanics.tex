@@ -30,7 +30,7 @@ Let us begin by outlining some fundamental aspects of quantum mechanics.
     \end{equation}
 
     If the operator is hermitian, i.e., $A^\dagger = A$, then $\alpha \in \R$ and eigenstates with different eigenvalues are orthogonal with respect to each other.
-    \item If a system is in a state represented by a ray $\ray$, and an experiment is done to test whenever it is in any one of the different states represented by mutually orthogonal rays\footnote{A pair of rays $\ray_1, \ray_2$ are orthogonal if $\scalar{\psi_1}{\psi_2} = 0, \; \forall \psi_1 \in \ray_1,  \psi_2 \in \ray_2$} $\ray_1, \ray_2, \dots$ (e.g., by measuring one or more observables), then the probability of finding it in the state represented by $\ray_n$ is 
+    \item If a system is in a state represented by a ray $\ray$, and an experiment tests if it is in any one of the  mutually orthogonal rays\footnote{A pair of rays $\ray_1, \ray_2$ are orthogonal if $\scalar{\psi_1}{\psi_2} = 0, \; \forall \psi_1 \in \ray_1,  \psi_2 \in \ray_2$} $\ray_1, \ray_2, \dots$, then the probability of finding it in the state represented by $\ray_n$ is 
     \begin{equation}
         P(\ray \to \ray_n) = \abs{\scalar{\psi}{\psi_n}}^2 ,
     \end{equation}
@@ -54,25 +54,23 @@ Recalling the definition of an adjoint operator~\eqref{eq:def-adjoint}, the unit
     U^\dagger = U^{-1} .
 \end{equation}
 
-The identity operator $U = \1$ trivially represents a symmetry, preserving the ray $R$.
-An infinitesimal symmetry transformation close to the identity is represented by a unitary
-operator near $U = \1$:
+The identity operator $U = \1$ trivially represents a symmetry, preserving the ray $R$. An infinitesimal symmetry transformation close to the identity is represented by a unitary operator near $U = \1$:
 \begin{equation}
     U = 1 + i \epsilon T ,
 \end{equation}
-where $\epsilon$ is a real infinitesimal parameter. For this to be unitary, $T$ must be \emph{linear} and \emph{hermitian}, so it is a candidate for an observable. Most of the observables of physics arise in this way from symmetry transformations.
+where $\epsilon$ is a real infinitesimal parameter. For $U$ to be unitary, $T$ must be both \emph{linear} and \emph{hermitian}, qualifying it as a potential observable. In physics, most observables arise in this way from symmetry transformations.
 
-It's easy to show that the set of symmetry transformations from a ray to another satisfies the group axioms~\ref{def:group-axioms}. Indeed, given $T_1 \colon \ray_n \to \ray'_n$ and $T_2 \colon \ray'_n \to \ray''_n$, then $T_2 T_1$ is another symmetry transformation, $T_2 T_1 \colon \ray_n \to \ray''_n$. The inverse will be $T^{-1} \colon \ray'_n \to \ray_n$ and the identity $T=1$ leaves the ray unchanged.
+It is straightforward to verify that symmetry transformations from one ray to another satisfy the group axioms~\ref{def:group-axioms}. Indeed, given $T_1 \colon \ray_n \to \ray'_n$ and $T_2 \colon \ray'_n \to \ray''_n$, then $T_2 T_1$ is another symmetry transformation, $T_2 T_1 \colon \ray_n \to \ray''_n$. The inverse will be $T^{-1} \colon \ray'_n \to \ray_n$ and the identity $T=1$ leaves the ray unchanged.
 
-The unitary operators $U(T)$ corresponding to these symmetry transformations have properties that mirror this group structure (see def.~\ref{def:representation}), but with a complication due to the fact that, unlike the symmetry transformations themselves, the operators $U(T)$ act on vectors in Hilbert space, rather than on rays. If $T_1 \colon \ray_n \to \ray'_n$, then $U(T_1)$ acts on $\psi_n \in \ray_n$ and gives a vector $U(T_1)\psi_n \in \ray'_n$. Similarly, if $T_2 \colon \ray'_n \to \ray''_n$, then $\ray'_n \ni U(T_1)\psi_n \mapsto U(T_2)U(T_1)\psi_n \in \ray''_n$. However, $U(T_2 T_1)$ is also in this ray, since $T_2 T_1 \colon \ray_n \to \ray''_n$, so the vectors $U(T_2)U(T_1)\psi_n$ and $U(T_2T_1)\psi_n$ must differ by a phase factor $\phi_n (T_2, T_1)$
+The unitary operators $U(T)$ corresponding to these symmetry transformations have properties that mirror the group structure (see def.~\ref{def:representation}), but unlike the symmetry transformations themselves, the operators $U(T)$ act on vectors in Hilbert space, rather than on rays. If $T_1 \colon \ray_n \to \ray'_n$, then $U(T_1)$ acts on $\psi_n \in \ray_n$ and gives a vector $U(T_1)\psi_n \in \ray'_n$. Similarly, if $T_2 \colon \ray'_n \to \ray''_n$, then $\ray'_n \ni U(T_1)\psi_n \mapsto U(T_2)U(T_1)\psi_n \in \ray''_n$. However, $U(T_2 T_1)$ is also in this ray, since $T_2 T_1 \colon \ray_n \to \ray''_n$, so the vectors $U(T_2)U(T_1)\psi_n$ and $U(T_2T_1)\psi_n$ must differ by a phase factor $\phi_n (T_2, T_1)$
 \begin{equation}
     U(T_2)U(T_1)\psi_n = e^{i\phi (T_2, T_1)} U(T_2T_1)\psi_n ,
 \end{equation}
 where we dropped the index $n$ for the phase since one can prove that it doesn't depend on the state (see Weinberg~\cite{weinberg}).
 
-This is called \emph{projective representation}, and differ from a linear representation~\eqref{eq:representation-property} by the phase factor. Turning back to the notation of sec.~\ref{sec:group-representation}, a symmetry group $G$ acts on the Hilbert space $\H$ as some unitary operator $\rho(g) \colon \H \to \H$, with $g \in G$, which identifies a projective representation:
+This type of representation is called \emph{projective representation}. Unlike a linear representation~\eqref{eq:representation-property}, it includes a phase factor. Turning back to the notation of sec.~\ref{sec:group-representation}, a symmetry group $G$ acts on the Hilbert space $\H$ via a unitary operator $\rho(g) \colon \H \to \H$, for $g \in G$, which defines a projective representation:
 \begin{equation}
     \rho(g) \rho(h) = e^{i\phi(g,h)} \rho(g \circ h), \quad \phi(g,h) \in R.
 \end{equation}
 
-Therefore, in a quantum theory, we're interested in \emph{unitary projective representations} of a symmetry group $G$. Then, by means of theorem~\ref{th:unitary-rep}, \emph{all} unitary projective representations of a group $G$ arises from a unitary \emph{linear} representation of the universal covering group $\tilde{G}$. These, in turn, come from representations of the Lie algebra. Further, by means of theorem~\ref{th:non-compact-group-rep}, since the Poincaré group is non-compact, we need to study infinite dimensional representations in order to have unitary ones, which, then, can be related to physical observables.
+Therefore, in a quantum theory, we're interested in \emph{unitary projective representations} of a symmetry group $G$. Then, according to theorem~\ref{th:unitary-rep}, \emph{all} unitary projective representations of $G$ can be derived from unitary \emph{linear} representations of the universal covering group $\tilde{G}$. These, in turn, arise from representations of the Lie algebra. Further, by theorem~\ref{th:non-compact-group-rep}, since the Poincaré group is non-compact, we must study infinite dimensional representations in order to have unitary ones, which can then be associated with physical observables.
