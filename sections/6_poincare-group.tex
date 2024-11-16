@@ -1,34 +1,89 @@
 %%%%%%%%%%%%%%% POINCARE GROUP %%%%%%%%%%%%%%%%%
 \section{Poincaré Group}
-The Lorentz transformations defined in sec.~\ref{sec:lorentz-group} guarantee that the norm $x^2 \coloneq x_\mu x^\mu$ of a four-vector is invariant under a transformation. However, this in not enough since on physical grounds we need the line element $(\ud x)^2 = \eta_{\mu\nu} \ud x^\mu \ud x^\nu = c^2 (\ud t)^2 - (\ud \vec{x})^2$ to be invariant. This guarantees that the speed of light is the same in each inertial frame, and allows us to add constant translations to a Lorentz transformation, i.e.,
-\begin{equation}
-    x \to x' = T(\Lambda, a) x = \Lambda x + a .
-\end{equation}
-The resulting $10$ parameter group contains translations, rotations and boosts, and is called \emph{Poincaré group} or \emph{inhomogeneous Lorentz group}.
+The Lorentz transformations defined in sec.~\ref{sec:lorentz-group} guarantee that the norm $x^2 \coloneq x_\mu x^\mu$ of a four-vector is invariant under a transformation. However, the principles of special relativity require that the line element $(\ud x)^2 = \eta_{\mu\nu} \ud x^\mu \ud x^\nu = c^2 (\ud t)^2 - (\ud \vec{x})^2$ is invariant. This guarantees that the speed of light is the same in each inertial frame. 
 
-We can check again the group axioms~\ref{def:group-axioms}. The composition of two Poincaré transformations gives another transformations, via the rule
+In order to satisfy the above condition, we can enlarge the Lorentz transformations, adding constant translations too. We call the resulting group \emph{Poincaré group} or \emph{inhomogeneous Lorentz group}. For simplicity, we only take the connected component of the Lorentz group, which allows us to consider the connected component of the Poincaré group, given by
+\begin{equation}
+    ISO(1,3)^+ = \{ (a,\Lambda) : a \in \R^4, \Lambda \in SO(1,3)^+ \},
+\end{equation}
+with group multiplication defined by
+\begin{equation}
+    (\Lambda', a') (\Lambda, a) = (\Lambda' \Lambda, a' + \Lambda' a),
+\end{equation}
+as we'll show soon. In the \emph{defining representation}, the group elements are matrices acting on the Minkowski vector space $\R^{1,3}$. Not to be too pedant with the notation, we continue to denote group elements in this particular representation with $(\Lambda,a)$.
+
+\begin{remark}
+    Pay attention to the fact that $\R^{1,3}$ is \emph{not} the flat Minkowski spacetime $\M$. Rather, it can be thought as its tangent space at a point. Then, it's a case that we are able to identify this tangent space with the spacetime itself, if the latter is flat.
+\end{remark}
+
+Then, the action of $(\Lambda,a)$ on $R^{1,3}$ is given by
+\begin{equation}\label{eq:poincare-definition}
+    x^\mu \to {x'}^\mu = (\Lambda, a) x = \tensor{\Lambda}{^\mu_\nu} x^\nu + a^\mu ,
+\end{equation}
+where $\tensor{\Lambda}{^\mu_\nu}$ is a Lorentz transformation in the defining representation, as defined in sec.~\ref{sec:lorentz-group}, and $a^\mu \in \R^(1,3)$ is an arbitrary constant four-vector. Basically, we're adding four new parameters, having in total a $10$ parameter group, containing translations, rotations, and boosts.
+
+We can check again the group axioms~\ref{def:group-axioms}, considering that by means of eq.~\eqref{eq:representation-property}, a representation inherits the composition rule from the group. The composition of two Poincaré transformations gives another transformation,
 \begin{equation}\label{eq:poincare-group-multiplication}
-    T(\Lambda', a') T(\Lambda, a) = T(\Lambda' \Lambda, a' + \Lambda' a),
+    (\Lambda', a') (\Lambda, a) = (\Lambda' \Lambda, a' + \Lambda' a),
 \end{equation}
 the transformation is associative,
-\begin{equation}
-    (TT')T'' = T(T'T''),
+\begin{equation}\label{eq:poincare-associative}
+    \left[(\Lambda,a)(\Lambda',a')\right] (\Lambda'',a'') = (\Lambda, a) \left[ (\Lambda',a')(\Lambda'',a'') \right],
 \end{equation}
 the unit element is
 \begin{equation}\label{eq:poincare-unit-element}
-    \1 = T(1,0)
+    (\1,0),
 \end{equation}
 and by equating eq.~\eqref{eq:poincare-group-multiplication} with eq.~\eqref{eq:poincare-unit-element} one can read off the inverse element
 \begin{equation}\label{eq:poincare-inverse-element}
-    T^{-1}(\Lambda, a) = T(\Lambda^{-1}, -\Lambda^{-1}a).
+    (\Lambda, a)^{-1} = (\Lambda^{-1}, -\Lambda^{-1}a).
 \end{equation}
+\begin{proof}
+    After two consecutive Poincaré transformations, using eq.~\eqref{eq:poincare-definition},
+    \begin{equation*}
+        x \to x' = (\Lambda,a)x = \Lambda x + a \to (\Lambda',a')x' = \Lambda' (\Lambda x + a) + a' = (\Lambda' \Lambda)x + (\Lambda' a + a') ,
+    \end{equation*}
+    showing eq.~\eqref{eq:poincare-group-multiplication}.
 
-In analogy to the Lorentz group, the component which contains the identity $T(1,0)$ is called $ISO(1,3)^+$, where \emph{I} stands for \emph{inhomogeneous}. This is the fundamental symmetry group of physics that transforms inertial frames into one another.
+    Further, taking three transformations, $(\Lambda,a)$, $(\Lambda',a')$, $(\Lambda'',a'')$, and composing them using eq.~\eqref{eq:poincare-group-multiplication}, we get
+    \begin{equation*}
+    \begin{alignedat}[t]{2}
+        \left[ (\Lambda,a)(\Lambda',a') \right] (\Lambda'',a'') &= (\Lambda\Lambda', a + \Lambda a') (\Lambda'',a'') &&= (\Lambda\Lambda'\Lambda'', a + \Lambda a' + (\Lambda \Lambda')a'') , \\
+        (\Lambda,a)\left[(\Lambda',a')T(\Lambda'',a'')\right] &= (\Lambda,a) (\Lambda'\Lambda'', a' + \Lambda' a'') &&= (\Lambda\Lambda'\Lambda'', a+\Lambda(a' + \Lambda' a'')) .
+    \end{alignedat}
+    \end{equation*}
+    Since they lead to the same result, eq.~\eqref{eq:poincare-associative} is proved.
+
+    The unit element is trivial, since by means of eq.~\eqref{eq:poincare-definition}, taking $(\1,0)$,
+    \begin{equation*}
+        x \to (\1,0) x = x.
+    \end{equation*}
+
+    Finally, to show eq.~\eqref{eq:poincare-inverse-element}, let's use eq.~\eqref{eq:poincare-group-multiplication} to compute
+    \begin{equation*}
+       (\Lambda,a) (\Lambda^{-1}, -\Lambda^{-1}a) = (\Lambda^{-1}\Lambda, a - \Lambda(\Lambda^{-1}a)) = (\1,0),
+    \end{equation*}
+    which is the group unit element, as expected.
+\end{proof}
+
+Basically, while $SO(1,3)$ relates orthonormal frames with coincident origins, elements of $ISO(1,3)$ also allow for the shift of origin.
 
 
 
 %%%%%%%%%%%%%%% POINCARE ALGEBRA %%%%%%%%%%%%%%%%%
 \section{Poincaré Algebra}
+To work out the \emph{Poincaré algebra}, let's follow the approach of sec.~\ref{sec:lorentz-algebra}. Then, we consider the abstract group $ISO(1,3)^+$, which is now characterised by $10$ parameters. Without translations, we must recover Lorentz group. Therefore, we continue to denote the six generators referring to Lorentz transformations by $M^{\mu\nu} = -M^{\nu\mu}$, and their parameters by $\omega_{\mu\nu}=-\omega_{\nu\mu}$. Further, we call the four generators related to translations $P^\mu$, and their parameters $\epsilon_\mu$.
+
+Here, $(\Lambda,a) \in ISO(1,3)^+$ will denote an element of the abstract Poincaré group, while $\Lambda \in SO(1,3)^+$ is a proper orthochronous Lorentz transformation and $a \in \R^4$ a traslation.
+
+Using the exponential map\footnote{\color{red}problem here, is it surjective?\color{black}}, any element $(\Lambda,a) \in ISO(1,3)^+$ can be written as \color{red}(different sign w.r.t Lorentz!)\color{black}
+\begin{equation}
+    (\Lambda,a) = e^{\frac{i}{2} \omega_{\mu\nu} M^{\mu\nu} - i \epsilon_\sigma P^\sigma},
+\end{equation}
+with a conventional choice of constants.
+
+
+
 Let's use a different notation and denote with $U(\Lambda, a)$ a representation of the Poincaré group on some vector space. Note that it is \emph{not} necessary that $U$ is a unitary representation. In order for it to satisfy the definition~\ref{def:representation}, it must inherit the transformation properties of the group, in this case eq.~\eqref{eq:poincare-group-multiplication} and eq.~\eqref{eq:poincare-inverse-element},
 \begin{subequations}
 \begin{gather}
