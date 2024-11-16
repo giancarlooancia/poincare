@@ -1,4 +1,8 @@
-To study the properties of the Lorentz and Poincaré groups, we start from their defining representations, keeping in mind what properties are representation-independent. In particular, we'll work in a 4-dimensional Minkowski spacetime with metric tensor $\eta = (\eta_{\mu\nu}) = \textup{diag}(+1,-1,-1,-1)$, and scalar product defined by
+To study the properties of the Lorentz and Poincaré groups, we start from their defining representations, keeping in mind what properties are representation-independent. In particular, we'll work in a 4-dimensional Minkowski spacetime with metric tensor 
+\begin{equation}
+    \eta = (\eta_{\mu\nu}) = \textup{diag}(+1,-1,-1,-1),
+\end{equation}
+and scalar product defined by
 \begin{equation}
     x \cdot y \coloneq x^T \eta y = x^0y^0-\vec{x}\cdot\vec{y} = \eta_{\mu\nu} x^\mu y^\nu = x_\mu y^\mu .
 \end{equation}
@@ -121,7 +125,7 @@ Let's now classify the representations of the Lorentz group.
 
 
 %%%%%%%%%%%%%%%  TRIVIAL REPRESENTATION %%%%%%%%%%%%%%%%%
-\section{Trivial Representation}
+\subsection{Trivial Representation}
 This is the one acting on a \emph{scalar} $\phi$, i.e., a quantity which is invariant under a Lorentz transformation, like the rest mass of a particle. By means of~\eqref{eq:action-lorentz-transf}, we have
 \begin{equation}\label{eq:lorentz-transf-scalar}
     \delta \phi = 0,
@@ -134,7 +138,7 @@ so that the generators, which are $1 \times 1$ matrices, identically vanish,
 The representation is called \emph{trivial}, since the algebra commutation relations~\eqref{eq:structure-contants} are trivially satisfied.
 
 %%%%%%%%%%%%%%%  VECTOR REPRESENTATION %%%%%%%%%%%%%%%%%
-\section{Vector Representation}
+\subsection{Vector Representation}
 This is the \emph{defining representation} and acts on a \emph{four-vector} $V^\mu$, which has transformation law
 \begin{equation}\label{eq:lorentz-transf-four-vector}
     V^\mu \to \tensor{\Lambda}{^\mu_\nu} V^\nu,
@@ -192,7 +196,7 @@ As previously noticed, the Lie algebra $\mathfrak{so}(1,3)$ contains the Lie alg
 
 
 %%%%%%%%%%%%%%%  TENSOR REPRESENTATION %%%%%%%%%%%%%%%%%
-\section{Tensor Representation}
+\subsection{Tensor Representation}
 Let's briefly recall what a tensor is. If $V$ is an $n$ dimensional real vector space and $V^*$ its dual space, the space of \emph{type $(p,q)$-tensors} is defined as
 \begin{equation}
     T^{(p,q)}(V) = 
@@ -259,19 +263,21 @@ Then, recalling the definition~\eqref{def:reducible-rep}, the original tensor $T
 
 A priori, it's not necessary true that those representations are irreducible. One should prove it. Without going into the details, let's just cite that the most general irreducible tensor representations of the Lorentz group are found starting from a generic tensor with an arbitrary number of indices, removing first all traces, and then symmetrizing or antisymmetrising over all pairs of indices.
 
+
+%%%%%%%%%%%%%%%  DECOMPOSITION %%%%%%%%%%%%%%%%%
 \color{red}
-\section{Decomposition of Lorentz tensors under SO(3)}
+\subsection{Decomposition of Lorentz tensors under SO(3)}
 Even if the vector representation is an irreducible representation of the Lorentz group, from the point of view of $SO(3)$, which is a subgroup, it is reducible. This will be related to spin.
 \color{black}
 
 
 
 %%%%%%%%%%%%%%%  SPINORIAL REPRESENTATION %%%%%%%%%%%%%%%%%
-\section{Spinorial Representation}
+\subsection{Spinorial Representation}
 \dots
 
 %%%%%%%%%%%%%%%  FIELD REPRESENTATION %%%%%%%%%%%%%%%%%
-\section{Field Representation}
+\subsection{Field Representation}
 Up to know we've seen representations acting on spacetime-independent quantities, which generically transform as
 \begin{equation}
     \phi'_i  = D_{ij}(\Lambda) \phi_j.
@@ -365,106 +371,3 @@ The irreducible state space those operators act on is the one-particle state spa
 
 \color{red} How, from this, we get to $U(\Lambda,a) \phi_i(x) U(\Lambda,a)^{-1} = D(\Lambda)^{-1}_ij \phi_j (\Lambda x + a)$
 \color{black}
-
-
-
-
-%%%%%%%%%%%%%%% POINCARE GROUP %%%%%%%%%%%%%%%%%
-\section{Poincaré Group}
-The Lorentz transformations defined in sec.~\ref{sec:lorentz-group} guarantee that the norm $x^2 \coloneq x_\mu x^\mu$ of a four-vector is invariant under a transformation. However, this in not enough since on physical grounds we need the line element $(\ud x)^2 = \eta_{\mu\nu} \ud x^\mu \ud x^\nu = c^2 (\ud t)^2 - (\ud \vec{x})^2$ to be invariant. This guarantees that the speed of light is the same in each inertial frame, and allows us to add constant translations to a Lorentz transformation, i.e.,
-\begin{equation}
-    x \to x' = T(\Lambda, a) x = \Lambda x + a .
-\end{equation}
-The resulting $10$ parameter group contains translations, rotations and boosts, and is called \emph{Poincaré group} or \emph{inhomogeneous Lorentz group}.
-
-We can check again the group axioms~\ref{def:group-axioms}. The composition of two Poincaré transformations gives another transformations, via the rule
-\begin{equation}\label{eq:poincare-group-multiplication}
-    T(\Lambda', a') T(\Lambda, a) = T(\Lambda' \Lambda, a' + \Lambda' a),
-\end{equation}
-the transformation is associative,
-\begin{equation}
-    (TT')T'' = T(T'T''),
-\end{equation}
-the unit element is
-\begin{equation}\label{eq:poincare-unit-element}
-    \1 = T(1,0)
-\end{equation}
-and by equating eq.~\eqref{eq:poincare-group-multiplication} with eq.~\eqref{eq:poincare-unit-element} one can read off the inverse element
-\begin{equation}\label{eq:poincare-inverse-element}
-    T^{-1}(\Lambda, a) = T(\Lambda^{-1}, -\Lambda^{-1}a).
-\end{equation}
-
-In analogy to the Lorentz group, the component which contains the identity $T(1,0)$ is called $ISO(1,3)^+$, where \emph{I} stands for \emph{inhomogeneous}. This is the fundamental symmetry group of physics that transforms inertial frames into one another.
-
-
-
-%%%%%%%%%%%%%%% POINCARE ALGEBRA %%%%%%%%%%%%%%%%%
-\section{Poincaré Algebra}
-Let's use a different notation and denote with $U(\Lambda, a)$ a representation of the Poincaré group on some vector space. Note that it is \emph{not} necessary that $U$ is a unitary representation. In order for it to satisfy the definition~\ref{def:representation}, it must inherit the transformation properties of the group, in this case eq.~\eqref{eq:poincare-group-multiplication} and eq.~\eqref{eq:poincare-inverse-element},
-\begin{subequations}
-\begin{gather}
-    U(\Lambda, a) U(\Lambda',a') = U(\Lambda\Lambda', a' + \Lambda' a) , \label{eq:representation-poincare-group-multiplication} \\
-    U^{-1} (\Lambda, a) = U(\Lambda^{-1},-\Lambda^{-1},a) . \label{eq:representation-poincare-inverse-element}
-\end{gather}
-\end{subequations}
-
-Then, for infinitesimal transformations\footnote{See chapter $2$ of Weinberg~\cite{weinberg} to convince yourself this is possible. Here, we're assuming the exponential map is surjective. As discussed in sec.~\ref{sec:lie-groups-algebras} after eq.~\eqref{eq:exp-map}, it is a non-trivial fact to prove the surjectivity. However, we're not interested in such details, so we'll just ignore it. \color{red} Exponential vs product of exponentials, still to be solved \color{black}},
-\begin{equation}\label{eq:infinitesimal-poicare-transformation}
-    U(\Lambda, a) = e^{\frac{i}{2} \omega_{\mu\nu} M^{\mu\nu} - i \epsilon_\sigma P^\sigma} \simeq \1 + \frac{i}{2} \omega_{\mu\nu} M^{\mu\nu} - i \epsilon_\sigma P^\sigma,
-\end{equation}
-where the explicit forms of $U(\Lambda,a)$ and the generators $M^{\mu\nu}$ and $P^\mu$ depend on the representation. Here, we dropped any index referring to the representation for the generators. Recall that, at the end of the day, the commutation relations defining the Lie algebra are representation independent.
-
-To derive the commutation relations of the generators, we can use the relation
-\begin{equation}
-    U(\Lambda, a) U(\Lambda',a') U^{-1}(\Lambda,a) = U(\Lambda \Lambda' \Lambda^{-1}, a + \Lambda a' - \Lambda \Lambda' \Lambda^{-1}a) ,
-\end{equation}
-which follows from eq.~\eqref{eq:representation-poincare-group-multiplication} and eq.~\eqref{eq:representation-poincare-inverse-element}. Inserting infinitesimal transformations~\eqref{eq:infinitesimal-poicare-transformation} for each $U(\Lambda = 1 + \epsilon, a)$, with $U^{-1} (\Lambda,a) = U(1-\epsilon,-a)$, keeping only linear terms in all group parameters $\epsilon$, $\epsilon'$, $a$ and $a'$, and comparing coefficients of the terms $\sim \epsilon\epsilon'$, $a\epsilon'$, $\epsilon a'$ and $aa'$, leads to the identities
-\begin{subequations}
-\begin{align}
-    i \comm{M^{\mu\nu}}{M^{\rho\sigma}} &= \eta^{\nu\rho} J^{\mu\sigma} - \eta^{\mu\rho} J^{\nu\sigma} - \eta^{\sigma\mu} J^{\rho\nu} + \eta^{\sigma\nu} J^{\rho\mu} , \\
-    i \comm{P^\mu}{M^{\rho\sigma}} &= \eta^{\mu\rho} P^\sigma - \eta^{\mu\sigma} P^\rho , \\
-    \comm{P^\mu}{P^\rho} &= 0 ,
-\end{align}
-\end{subequations}
-which define the Poincaré algebra.
-
-We can recast those relations in a less compact but more useful form. Since $M^{\mu\nu}$ contains six generators, we can define the generator of $SO(3)$ rotations $\vec{J}$ and the generator of the boosts $\vec{K}$ via\footnote{To see how to invert expressions with Levi-Civita symbol, look at apprendix~\ref{app:levi-civita}.}
-\begin{equation}\label{eq:poincare-boosts-rotations}
-    M^{ij} = - \epsilon_{ijk} J^k \iff J^i =- \frac{1}{2} \epsilon_{ijk} M^{jk}, \quad M^{0i} = K^i, 
-\end{equation}
-then the commutation relations takes the form
-
-\begin{subequations}
-\label{eq:poincare-commutation-boosts-rotations}
-\noindent\centering
-    \begin{minipage}{0.48\textwidth}
-        \begin{align}
-        \comm{J^i}{J^j} &= i \epsilon_{ijk} J^k, \\
-        \comm{J^i}{K^j} &= i \epsilon_{ijk} K^k ,\\
-        \comm{K^i}{K^j} &= -i \epsilon_{ijk} J^k, \\
-        \comm{J^i}{P^j} &= i \epsilon_{ijk} P^k ,\\
-        \comm{K^i}{P^j} &= i \delta_{ij} P_0,
-        \end{align}
-    \end{minipage}
-    \hfill
-    \begin{minipage}{0.48\textwidth}
-    \label{eq:bell_states}
-        \begin{align}
-        \comm{K^i}{P_0} &= i P^i ,\\
-        \comm{P^i}{P^j} &= 0, \\
-        \comm{J^i}{P_0} &= 0, \\
-        \comm{P^i}{P_0} &= 0 .
-        \end{align}
-    \end{minipage}\bigskip
-    \end{subequations}
-
-If we similarly define $\epsilon_{ij} = - \epsilon_{ijk} \phi^k$ and $\epsilon_{0i} = s^i$, we obtain
-\begin{equation}
-    \frac{i}{2} \epsilon_{\mu\nu} M^{\mu\nu} = i \vec{\phi} \cdot \vec{J} + i \vec{s} \cdot \vec{K}.
-\end{equation}
-
-$\vec{J}$ is hermitian but, because the Lorentz group is not compact, $\vec{K}$ is antihermitian for all finite-dimensional representations which prevents them from being unitary. From~\eqref{eq:poincare-commutation-boosts-rotations} we see that boosts and rotations generally do not commute unless the boost and rotation axes coincide. Moreover, $P_0$ (which becomes the Hamilton operator in the quantum theory) commutes with rotations and spatial translations but not with boosts and therefore the eigenvalues of K cannot be used for labelling physical states.
-
-
-%%%%%%%%%%%%%%% CASIMIR OPERATORS %%%%%%%%%%%%%%%%%
-\section{Casimir Operators}

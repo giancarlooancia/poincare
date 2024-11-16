@@ -174,7 +174,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % IMPORTANT TO HAVE CORRECT NUMER PAGE
-\setcounter{page}{-3}
+%\setcounter{page}{-3}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -246,6 +246,7 @@
 \ifnotoc\else
 \iftoccontinuous\else\newpage\fi
 \beforetochook\hrule
+\pagenumbering{gobble}
 \tableofcontents
 \thispagestyle{empty}
 \afterTocSpace
