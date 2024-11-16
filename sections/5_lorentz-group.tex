@@ -1,28 +1,32 @@
-\section{Poincaré Group and Algebra and their Representations}
+\section{Lorentz Group and its Representations}
 To study the properties of the Lorentz and Poincaré groups, we start from their defining representations, keeping in mind what properties are representation-independent. In particular, we'll work in a 4-dimensional Minkowski spacetime with metric tensor $\eta = (\eta_{\mu\nu}) = \textup{diag}(+1,-1,-1,-1)$, and scalar product defined by
 \begin{equation}
     x \cdot y \coloneq x^T \eta y = x^0y^0-\vec{x}\cdot\vec{y} = \eta_{\mu\nu} x^\mu y^\nu = x_\mu y^\mu .
 \end{equation}
 
+\color{red}L'ho scritto a caso come segnaposto, va scritta questa piccola introduzione. \color{blue}
+We'll start from Lorentz group, in particular from its defining representation. We'll work out the algebra in the fundamental representation, taking infinitesimal transformation and computing the commutation relations. Then, we'll study the finite-dimensional representations, and see how to label them via SU(2) indices. We'll introduce spinor representation and explain why are they important in quantum mechanics. Finally, we'll introduce field representations, and explain how to construct a lorentz invariant action, and that a representation of the lorentz group is given by the nother charges under the symmetry. This will allow us to move forward and study the infinite dimensional representations of the Poincare group.
+\color{black}
+
 
 %%%%%%%%%%%%%%% LORENTZ GROUP %%%%%%%%%%%%%%%%%
 \subsection{Lorentz Group}\label{sec:lorentz-group}
-Lorentz transformation are those transformations $x \to x' = \Lambda x$ which leave the scalar product invariant, i.e.,
+Lorentz transformations are those transformations $x \to x' = \Lambda x$ which leave the scalar product invariant, i.e.,
 \begin{equation}
     (\Lambda x) \cdot (\Lambda y) = x \cdot y \implies x^T \Lambda^T \eta \Lambda y = x^T \eta y \implies \Lambda^T \eta \Lambda = \eta .
 \end{equation}
-Written in components, this condition takes the form
+Written in components, this condition becomes
 \begin{equation}\label{eq:lorentz-transf-def-components}
     \eta_{\mu\nu} = \eta_{\alpha\beta} \tensor{\Lambda}{^\alpha_\mu} \tensor{\Lambda}{^\beta_\nu}.
 \end{equation}
 
-Since the metric tensor is symmetric, this gives $10$ constraints. Further, since the Lorentz transformation is a $4 \times 4$ matrix, it depends on $16-10 = 6$ independent parameters, which will be interpreted later as three parameters for the boosts and three for rotations. 
+Since $\eta_{\mu\nu}$ is symmetric, this gives $10$ constraints. Further, since the Lorentz transformation is a $4 \times 4$ matrix, it depends on $16-10 = 6$ independent parameters, which will be interpreted later as three parameters for the boosts and three for rotations. 
 
-If we consider an infinitesimal transformation
+For an infinitesimal transformation
 \begin{equation}
     \tensor{\Lambda}{^\mu_\nu} \simeq \delta^\mu_\nu + \tensor{\omega}{^\mu_\nu} ,
 \end{equation}
-and we take into account eq.~\eqref{eq:lorentz-transf-def-components}, we can easily see it must be
+and using eq.~\eqref{eq:lorentz-transf-def-components}, we find
 \begin{equation}\label{eq:parameters-lorentz}
     \omega_{\mu\nu} = -\omega_{\nu\mu} .
 \end{equation}
@@ -37,7 +41,7 @@ and we take into account eq.~\eqref{eq:lorentz-transf-def-components}, we can ea
     \end{equation}
 \end{proof}
 
-The transformations of a space with coordinates $\{y_1, \dots y_n, x_1, \dots, x_m\}$ which leave the quadratic form $( {y_1}^2 + \dots + {y_n}^2 ) - ( {x_1}^2 + \dots + {x_m}^2 )$ invariant define the orthogonal group $O(n,m)$. Therefore, the \emph{Lorentz group} is $O(1,3)$.
+The transformations of a space with coordinates $\{y_1, \dots y_n, x_1, \dots, x_m\}$ which leave the quadratic form $( {y_1}^2 + \dots + {y_n}^2 ) - ( {x_1}^2 + \dots + {x_m}^2 )$ invariant define the orthogonal group $O(n,m)$. Thus, the \emph{Lorentz group} is $O(1,3)$.
 
 The group axioms~\ref{def:group-axioms} are satisfied, and in particular there exists a unit element $\1$ and each $\Lambda$ has an inverse since its determinant is different from zero. Further, using that the determinant of a product is the product of the determinants, and that the transpose of a matrix has the same determinant as the matrix, one can verify
 \begin{subequations}
@@ -52,11 +56,11 @@ Depending on the signs of $\det \Lambda$ and $\tensor{\Lambda}{^0_0}$, the Loren
 
 %%%%%%%%%%%%%%% LORENTZ ALGEBRA %%%%%%%%%%%%%%%%%
 \subsection{Lorentz Algebra}
-We've seen that the Lorentz group is characterised by six independent parameters, collected into the antisymmetric matrix $\omega_{\mu\nu}$ (see eq.~\eqref{eq:parameters-lorentz}). It is then convenient to label the generators as $M^{\mu\nu} = -M^{\nu\mu}$, such that, for each fixed $\mu$ and $\nu$ we have a particular generator. Then, using the exponential map\footnote{As discussed in sec.~\ref{sec:lie-groups-algebras} after eq.~\eqref{eq:exp-map}, recall we assume the exponential map is surjective.}, a generic element $\Lambda \in SO(1,3)^+$ can be written as
+We've seen that the Lorentz group is characterised by six independent parameters, collected into the antisymmetric matrix $\omega_{\mu\nu}$ (see eq.~\eqref{eq:parameters-lorentz}). It is then convenient to label the generators as $M^{\mu\nu} = -M^{\nu\mu}$, where each pair $(\mu,\nu)$ identifies a particular generator. Then, using the exponential map\footnote{As discussed in sec.~\ref{sec:lie-groups-algebras} after eq.~\eqref{eq:exp-map}, recall we assume the exponential map is surjective.\color{red}true?\color{black}}, any element $\Lambda \in SO(1,3)^+$ can be written as
 \begin{equation}\label{eq:abstract-lorentz-group-element}
    \Lambda = e^{-\frac{i}{2} \omega_{\mu\nu} M^{\mu\nu}},
 \end{equation}
-with conventional choice of constants. Then, given a finite dimensional representation $(\rho, V)$ of dimension $n$, the group element~\eqref{eq:abstract-lorentz-group-element} is represented by the $n \times n$ matrix
+(\color{red} is it a problem if we have minus sign here and before plus sign?\color{black}) with conventional choice of constants. Then, given a finite dimensional representation $(\rho, V)$ of dimension $n$, the group element~\eqref{eq:abstract-lorentz-group-element} is represented by the $n \times n$ matrix
 \begin{equation}
     \Lambda_\rho = e^{-\frac{i}{2} \omega_{\mu\nu} M^{\mu\nu}_\rho},
 \end{equation}
@@ -65,7 +69,7 @@ which acts on $V$, where $M^{\mu\nu}_\rho$ are the Lorentz group generators in t
     \phi^i \to \tensor{\left[ e^{-\frac{i}{2} \omega_{\mu\nu} M^{\mu\nu}_\rho} \right]}{^i_j}  \, \phi^j .
 \end{equation}
 
-Under an infinitesimal Lorentz transformation, with infinitesimal parameters $\omega_{\mu\nu}$, the variation of $\phi^i$ is
+For an infinitesimal Lorentz transformation, with infinitesimal parameters $\omega_{\mu\nu}$, the variation of $\phi^i$ is
 \begin{equation}\label{eq:action-lorentz-transf}
     \delta \phi^i = -\frac{i}{2} \omega_{\mu\nu} \tensor{\left(  M^{\mu\nu}_\rho \right)}{^i_j} \, \phi^j, 
 \end{equation}
@@ -92,7 +96,7 @@ In terms of $\vec{J}$ and $\vec{K}$, the Lie algebra of the Lorentz group reads
 
 Equation~\eqref{eq:lorentz-algebra-rotation} is the Lie algebra of $SU(2)$ and this shows that $\vec{J}$ can be interpreted as the angular momentum. Instead, eq.~\eqref{eq:lorentz-algebra-boost-vector} expresses the fact that $\vec{K}$ is a spatial vector, since it transforms accordingly under a rotation. 
 
-Defining, further\footnote{To see how to invert expressions with Levi-Civita symbol, look at appendix~\ref{app:levi-civita}.}
+Defining, further
 \begin{equation}\label{eq:lorentz-redef-param}
     \theta^i = \frac{1}{2} \epsilon^{ijk} \omega^{jk} \iff \omega^{ij} = \epsilon^{ijk} \theta^k, \quad \eta^i = \omega^{i0} ,
 \end{equation}
