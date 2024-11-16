@@ -91,11 +91,12 @@ where the explicit forms of $U(\Lambda,a)$ and the generators $M^{\mu\nu}$ and $
 The \emph{Poincaré algebra} is defined by
 \begin{subequations}
     \begin{align}
-    i \comm{M^{\mu\nu}}{M^{\rho\sigma}} &= \eta^{\nu\rho} J^{\mu\sigma} - \eta^{\mu\rho} J^{\nu\sigma} - \eta^{\sigma\mu} J^{\rho\nu} + \eta^{\sigma\nu} J^{\rho\mu} , \\
-    i \comm{P^\mu}{M^{\rho\sigma}} &= \eta^{\mu\rho} P^\sigma - \eta^{\mu\sigma} P^\rho , \\
-        \comm{P^\mu}{P^\rho} &= 0 ,
+        \comm{M^{\mu\nu}}{M^{\rho\sigma}} &= i ( \eta^{\nu\rho}M^{\mu\sigma} - \eta^{\mu\rho}M^{\nu\sigma} - \eta^{\mu\sigma}M^{\rho\nu} + \eta^{\sigma\nu}M^{\rho\mu}) \label{eq:comm-poincare-lorentz}\\
+        i \comm{P^\mu}{M^{\rho\sigma}} &= \eta^{\mu\rho} P^\sigma - \eta^{\mu\sigma} P^\rho , \label{eq:comm-poincare-lorentzmomentum}\\
+        \comm{P^\mu}{P^\nu} &= 0 \label{eq:comm-poincare-momentum},
 \end{align}
 \end{subequations}
+%%%%%%% begin proof
 \begin{proof}
     Combining eq.~\eqref{eq:representation-poincare-group-multiplication} and eq.~\eqref{eq:representation-poincare-inverse-element}, we can write
     \begin{equation*}
@@ -110,9 +111,87 @@ The \emph{Poincaré algebra} is defined by
     \begin{align*}
         &\left[ \1 -\frac{i}{2} \omega_{\mu\nu} M^{\mu\nu} - i \epsilon_\alpha P^\alpha  \right] \left[ \1 -\frac{i}{2} \omega'_{\rho\sigma} M^{\rho\sigma} - i \epsilon'_\beta P^\beta  \right] \left[ \1 +\frac{i}{2} \omega_{\tau\xi} M^{\tau\xi} + i \epsilon_\gamma P^\gamma  \right] \\
         &=\left[ \1 - \frac{i}{2} \omega' M - i \epsilon' P - \frac{i}{2} \omega M - \frac{1}{4} \omega \omega' M^2 - \frac{1}{2} \omega \epsilon' M P - i \epsilon P - \frac{1}{2} \epsilon \omega' P M - \epsilon \epsilon' P^2 \right] \left[ \1 + \frac{i}{2} \omega M + i \epsilon P  \right] \\
-        &= 
-    \end{align*}.
+        &= \1 - \frac{i}{2} \omega' M - i \epsilon' P - \frac{i}{2} \omega M - \frac{1}{4} \omega \omega' M^2 - \frac{1}{2} \omega \epsilon' M P - i \epsilon P - \frac{1}{2} \epsilon \omega' P M - \epsilon \epsilon' P^2 \\
+        &+\frac{1}{4} \omega' \omega M^2 + \frac{1}{2} \omega' \epsilon M P \\
+        &+\frac{1}{2} \epsilon' \omega P M + \epsilon' \epsilon P^2 \\
+        &+\frac{1}{4} \omega^2 M^2 + \frac{1}{2} \omega \epsilon M P \\
+        &+\frac{1}{8} \omega \omega' \omega M^3 + \frac{1}{4} \omega \omega' \epsilon M^2 P \\
+        &+\frac{1}{4} \omega \epsilon' \omega M P M + \frac{1}{2} \omega \epsilon' \epsilon M P^2 \\
+        &+\frac{1}{2} \epsilon \omega P M + \epsilon^2 P^2 \\
+        &+\frac{1}{4} \epsilon \omega' \omega P M^2 + \frac{1}{2} \epsilon \omega' \epsilon P M P \\
+        &+\frac{1}{8} \epsilon \epsilon' \omega P^2 M + \epsilon \epsilon' \epsilon P^3 \\
+        &= \1 -\frac{i}{2} (\omega + \omega') M - i (\epsilon + \epsilon') P \\
+        &+ \frac{1}{4} \omega_{\mu\nu} \omega'_{\rho\sigma} \comm{M^{\rho\sigma}}{M^{\mu\nu}} \\
+        &+ \epsilon_\alpha \epsilon'_\beta \comm{P^\beta}{P^\alpha} \\
+        &+\frac{1}{2} \omega_{\mu\nu} \epsilon_\alpha \{ M^{\mu\nu}, P^\alpha \} + \frac{1}{2} \omega'_{\rho\sigma} \epsilon_\alpha \comm{M^{\rho\sigma}}{P^\alpha} + \frac{1}{2} \omega_{\mu\nu} \epsilon'_\beta \comm{P^\beta}{M^{\mu\nu}}.
+    \end{align*}
+
+    For the right-hand side, we use $\tensor{\Lambda}{^\mu_\nu} \simeq \delta^\mu_\nu + \tensor{\omega}{^\mu_\nu}$ to compute, at infinitesimal level,
+    \begin{align*}
+        \tensor{(\Lambda\Lambda'\Lambda^{-1})}{^\mu_\nu} &= \tensor{\Lambda}{^\mu_\rho}\tensor{(\Lambda')}{^\rho_\kappa}\tensor{(\Lambda^{-1})}{^\kappa_\nu} \simeq (\delta^\mu_\rho + \tensor{\omega}{^\mu_\rho})(\delta^\rho_\kappa + \tensor{{\omega'}}{^\rho_\kappa})(\delta^\kappa_\nu - \tensor{\omega}{^\kappa_\nu}) \\
+        &= \delta^\mu_\nu + \tensor{{\omega'}}{^\mu_\nu} + \tensor{\omega}{^\mu_\rho}\tensor{{\omega'}}{^\rho_\nu} - \tensor{{\omega'}}{^\mu_\kappa}\tensor{\omega}{^\kappa_\nu} + O(\omega^2) + O({\omega'}^2)
+    \end{align*}
+    Then, using also $a^\mu \simeq \epsilon^\mu$, we may compute
+    \begin{align*}
+        (\Lambda a')^\mu = \tensor{\Lambda}{^\mu_\nu} a'^\nu &\simeq (\delta^\mu_\nu + \tensor{\omega}{^\mu_\nu}) \epsilon'^\nu = \epsilon'^\mu + \tensor{\omega}{^\mu_\nu} \epsilon'^\nu , \\
+        \tensor{(\Lambda\Lambda'\Lambda^{-1})}{^\mu_\nu} a^\nu &\simeq \epsilon^\mu + \tensor{{\omega'}}{^\mu_\nu} \epsilon^\nu + \tensor{\omega}{^\mu_\kappa}\tensor{{\omega'}}{^\kappa_\nu} \epsilon^\nu - \tensor{{\omega'}}{^\mu_\kappa}\tensor{\omega}{^\kappa_\nu} \epsilon^\nu ,
+    \end{align*}
+    from which
+    \begin{equation*}
+        (a + \Lambda a' - \Lambda \Lambda' \Lambda^{-1}a)^\mu \simeq \epsilon'^\mu + \tensor{\omega}{^\mu_\nu} \epsilon'^\nu + \tensor{{\omega'}}{^\mu_\nu} \epsilon^\nu + (\tensor{{\omega'}}{^\mu_\kappa}\tensor{\omega}{^\kappa_\nu} - \tensor{\omega}{^\mu_\kappa}\tensor{{\omega'}}{^\kappa_\nu}) \epsilon^\nu
+    \end{equation*}
+
+    Therefore, using eq.~\eqref{eq:infinitesimal-poicare-transformation}, we can expand $U(\Lambda\Lambda'\Lambda^{-1},a + \Lambda a' - \Lambda\Lambda'\Lambda^{-1}a)$ about the identity $U(\1,0)$, obtaining
+    \begin{align*}
+        U(\Lambda\Lambda'\Lambda^{-1},a + \Lambda a' - \Lambda\Lambda'\Lambda^{-1}a) &\simeq \1 - \frac{i}{2} (\omega'_{\mu\nu} + \omega_{\mu\kappa}\tensor{{\omega'}}{^\kappa_\nu}-\omega'_{\mu\kappa} \tensor{\omega}{^\kappa_\nu})M^{\mu\nu} \\
+        &- i \left( \omega_{\mu\nu} \epsilon'^\nu + \omega'_{\mu\nu} \epsilon^\nu + \omega'_{\mu\kappa}\tensor{\omega}{^\kappa_\nu} \epsilon^\nu - \omega_{\mu\kappa} \tensor{{\omega'}}{^\kappa_\nu} \epsilon^\nu \right) P^\mu ,
+    \end{align*}
+    which we can compare to the previous expansion. Indeed, comparing the two we obtain
+    \begin{align*}
+        &\1 -\frac{i}{2} (\omega + \omega') M - i (\epsilon + \epsilon') P 
+        + \frac{1}{4} \omega_{\mu\nu} \omega'_{\rho\sigma} \comm{M^{\rho\sigma}}{M^{\mu\nu}} 
+        + \epsilon_\alpha \epsilon'_\beta \comm{P^\beta}{P^\alpha} 
+        +\frac{1}{2} \omega_{\mu\nu} \epsilon_\alpha \\
+        &\{ M^{\mu\nu}, P^\alpha \} + \frac{1}{2} \omega'_{\rho\sigma} \epsilon_\alpha \comm{M^{\rho\sigma}}{P^\alpha} + \frac{1}{2} \omega_{\mu\nu} \epsilon'_\beta \comm{P^\beta}{M^{\mu\nu}}. \\
+        &= \1 - \frac{i}{2} (\omega'_{\mu\nu} + \omega_{\mu\kappa}\tensor{{\omega'}}{^\kappa_\nu}-\omega'_{\mu\kappa} \tensor{\omega}{^\kappa_\nu})M^{\mu\nu} 
+        - i \left( \omega_{\mu\nu} \epsilon'^\nu + \omega'_{\mu\nu} \epsilon^\nu + \omega'_{\mu\kappa}\tensor{\omega}{^\kappa_\nu} \epsilon^\nu - \omega_{\mu\kappa} \tensor{{\omega'}}{^\kappa_\nu} \epsilon^\nu \right) P^\mu.
+    \end{align*}
+    \begin{itemize}
+        \item From the $\omega\omega'$ term we can read the commutator $\comm{M^{\mu\nu}}{M^{\rho\sigma}}$,
+    \begin{align*}
+       - \frac{1}{4} \omega_{\mu\nu} \omega'_{\rho\sigma} \comm{M^{\mu\nu}}{M^{\rho\sigma}} = -\frac{i}{2} \omega_{\mu\kappa} \tensor{{\omega'}}{^\kappa_\nu} M^{\mu\nu} + \frac{i}{2} \omega'_{\mu\kappa} \tensor{\omega}{^\kappa_\nu} M^{\mu\nu} .
+    \end{align*}
+    Now, we can rewrite the right-hand side in the following way, subtracting a piece to make everything antisymmetric in $\mu\nu$:
+    \begin{align*}
+        -\frac{i}{2} \omega_{\mu\kappa} \tensor{{\omega'}}{^\kappa_\nu} M^{\mu\nu} + \frac{i}{2} \omega'_{\mu\kappa} \tensor{\omega}{^\kappa_\nu} M^{\mu\nu} = &-\frac{i}{4} \omega_{\mu\nu} \omega'_{\rho\sigma}( \eta^{\nu\rho}M^{\mu\sigma} - \eta^{\mu\rho}M^{\nu\sigma} ) \\
+        &+ \frac{i}{4} \omega_{\mu\nu}\omega'_{\rho\sigma} ( \eta^{\mu\sigma}M^{\rho\nu} -\eta^{\nu\sigma}M^{\rho\mu})
+    \end{align*}
+    Therefore, by comparing, we obtain
+    \begin{equation*}
+        \comm{M^{\mu\nu}}{M^{\rho\sigma}} = i ( \eta^{\nu\rho}M^{\mu\sigma} - \eta^{\mu\rho}M^{\nu\sigma} - \eta^{\mu\sigma}M^{\rho\nu} + \eta^{\nu\sigma}M^{\rho\mu}),
+    \end{equation*}
+    which is exactly eq.~\eqref{eq:comm-poincare-lorentz}.
+    \item Looking at the $\omega' \epsilon$ terms, we get
+    \begin{equation*}
+        \frac{1}{2} \omega'_{\rho\sigma} \epsilon_\alpha \comm{M^{\rho\sigma}}{P^\alpha} = -i \omega'_{\mu\nu} \epsilon^\nu P^\mu .
+    \end{equation*}
+    Relabelling and makind sure that the right-hand side is antisymmetric with respect to the indices of $\omega'$ (which are $\rho\sigma$ above), we get
+    \begin{equation*}
+        -\frac{1}{2} \epsilon_{\mu} \omega'_{\rho\sigma}\comm{P^\mu}{M^{\rho\sigma}} = -\frac{i}{2} \epsilon_\mu \omega'_{\rho\sigma}  ( \eta^{\mu\sigma} P^\rho - \eta^{\mu\rho}P^{\sigma} ) ,
+    \end{equation*}
+    which leads to
+    \begin{equation*}
+        \comm{P^\mu}{M^{\rho\sigma}} = i (\eta^{\mu\sigma} P^\rho - \eta^{\mu\rho} P^\sigma),
+    \end{equation*}
+    which is \color{red} quasi, cazzo\color{black} eq.~\eqref{eq:comm-poincare-lorentzmomentum}.
+    \item Since there's no $\epsilon \epsilon'$ on the right-hand side, we immediatly have
+    \begin{equation*}
+        \comm{P^\mu}{P^\nu} = 0,
+    \end{equation*}
+    which is eq.~\eqref{eq:comm-poincare-momentum}.
+\end{itemize}
 \end{proof}
+%%%%%%%% end proof
     
 
 To derive the commutation relations of the generators, we can use the relation
