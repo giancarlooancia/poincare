@@ -8,7 +8,7 @@ In order to satisfy the above condition, we can enlarge the Lorentz transformati
 \end{equation}
 with group multiplication defined by
 \begin{equation}
-    (\Lambda', a') (\Lambda, a) = (\Lambda' \Lambda, a' + \Lambda' a),
+    (\Lambda_1, a_1) (\Lambda_2, a_2) = (\Lambda_1 \Lambda_2, a_1 + \Lambda_1 a_2),
 \end{equation}
 as we'll show soon. In the \emph{defining representation}, the group elements are matrices acting on the Minkowski vector space $\R^{1,3}$. Not to be too pedant with the notation, we continue to denote group elements in this particular representation with $(\Lambda,a)$.
 
@@ -22,36 +22,28 @@ Then, the action of $(\Lambda,a)$ on $R^{1,3}$ is given by
 \end{equation}
 where $\tensor{\Lambda}{^\mu_\nu}$ is a Lorentz transformation in the defining representation, as defined in sec.~\ref{sec:lorentz-group}, and $a^\mu \in \R^(1,3)$ is an arbitrary constant four-vector. Basically, we're adding four new parameters, having in total a $10$ parameter group, containing translations, rotations, and boosts.
 
-We can check again the group axioms~\ref{def:group-axioms}, considering that by means of eq.~\eqref{eq:representation-property}, a representation inherits the composition rule from the group. The composition of two Poincaré transformations gives another transformation,
-\begin{equation}\label{eq:poincare-group-multiplication}
-    (\Lambda', a') (\Lambda, a) = (\Lambda' \Lambda, a' + \Lambda' a),
-\end{equation}
-the transformation is associative,
-\begin{equation}\label{eq:poincare-associative}
-    \left[(\Lambda,a)(\Lambda',a')\right] (\Lambda'',a'') = (\Lambda, a) \left[ (\Lambda',a')(\Lambda'',a'') \right],
-\end{equation}
-the unit element is
-\begin{equation}\label{eq:poincare-unit-element}
-    (\1,0),
-\end{equation}
-and by equating eq.~\eqref{eq:poincare-group-multiplication} with eq.~\eqref{eq:poincare-unit-element} one can read off the inverse element
-\begin{equation}\label{eq:poincare-inverse-element}
-    (\Lambda, a)^{-1} = (\Lambda^{-1}, -\Lambda^{-1}a).
-\end{equation}
+We can check again the group axioms~\ref{def:group-axioms}, considering that by means of eq.~\eqref{eq:representation-property}, a representation inherits the composition rule from the group. We obtain
+\begin{subequations}
+\begin{align}
+    (\Lambda_1, a_1) (\Lambda_2, a_2) &= (\Lambda_1 \Lambda_2, a_1 + \Lambda_1 a_2), \label{eq:poincare-group-multiplication} \\
+    \left[(\Lambda_1,a_1)(\Lambda_2,a_2)\right] (\Lambda_3,a_3) &= (\Lambda_1, a_1) \left[ (\Lambda_2,a_2)(\Lambda_3,a_3) \right], \label{eq:poincare-associative} \\
+    \1 &= (\1, 0) ,\label{eq:poincare-unit-element} \\
+    (\Lambda, a)^{-1} &= (\Lambda^{-1}, -\Lambda^{-1}a). \label{eq:poincare-inverse-element}
+\end{align}
+\end{subequations}
 \begin{proof}
     After two consecutive Poincaré transformations, using eq.~\eqref{eq:poincare-definition},
     \begin{equation*}
-        x \to x' = (\Lambda,a)x = \Lambda x + a \to (\Lambda',a')x' = \Lambda' (\Lambda x + a) + a' = (\Lambda' \Lambda)x + (\Lambda' a + a') ,
+        x \to x' = (\Lambda_2,a_2)x = \Lambda_2 x + a_2 \to (\Lambda_1,a_1) x' = \Lambda_1 (\Lambda_2 x + a_2) + a_1 = (\Lambda_1 \Lambda_2) x + (\Lambda_1 a_2 + a_1) ,
     \end{equation*}
-    showing eq.~\eqref{eq:poincare-group-multiplication}.
+    showing that the composition of two Poincaré transformations gives another transformation, as appointed by eq.~\eqref{eq:poincare-group-multiplication}.
 
-    Further, taking three transformations, $(\Lambda,a)$, $(\Lambda',a')$, $(\Lambda'',a'')$, and composing them using eq.~\eqref{eq:poincare-group-multiplication}, we get
-    \begin{equation*}
-    \begin{alignedat}[t]{2}
-        \left[ (\Lambda,a)(\Lambda',a') \right] (\Lambda'',a'') &= (\Lambda\Lambda', a + \Lambda a') (\Lambda'',a'') &&= (\Lambda\Lambda'\Lambda'', a + \Lambda a' + (\Lambda \Lambda')a'') , \\
-        (\Lambda,a)\left[(\Lambda',a')T(\Lambda'',a'')\right] &= (\Lambda,a) (\Lambda'\Lambda'', a' + \Lambda' a'') &&= (\Lambda\Lambda'\Lambda'', a+\Lambda(a' + \Lambda' a'')) .
-    \end{alignedat}
-    \end{equation*}
+    Further, taking three transformations, $(\Lambda_1,a_1)$, $(\Lambda_2,a_2)$, $(\Lambda_3,a_3)$, and composing them using eq.~\eqref{eq:poincare-group-multiplication}, we get
+    \begin{gather*}
+        \left[ (\Lambda_1,a_1)(\Lambda_2,a_2) \right] (\Lambda_3,a_3) = (\Lambda_1\Lambda_2, a_1 + \Lambda_1 a_2) (\Lambda_3,a_3) = (\Lambda_1\Lambda_2\Lambda_3, a_1 + \Lambda_1 a_2 + (\Lambda_1 \Lambda_2)a_3) , \\
+        (\Lambda_1,a_1)\left[(\Lambda_2,a_2)T(\Lambda_3,a_3)\right] = (\Lambda_1,a_1) (\Lambda_2\Lambda_3, a_2 + \Lambda_2 a_3) = (\Lambda_1\Lambda_2\Lambda_3, a_1+\Lambda_1(a_2 + \Lambda_2 a_3)) .
+    \end{gather*}
+ 
     Since they lead to the same result, eq.~\eqref{eq:poincare-associative} is proved.
 
     The unit element is trivial, since by means of eq.~\eqref{eq:poincare-definition}, taking $(\1,0)$,
@@ -59,7 +51,7 @@ and by equating eq.~\eqref{eq:poincare-group-multiplication} with eq.~\eqref{eq:
         x \to (\1,0) x = x.
     \end{equation*}
 
-    Finally, to show eq.~\eqref{eq:poincare-inverse-element}, let's use eq.~\eqref{eq:poincare-group-multiplication} to compute
+    Finally, to show the inverse element is given by eq.~\eqref{eq:poincare-inverse-element}, let's use eq.~\eqref{eq:poincare-group-multiplication} to compute
     \begin{equation*}
        (\Lambda,a) (\Lambda^{-1}, -\Lambda^{-1}a) = (\Lambda^{-1}\Lambda, a - \Lambda(\Lambda^{-1}a)) = (\1,0),
     \end{equation*}
@@ -74,42 +66,61 @@ Basically, while $SO(1,3)$ relates orthonormal frames with coincident origins, e
 \section{Poincaré Algebra}
 To work out the \emph{Poincaré algebra}, let's follow the approach of sec.~\ref{sec:lorentz-algebra}. Then, we consider the abstract group $ISO(1,3)^+$, which is now characterised by $10$ parameters. Without translations, we must recover Lorentz group. Therefore, we continue to denote the six generators referring to Lorentz transformations by $M^{\mu\nu} = -M^{\nu\mu}$, and their parameters by $\omega_{\mu\nu}=-\omega_{\nu\mu}$. Further, we call the four generators related to translations $P^\mu$, and their parameters $\epsilon_\mu$.
 
-Here, $(\Lambda,a) \in ISO(1,3)^+$ will denote an element of the abstract Poincaré group, while $\Lambda \in SO(1,3)^+$ is a proper orthochronous Lorentz transformation and $a \in \R^4$ a traslation.
+Here, $(\Lambda,a) \in ISO(1,3)^+$ will denote an element of the abstract Poincaré group, while $\Lambda \in SO(1,3)^+$ is a proper orthochronous Lorentz transformation and $a \in \R^4$ a translation.
 
-Using the exponential map\footnote{\color{red}problem here, is it surjective?\color{black}}, any element $(\Lambda,a) \in ISO(1,3)^+$ can be written as \color{red}(different sign w.r.t Lorentz!)\color{black}
+Using the exponential map\footnote{\color{red}problem here, is it surjective?\color{black}}, any element $(\Lambda,a) \in ISO(1,3)^+$ can be written as
 \begin{equation}
-    (\Lambda,a) = e^{\frac{i}{2} \omega_{\mu\nu} M^{\mu\nu} - i \epsilon_\sigma P^\sigma},
+    (\Lambda,a) = e^{-\frac{i}{2} \omega_{\mu\nu} M^{\mu\nu} - i \epsilon_\sigma P^\sigma},
 \end{equation}
 with a conventional choice of constants.
 
-
-
-Let's use a different notation and denote with $U(\Lambda, a)$ a representation of the Poincaré group on some vector space. Note that it is \emph{not} necessary that $U$ is a unitary representation. In order for it to satisfy the definition~\ref{def:representation}, it must inherit the transformation properties of the group, in this case eq.~\eqref{eq:poincare-group-multiplication} and eq.~\eqref{eq:poincare-inverse-element},
+Let's denote a generic representation of the Poincaré group with $U(\Lambda, a)$. The following properties are not necessarily referred to unitary representations, but at the end we'll be interested on them; from this the choice of notation. In order for it to satisfy the definition~\ref{def:representation}, it must inherit the transformation properties of the group, in particular eq.~\eqref{eq:poincare-group-multiplication} and eq.~\eqref{eq:poincare-inverse-element},
 \begin{subequations}
-\begin{gather}
-    U(\Lambda, a) U(\Lambda',a') = U(\Lambda\Lambda', a' + \Lambda' a) , \label{eq:representation-poincare-group-multiplication} \\
-    U^{-1} (\Lambda, a) = U(\Lambda^{-1},-\Lambda^{-1},a) . \label{eq:representation-poincare-inverse-element}
-\end{gather}
+\begin{align}
+    U(\Lambda, a) U(\Lambda',a') &= U(\Lambda\Lambda', a + \Lambda a') , \label{eq:representation-poincare-group-multiplication} \\
+    U^{-1} (\Lambda, a) &= U(\Lambda^{-1},-\Lambda^{-1}a) . \label{eq:representation-poincare-inverse-element}
+\end{align}
 \end{subequations}
 
 Then, for infinitesimal transformations\footnote{See chapter $2$ of Weinberg~\cite{weinberg} to convince yourself this is possible. Here, we're assuming the exponential map is surjective. As discussed in sec.~\ref{sec:lie-groups-algebras} after eq.~\eqref{eq:exp-map}, it is a non-trivial fact to prove the surjectivity. However, we're not interested in such details, so we'll just ignore it. \color{red} Exponential vs product of exponentials, still to be solved \color{black}},
 \begin{equation}\label{eq:infinitesimal-poicare-transformation}
-    U(\Lambda, a) = e^{\frac{i}{2} \omega_{\mu\nu} M^{\mu\nu} - i \epsilon_\sigma P^\sigma} \simeq \1 + \frac{i}{2} \omega_{\mu\nu} M^{\mu\nu} - i \epsilon_\sigma P^\sigma,
+    U(\Lambda, a) = e^{-\frac{i}{2} \omega_{\mu\nu} M^{\mu\nu} - i \epsilon_\sigma P^\sigma} \simeq \1 - \frac{i}{2} \omega_{\mu\nu} M^{\mu\nu} - i \epsilon_\sigma P^\sigma,
 \end{equation}
-where the explicit forms of $U(\Lambda,a)$ and the generators $M^{\mu\nu}$ and $P^\mu$ depend on the representation. Here, we dropped any index referring to the representation for the generators. Recall that, at the end of the day, the commutation relations defining the Lie algebra are representation independent.
+where the explicit forms of $U(\Lambda,a)$ and the generators $M^{\mu\nu}$ and $P^\mu$ depend on the representation. Here, we're denoting the abstract generators and their representation with the same symbols, $M^{\mu\nu}$ and $P^\mu$, without further indices or specifications. From the context it should be straightforward to identify what we're talking about. At the end of the day, we'll be interested in representations, and further recall that the commutation relations defining the Lie algebra are representation independent.
+
+The \emph{Poincaré algebra} is defined by
+\begin{subequations}
+    \begin{align}
+    i \comm{M^{\mu\nu}}{M^{\rho\sigma}} &= \eta^{\nu\rho} J^{\mu\sigma} - \eta^{\mu\rho} J^{\nu\sigma} - \eta^{\sigma\mu} J^{\rho\nu} + \eta^{\sigma\nu} J^{\rho\mu} , \\
+    i \comm{P^\mu}{M^{\rho\sigma}} &= \eta^{\mu\rho} P^\sigma - \eta^{\mu\sigma} P^\rho , \\
+        \comm{P^\mu}{P^\rho} &= 0 ,
+\end{align}
+\end{subequations}
+\begin{proof}
+    Combining eq.~\eqref{eq:representation-poincare-group-multiplication} and eq.~\eqref{eq:representation-poincare-inverse-element}, we can write
+    \begin{equation*}
+        U(\Lambda, a) U(\Lambda',a') U^{-1}(\Lambda,a) = U(\Lambda \Lambda' \Lambda^{-1}, a + \Lambda a' - \Lambda \Lambda' \Lambda^{-1}a) .
+    \end{equation*}
+    If we consider infinitesimal transformations~\eqref{eq:infinitesimal-poicare-transformation} about the identity $U(\1,0)$, we have
+    \begin{align*}
+        U(\Lambda,a) &\simeq \1 -\frac{i}{2} \omega_{\mu\nu} M^{\mu\nu} - i \epsilon_\sigma P^\sigma, \\ 
+        {U^{-1}}(\Lambda,a) &\simeq \1 +\frac{i}{2} \omega_{\mu\nu} M^{\mu\nu} + i \epsilon_\sigma P^\sigma .
+    \end{align*}
+    Substituting and keeping only linear terms of the parameters $\omega_{\mu\nu}$, $\omega'_{\mu\nu}$, $\epsilon_\sigma$, $\epsilon'_\sigma$, the left-hand side of the starting relations reads
+    \begin{align*}
+        &\left[ \1 -\frac{i}{2} \omega_{\mu\nu} M^{\mu\nu} - i \epsilon_\alpha P^\alpha  \right] \left[ \1 -\frac{i}{2} \omega'_{\rho\sigma} M^{\rho\sigma} - i \epsilon'_\beta P^\beta  \right] \left[ \1 +\frac{i}{2} \omega_{\tau\xi} M^{\tau\xi} + i \epsilon_\gamma P^\gamma  \right] \\
+        &=\left[ \1 - \frac{i}{2} \omega' M - i \epsilon' P - \frac{i}{2} \omega M - \frac{1}{4} \omega \omega' M^2 - \frac{1}{2} \omega \epsilon' M P - i \epsilon P - \frac{1}{2} \epsilon \omega' P M - \epsilon \epsilon' P^2 \right] \left[ \1 + \frac{i}{2} \omega M + i \epsilon P  \right] \\
+        &= 
+    \end{align*}.
+\end{proof}
+    
 
 To derive the commutation relations of the generators, we can use the relation
 \begin{equation}
     U(\Lambda, a) U(\Lambda',a') U^{-1}(\Lambda,a) = U(\Lambda \Lambda' \Lambda^{-1}, a + \Lambda a' - \Lambda \Lambda' \Lambda^{-1}a) ,
 \end{equation}
 which follows from eq.~\eqref{eq:representation-poincare-group-multiplication} and eq.~\eqref{eq:representation-poincare-inverse-element}. Inserting infinitesimal transformations~\eqref{eq:infinitesimal-poicare-transformation} for each $U(\Lambda = 1 + \epsilon, a)$, with $U^{-1} (\Lambda,a) = U(1-\epsilon,-a)$, keeping only linear terms in all group parameters $\epsilon$, $\epsilon'$, $a$ and $a'$, and comparing coefficients of the terms $\sim \epsilon\epsilon'$, $a\epsilon'$, $\epsilon a'$ and $aa'$, leads to the identities
-\begin{subequations}
-\begin{align}
-    i \comm{M^{\mu\nu}}{M^{\rho\sigma}} &= \eta^{\nu\rho} J^{\mu\sigma} - \eta^{\mu\rho} J^{\nu\sigma} - \eta^{\sigma\mu} J^{\rho\nu} + \eta^{\sigma\nu} J^{\rho\mu} , \\
-    i \comm{P^\mu}{M^{\rho\sigma}} &= \eta^{\mu\rho} P^\sigma - \eta^{\mu\sigma} P^\rho , \\
-    \comm{P^\mu}{P^\rho} &= 0 ,
-\end{align}
-\end{subequations}
+
 which define the Poincaré algebra.
 
 We can recast those relations in a less compact but more useful form. Since $M^{\mu\nu}$ contains six generators, we can define the generator of $SO(3)$ rotations $\vec{J}$ and the generator of the boosts $\vec{K}$ via\footnote{To see how to invert expressions with Levi-Civita symbol, look at apprendix~\ref{app:levi-civita}.}
