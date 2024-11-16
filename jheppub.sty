@@ -62,7 +62,7 @@
 \newcommand{\subheader}[1]{\gdef\@subheader{#1}}
 \newcommand{\keywords}[1]{\if!\@keywords!\gdef\@keywords{#1}\else%
 \PackageWarningNoLine{\jname}{Keywords already defined.\MessageBreak Ignoring last definition.}\fi}
-%\renewcommand{\abstract}[1]{\gdef\@abstract{#1}}
+\renewcommand{\abstract}[1]{\gdef\@abstract{#1}}
 \newcommand{\dedicated}[1]{\gdef\@dedicated{#1}}
 \newcommand{\arxivnumber}[1]{\gdef\@arxivnumber{#1}}
 \newcommand{\proceeding}[1]{\gdef\@proceeding{#1}}
@@ -156,7 +156,7 @@
 %this is the ``itemsep'' of the affiliations list
 \newlength{\affiliationsSep}\setlength{\affiliationsSep}{-3pt}
 %this hook is needed if the toc starts on the first page
-\newcommand\beforetochook{\pagestyle{myplain}\pagenumbering{roman}}
+\newcommand\beforetochook{\pagestyle{empty}}
 
 \DeclareFixedFont\trfont{OT1}{phv}{b}{sc}{11}
 
@@ -165,7 +165,23 @@
 %% First page
 \pagestyle{empty}
 \thispagestyle{titlepage}
-\setcounter{page}{0}
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% IMPORTANT TO HAVE CORRECT NUMER PAGE
+\setcounter{page}{-3}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
 \noindent{\small\scshape\@fpheader}\@preprint\par
 \afterLogoSpace
 % Subheader
@@ -231,12 +247,13 @@
 \iftoccontinuous\else\newpage\fi
 \beforetochook\hrule
 \tableofcontents
+\thispagestyle{empty}
 \afterTocSpace
 \hrule
 \afterTocRuleSpace
 \fi
 \setcounter{footnote}{0}
-\pagestyle{myplain}\pagenumbering{arabic}
+\pagestyle{myplain}
 } % close the \renewcommand\maketitle{
 
 
@@ -291,13 +308,12 @@
 \setlength\fboxrule{.4\p@}
 
 % No dots in the table of contents
-\renewcommand{\@dotsep}{10000}
+%\renewcommand{\@dotsep}{10000}
 
 % Footer and header of the body
 % the command ``\pagestyle{myplain}'' must be inserted
 % just after ``\begin{document}''
 \newcommand\ps@myplain{
-\pagenumbering{arabic}
 \renewcommand\@oddfoot{\hfill-- \thepage\ --\hfill}
 \renewcommand\@oddhead{}}
 \let\ps@plain=\ps@myplain
