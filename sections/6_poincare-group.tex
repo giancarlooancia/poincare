@@ -232,6 +232,103 @@ From~\eqref{eq:poincare-commutation-boosts-rotations} we see that boosts and rot
 %%%%%%%%%%%%%%% CASIMIR OPERATORS %%%%%%%%%%%%%%%%%
 \section{Casimir Operators}
 
+
+%%%%%%%%%%%%%%%  FIELD REPRESENTATION %%%%%%%%%%%%%%%%%
+\subsection{Field Representation and Action}
+Up to know we've seen representations acting on spacetime-independent quantities, which generically transform as
+\begin{equation}
+    \phi'_i  = D_{ij}(\Lambda) \phi_j.
+\end{equation}
+
+A field $\phi_i$ is a function of the coordinates with some definite transformation properties under the Poincaré group. When we consider their transformation we must consider that it acts on their argument too, $x' = \Lambda x$:
+\begin{equation}
+    \phi'_i (x) = D_{ij}(\Lambda) \phi_j(\Lambda^{-1}x) \iff \phi'_i(x') = D_{ij}(\Lambda) \phi_j(x) .
+\end{equation}
+
+We can define two types of infinitesimal variation the field
+\begin{itemize}
+    \item \emph{A change in perspective}:
+    \begin{equation}
+        \delta \phi_i = \phi'_i(x') - \phi_i(x) = \frac{i}{2} \epsilon_{\mu\nu} (\hat{S}^{\mu\nu})_{ij} \phi_j(x) ,
+    \end{equation}
+    with $(\hat{S}^{\mu\nu})_{ij}$ a finite-dimensional matrix representation of the generator $M^{\mu\nu}$. The subscript will stand for \emph{spin}, as will be clear in the following.
+    \item \emph{Functional change}:
+    \begin{equation}\label{eq:total-functional-variation}
+        \delta_0 \phi_i = \phi'_i(x) - \phi(x) = \phi'_i (x' - \delta x) - \phi_i(x) = \delta \phi_i - \delta x_\mu \de^\mu \phi_i ,
+    \end{equation}
+    where we evaluate the field changes at the same position $x$.
+\end{itemize}
+
+An \emph{infinitesimal Lorentz transformation} can be written as $\delta x_\mu = \omega_{\mu\nu} x^\nu$, so
+\begin{equation*}
+    -\delta x_\mu \de^\mu \phi_i = - \omega_{\mu\nu} x^\nu \de^\mu \phi_i = \frac{i}{2} \omega_{\mu\nu} \left[ -i (x^\mu \de^\nu - x^\nu \de^\mu) \right] \phi_i .
+\end{equation*} 
+Defining
+\begin{equation}
+    {\hat{L}}^{\mu\nu} \coloneq -i (x^\mu \de^\nu - x^\nu \de^\mu),
+\end{equation}
+we get
+\begin{equation}
+    -\delta x_\mu \de^\mu \phi_i = \frac{i}{2} \omega_{\mu\nu} {\hat{L}}^{\mu\nu} \phi_i.
+\end{equation}
+
+To generalise this to a Poincaré transformation, let's first consider a pure translation, after which
+\begin{equation}
+    \phi'_i(x) = \phi_i (x-a) \iff \phi'_i(x') = \phi_i(x) ,
+\end{equation}
+and hence $\delta \phi_i = 0$ and $\delta_0 \phi_i = - \epsilon_\mu \de^\mu \phi_i = i \epsilon_\mu \hat{P}^\mu \phi_i$, with $\hat{P}^\mu 0 i \de^\mu$. The total change of the field is then
+\begin{equation}
+    \phi'_i(x) = \phi_i(x) + \left[ \frac{i}{2} \omega_{\mu\nu} ({\hat{S}}^{\mu\nu} + {\hat{L}}^{\mu\nu}) + i \epsilon_\mu \hat{P}^\mu \right]_{ij} \phi_j(x) .
+\end{equation}
+
+Here, $\hat{L}^{\mu\nu}$ and $\hat{P}^\mu$ are differential operators that satisfy Poincaré algebra relations when applied to $\phi_i(x)$. There are diagonal in $i,j$, whereas the spin matrix $\hat{S}^{\mu\nu}$ depends on the representation of the field. Moreover, we can write $\hat{J}^{\mu\nu} = \hat{S}^{\mu\nu} + \hat{L}^{\mu\nu}$ and try to find out the explicit form of those operators in the representation under study. To do so, we use eq.~\eqref{eq:poincare-boosts-rotations} for the abstract generators, and find out that we can divide the generators of the angular momentum and of the boosts in a spin and an orbital angular part too, in particular
+\begin{equation}
+    \vec{L} = \vec{x} \wedge \vec{P}, \quad \vec{K}_L = \vec{x} P^0 - x^0 \vec{P}, \quad P^\mu = i \de^\mu .
+\end{equation}
+
+
+\paragraph{Action}
+One way to study and quantise a theory is starting from the classical action $S$. In order for it to be invariant, it must be a Poincaré scalar. Further, by Noether's theorem, associated to the Poincaré invariance there are some conserved charges. In particular, using eq.~\eqref{eq:total-functional-variation}, we may write
+\begin{equation}
+    \delta S = \int \udq x \, \delta_0 \L + \int \udq x \, \de_\mu \L \delta x^\mu
+\end{equation}
+
+
+
+To construct a Poincaré invariant theory, we start from a \emph{classical} action which has the same property. We can then apply Noether theorem to find out the conserved charges related to the Poincaré symmetry. 
+\dots
+\dots
+
+It turns out that the currents associated to the Poincaré symmetry of a classical action are
+\begin{subequations}
+\begin{gather}
+T^{\mu\alpha} = -i \frac{\de \L}{\de(\de_\mu \phi_i)} P^\alpha \phi_j - g^{\mu\alpha} \L , \\
+m^{\mu,\alpha\beta} = -i \frac{\de \L}{\de (\de_\mu \phi_i)} M^{\alpha\beta}_{ij} \phi_j + (x^\alpha g^{\mu\beta} - x^\beta g^{\mu\alpha}) \L .
+\end{gather}
+\end{subequations}
+
+The corresponding charges are
+\begin{subequations}\label{eq:const-motion}
+\begin{align}
+    \hat{P}^\alpha &= \int \udt x \, T^{0\alpha} , \\
+   \hat{M}^{\alpha\beta} &= \int \udt x \, m^{0 ,\alpha\beta} .
+\end{align}
+\end{subequations}
+
+Those, after quantization, will form a representation of the Poincaré group that acts on the state space.
+
+Further, in the quantum setting, Wigner's theorem states that continuous symmetries must be implemented by unitary operators on the state space. The Lorentz group is not compact because it contains boosts, hence all unitary representations must be infinite-dimensional. 
+
+This is realized in the quantum field theory: the fields $\phi_i(x)$ become operators on the Fock space, and the constants of motion in eq.~\eqref{eq:const-motion} are hermitian operators that define a unitary representation of the Poincaré algebra on the state space:
+\begin{equation}
+    U(\Lambda,a) = e^{\frac{i}{2} \omega_{\mu\nu} \hat{M}^{\mu\nu} + i \epsilon_\mu \hat{P}^\mu} \simeq 1 + \frac{i}{2} \omega_{\mu\nu} \hat{M}^{\mu\nu} + i \epsilon_\mu \hat{P}^\mu .
+\end{equation}
+
+The irreducible state space those operators act on is the one-particle state space we constructed above, using Casimir operators and so on.
+
+\color{red} How, from this, we get to $U(\Lambda,a) \phi_i(x) U(\Lambda,a)^{-1} = D(\Lambda)^{-1}_ij \phi_j (\Lambda x + a)$
+\color{black}
+
 %%%%%%%%%%%%%%% UNITARY REPRESENTATIONS %%%%%%%%%%%%%%%%%
 \section{Unitary Representations of the Poincaré Group}
 Moving to the quantum theory, as already discussed, \emph{Wigner's theorem} states that continuous symmetries must be implemented by unitary operators on the state space. Since Poincaré group is non-compact, due to the presence of the boosts, all unitary representations must be infinite dimensional. In quantum field theory, fields are promoted to operators which act on the Fock space. The classical action which describes the system is constructed to be Poincaré invariant, therefore, by Noether's theorem, there will be conserved charges, which will be functions of the fields. Those, after quantisation, become hermitian operators on the Fock space and furnish a unitary representation of the Poincaré algebra on the state space. In particular, calling $\hat{M}^{\mu\nu}$ the generators of Lorentz transformations and $\hat{P}^\mu$ those of the translations, we'll have, for an infinitesimal transformation (cfr.~\eqref{eq:infinitesimal-poicare-transformation})
