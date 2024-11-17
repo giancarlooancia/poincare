@@ -27,7 +27,9 @@ Let's then show that
 \begin{equation*}
     J^i = \frac{1}{2} \epsilon^{ijk} M^{jk} \iff M^{ij} = \epsilon^{ijk} J^k, \quad \textup{if $M^{ij} = -M^{ji}$.}
 \end{equation*}
-\begin{proof}
+
+\begin{mdframed}
+\begin{innerproof}
     Multiplying both sides by $\epsilon_{iln}$ and using eq.~\eqref{appeq:levi-civita-delta} and the antisymmetry:
     \begin{equation*}
         \epsilon_{iln} J^i = \frac{1}{2} \epsilon_{iln} \epsilon^{ijk} \omega^{jk} = \frac{1}{2} ( \delta^j_l \delta^k_n - \delta^k_l \delta^j_n ) \omega^{jk} = \frac{1}{2} (\omega^{ln} - \omega^{nl}) = \omega^{ln} .
@@ -36,5 +38,5 @@ Let's then show that
     \begin{equation*}
         \omega^{ij} = \epsilon_{ijk} \theta^k = \epsilon^{ijk} \theta^k \qedhere
     \end{equation*}
-
-\end{proof}
+\end{innerproof}
+\end{mdframed}

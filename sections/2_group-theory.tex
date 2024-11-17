@@ -153,7 +153,8 @@ It is a standard exercise to start from $g(\alpha) g(\beta) g^{-1}(\alpha) g^{-1
     g(\alpha) g(\beta) g^{-1}(\alpha) g^{-1}(\beta) \simeq \1 - \alpha_a \beta_b \comm{T^a}{T^b} = \1 + i \theta_a T^a.
 \end{equation}
 
-\begin{proof}
+\begin{mdframed}
+\begin{innerproof}
     Using eq.~\eqref{eq:temp-7} and expanding the exponential up to the second order, we obtain
 \begin{equation*}
 \begin{split}
@@ -167,7 +168,8 @@ It is a standard exercise to start from $g(\alpha) g(\beta) g^{-1}(\alpha) g^{-1
     &\simeq \1 - \alpha_i \beta_j (T^i T^j - T^j T^i) = \1 - \alpha_i \beta_j \comm{T^i}{T^j} = \1 + i \theta_k T^k , \qedhere
 \end{split}
 \end{equation*}
-\end{proof}
+\end{innerproof}
+\end{mdframed}
 where, by means of~\eqref{eq:structure-contants}, we defined $\alpha_a \beta_b \tensor{f}{^a^b_c} = -\theta_c$. So, a group is \emph{abelian} if all its \emph{generators commute}, i.e., $\comm{T^a}{T^b} = 0$, or rather, $\theta_a = 0$.
 
 To conclude this section, let us provide a few definitions to clarify what is meant by an
@@ -190,9 +192,11 @@ Recall that we defined the Lie algebra of a Lie group as the tangent space at th
     \comm{Y_a}{Y_b}_\h = i \tensor{f}{_a_b^c} Y_c .
 \end{gather*}
 
-\begin{proof}
+\begin{mdframed}
+\begin{innerproof}
     \color{red} \dots \color{black}
-\end{proof}
+\end{innerproof}
+\end{mdframed}
 
 Therefore, theorem~\ref{th:universal-cover} implies that a non-simply connected Lie group $G$ and its universal cover $\tilde{G}$ have isomorphic algebras, $\tilde{\g} \cong \g$, sharing the same structure constants.
 
@@ -327,9 +331,11 @@ We can now demonstrate that \emph{any representation} $(\rho, V)$ \emph{of a Lie
     \forall v \in V : \rho_\g(X)(v) \coloneq \left. \left[ \frac{\ud}{\ud t} \rho \left( \exp(tX)(v) \right) \right] \right|_{t=0} .
 \end{equation}
 Hence, $\rho_\g(X)$ is a matrix of the same size as $\rho(g)$, and it also acts on $V$. One can show explicitly, using the BCH formula, that $\rho_\g$ respects the bracket structure. Thus, $(\rho_\g, V)$ is a representation of the Lie algebra.
-\begin{proof}
+\begin{mdframed}
+\begin{innerproof}
     \color{red} Using BCH formula \dots \dots, then by definition \dots we have a representation \color{black}
-\end{proof}
+\end{innerproof}
+\end{mdframed}
 
 Let's then consider a presentation of the Lie group $G$, $\rho(g(\theta)) \coloneq \rho(\theta)$ and denote the generators of the group in the representation $\rho$ as $\rho_\g (T^a) \coloneq T^a_\rho$. By assumption of smoothness, in the neighbourhood of the identity,
 \begin{equation}\label{eq:generators-rep}

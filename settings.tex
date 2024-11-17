@@ -58,6 +58,9 @@
 \renewcommand{\thelemma}{L.\arabic{lemma}}
 \renewcommand{\thetheorem}{T.\arabic{theorem}}
 
+\newenvironment{innerproof}
+ {\renewcommand{\qedsymbol}{}\proof}
+ {\endproof}
 
 % ******************************************************************************
 % ******************************* SHORTCUTS ************************************
