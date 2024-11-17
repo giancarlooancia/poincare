@@ -89,10 +89,11 @@ Then, for infinitesimal transformations\footnote{See chapter $2$ of Weinberg~\ci
 where the explicit forms of $U(\Lambda,a)$ and the generators $M^{\mu\nu}$ and $P^\mu$ depend on the representation. Here, we're denoting the abstract generators and their representation with the same symbols, $M^{\mu\nu}$ and $P^\mu$, without further indices or specifications. From the context it should be straightforward to identify what we're talking about. At the end of the day, we'll be interested in representations, and further recall that the commutation relations defining the Lie algebra are representation independent.
 
 The \emph{Poincaré algebra} is defined by
-\begin{subequations}
+\begin{subequations}\label{eq:poincare-comm-relations}
     \begin{align}
         \comm{M^{\mu\nu}}{M^{\rho\sigma}} &= i ( \eta^{\nu\rho}M^{\mu\sigma} - \eta^{\mu\rho}M^{\nu\sigma} - \eta^{\mu\sigma}M^{\rho\nu} + \eta^{\sigma\nu}M^{\rho\mu}) \label{eq:comm-poincare-lorentz}\\
-        i \comm{P^\mu}{M^{\rho\sigma}} &= \eta^{\mu\rho} P^\sigma - \eta^{\mu\sigma} P^\rho , \label{eq:comm-poincare-lorentzmomentum}\\
+        \comm{P^\mu}{M^{\rho\sigma}} &= i (\eta^{\mu\rho} P^\sigma - \eta^{\mu\sigma} P^\rho),
+        \label{eq:comm-poincare-lorentzmomentum}\\
         \comm{P^\mu}{P^\nu} &= 0 \label{eq:comm-poincare-momentum},
 \end{align}
 \end{subequations}
@@ -109,22 +110,15 @@ The \emph{Poincaré algebra} is defined by
     \end{align*}
     Substituting and keeping only linear terms of the parameters $\omega_{\mu\nu}$, $\omega'_{\mu\nu}$, $\epsilon_\sigma$, $\epsilon'_\sigma$, the left-hand side of the starting relations reads
     \begin{align*}
-        &\left[ \1 -\frac{i}{2} \omega_{\mu\nu} M^{\mu\nu} - i \epsilon_\alpha P^\alpha  \right] \left[ \1 -\frac{i}{2} \omega'_{\rho\sigma} M^{\rho\sigma} - i \epsilon'_\beta P^\beta  \right] \left[ \1 +\frac{i}{2} \omega_{\tau\xi} M^{\tau\xi} + i \epsilon_\gamma P^\gamma  \right] \\
-        &=\left[ \1 - \frac{i}{2} \omega' M - i \epsilon' P - \frac{i}{2} \omega M - \frac{1}{4} \omega \omega' M^2 - \frac{1}{2} \omega \epsilon' M P - i \epsilon P - \frac{1}{2} \epsilon \omega' P M - \epsilon \epsilon' P^2 \right] \left[ \1 + \frac{i}{2} \omega M + i \epsilon P  \right] \\
+        &\quad \,\left[ \1 -\frac{i}{2} \omega_{\mu\nu} M^{\mu\nu} - i \epsilon_\alpha P^\alpha  \right] \left[ \1 -\frac{i}{2} \omega'_{\rho\sigma} M^{\rho\sigma} - i \epsilon'_\beta P^\beta  \right] \left[ \1 +\frac{i}{2} \omega_{\tau\xi} M^{\tau\xi} + i \epsilon_\gamma P^\gamma  \right] \\
+        &=\left[ \1 - \frac{i}{2} \omega' M - i \epsilon' P - \frac{i}{2} \omega M - \frac{1}{4} \omega \omega' M^2 - \frac{1}{2} \omega \epsilon' M P - i \epsilon P - \frac{1}{2} \epsilon \omega' P M - \epsilon \epsilon' P^2 \right] \times \\
+        &\quad\, \left[ \1 + \frac{i}{2} \omega M + i \epsilon P  \right] \\
         &= \1 - \frac{i}{2} \omega' M - i \epsilon' P - \frac{i}{2} \omega M - \frac{1}{4} \omega \omega' M^2 - \frac{1}{2} \omega \epsilon' M P - i \epsilon P - \frac{1}{2} \epsilon \omega' P M - \epsilon \epsilon' P^2 \\
-        &+\frac{i}{2}\omega M + i \epsilon P \\
-        &+\frac{1}{4} \omega' \omega M^2 + \frac{1}{2} \omega' \epsilon M P \\
-        &+\frac{1}{2} \epsilon' \omega P M + \epsilon' \epsilon P^2 \\
-        &+\frac{1}{4} \omega^2 M^2 + \frac{1}{2} \omega \epsilon M P \\
-        &-\frac{i}{8} \omega \omega' \omega M^3 - \frac{i}{4} \omega \omega' \epsilon M^2 P \\
-        &-\frac{i}{4} \omega \epsilon' \omega M P M - \frac{i}{2} \omega \epsilon' \epsilon M P^2 \\
-        &+\frac{1}{2} \epsilon \omega P M + \epsilon^2 P^2 \\
-        &-\frac{i}{4} \epsilon \omega' \omega P M^2 - \frac{i}{2} \epsilon \omega' \epsilon P M P \\
-        &-\frac{i}{2} \epsilon \epsilon' \omega P^2 M - i \epsilon \epsilon' \epsilon P^3 \\
-        &= \1 -\frac{i}{2} \omega' M - i \epsilon' P \\
-        &- \frac{1}{4} \omega_{\mu\nu} \omega'_{\rho\sigma} \comm{M^{\mu\nu}}{M^{\rho\sigma}} \\
-        &- \epsilon_\alpha \epsilon'_\beta \comm{P^\alpha}{P^\beta} \\
-        &+\frac{1}{2} \omega_{\mu\nu} \epsilon_\alpha \{ M^{\mu\nu}, P^\alpha \} - \frac{1}{2} \omega'_{\rho\sigma} \epsilon_\alpha \comm{P^\alpha}{M^{\rho\sigma}} + \frac{1}{2} \omega_{\mu\nu} \epsilon'_\beta \comm{P^\beta}{M^{\mu\nu}}.
+        &\quad\quad +\frac{i}{2}\omega M + i \epsilon P +\frac{1}{4} \omega' \omega M^2 + \frac{1}{2} \omega' \epsilon M P +\frac{1}{2} \epsilon' \omega P M + \epsilon' \epsilon P^2 +\frac{1}{4} \omega^2 M^2 + \frac{1}{2} \omega \epsilon M P \\
+        &\quad\quad -\frac{i}{8} \omega \omega' \omega M^3 - \frac{i}{4} \omega \omega' \epsilon M^2 P -\frac{i}{4} \omega \epsilon' \omega M P M - \frac{i}{2} \omega \epsilon' \epsilon M P^2 +\frac{1}{2} \epsilon \omega P M + \epsilon^2 P^2 \\
+        &\quad\quad -\frac{i}{4} \epsilon \omega' \omega P M^2 - \frac{i}{2} \epsilon \omega' \epsilon P M P -\frac{i}{2} \epsilon \epsilon' \omega P^2 M - i \epsilon \epsilon' \epsilon P^3 \\
+        &= \1 -\frac{i}{2} \omega' M - i \epsilon' P - \frac{1}{4} \omega_{\mu\nu} \omega'_{\rho\sigma} \comm{M^{\mu\nu}}{M^{\rho\sigma}} - \epsilon_\alpha \epsilon'_\beta \comm{P^\alpha}{P^\beta} \\
+        &\quad\quad +\frac{1}{2} \omega_{\mu\nu} \epsilon_\alpha \{ M^{\mu\nu}, P^\alpha \} - \frac{1}{2} \omega'_{\rho\sigma} \epsilon_\alpha \comm{P^\alpha}{M^{\rho\sigma}} + \frac{1}{2} \omega_{\mu\nu} \epsilon'_\beta \comm{P^\beta}{M^{\mu\nu}}.
     \end{align*}
 
     For the right-hand side, we use $\tensor{\Lambda}{^\mu_\nu} \simeq \delta^\mu_\nu + \tensor{\omega}{^\mu_\nu}$ to compute, at infinitesimal level,
@@ -151,13 +145,14 @@ The \emph{Poincaré algebra} is defined by
     \end{align*}
     which we can compare to the previous expansion. Indeed, comparing the two we obtain
     \begin{align*}
-        &\1 -\frac{i}{2} \omega' M - i \epsilon' P 
+        &\;\quad \1 -\frac{i}{2} \omega' M - i \epsilon' P 
         - \frac{1}{4} \omega_{\mu\nu} \omega'_{\rho\sigma} \comm{M^{\mu\nu}}{M^{\rho\sigma}} 
         - \epsilon_\alpha \epsilon'_\beta \comm{P^\alpha}{P^\beta} \\
-        &+\frac{1}{2} \omega_{\mu\nu} \epsilon_\alpha \{ M^{\mu\nu}, P^\alpha \} - \frac{1}{2} \omega'_{\rho\sigma} \epsilon_\alpha \comm{P^\alpha}{M^{\rho\sigma}} + \frac{1}{2} \omega_{\mu\nu} \epsilon'_\beta \comm{P^\beta}{M^{\mu\nu}} \\
-        &= \1 - \frac{i}{2} \omega'_{\mu\nu} M^{\mu\nu} - \frac{i}{2} \omega_{\mu\kappa}\tensor{{\omega'}}{^\kappa_\nu} M^{\mu\nu} + \frac{i}{2} \omega'_{\mu\kappa} \tensor{\omega}{^\kappa_\nu} M^{\mu\nu} \\
-        &  - i \epsilon'_\mu P^\mu - i \omega_{\mu\nu} \epsilon'^\nu P^\mu + i \omega'_{\mu\nu} \epsilon^\nu P^\mu   .
+        &\;\quad\;\; +\frac{1}{2} \omega_{\mu\nu} \epsilon_\alpha \{ M^{\mu\nu}, P^\alpha \} - \frac{1}{2} \omega'_{\rho\sigma} \epsilon_\alpha \comm{P^\alpha}{M^{\rho\sigma}} + \frac{1}{2} \omega_{\mu\nu} \epsilon'_\beta \comm{P^\beta}{M^{\mu\nu}} \\
+        &\overset{!}{=} \1 - \frac{i}{2} \omega'_{\mu\nu} M^{\mu\nu} - \frac{i}{2} \omega_{\mu\kappa}\tensor{{\omega'}}{^\kappa_\nu} M^{\mu\nu} + \frac{i}{2} \omega'_{\mu\kappa} \tensor{\omega}{^\kappa_\nu} M^{\mu\nu} \\
+        &\quad\;\;\;  - i \epsilon'_\mu P^\mu - i \omega_{\mu\nu} \epsilon'^\nu P^\mu + i \omega'_{\mu\nu} \epsilon^\nu P^\mu   .
     \end{align*}
+    Let's then compare the two sides order by order:
     \begin{itemize}
         \item From the $\omega\omega'$ term we can read the commutator $\comm{M^{\mu\nu}}{M^{\rho\sigma}}$,
     \begin{align*}
@@ -175,17 +170,17 @@ The \emph{Poincaré algebra} is defined by
     which is exactly eq.~\eqref{eq:comm-poincare-lorentz}.
     \item Looking at the $\omega' \epsilon$ terms, we get
     \begin{equation*}
-        \frac{1}{2} \omega'_{\rho\sigma} \epsilon_\alpha \comm{M^{\rho\sigma}}{P^\alpha} = -i \omega'_{\mu\nu} \epsilon^\nu P^\mu .
+         - \frac{1}{2} \omega'_{\rho\sigma} \epsilon_\alpha \comm{P^\alpha}{M^{\rho\sigma}} = i \omega'_{\mu\nu} \epsilon^\nu P^\mu .
     \end{equation*}
-    Relabelling and makind sure that the right-hand side is antisymmetric with respect to the indices of $\omega'$ (which are $\rho\sigma$ above), we get
+    Relabelling and making sure that the right-hand side is antisymmetric with respect to the indices of $\omega'$ (which are $\rho\sigma$ below), we get
     \begin{equation*}
-        -\frac{1}{2} \epsilon_{\mu} \omega'_{\rho\sigma}\comm{P^\mu}{M^{\rho\sigma}} = -\frac{i}{2} \epsilon_\mu \omega'_{\rho\sigma}  ( \eta^{\mu\sigma} P^\rho - \eta^{\mu\rho}P^{\sigma} ) ,
+        -\frac{1}{2} \epsilon_{\mu} \omega'_{\rho\sigma}\comm{P^\mu}{M^{\rho\sigma}} = \frac{i}{2} \epsilon_\mu \omega'_{\rho\sigma}  ( \eta^{\mu\sigma} P^\rho - \eta^{\mu\rho}P^{\sigma} ) ,
     \end{equation*}
     which leads to
     \begin{equation*}
-        \comm{P^\mu}{M^{\rho\sigma}} = i (\eta^{\mu\sigma} P^\rho - \eta^{\mu\rho} P^\sigma),
+        \comm{P^\mu}{M^{\rho\sigma}} = i (\eta^{\mu\rho} P^\sigma - \eta^{\mu\sigma} P^\rho),
     \end{equation*}
-    which is \color{red} quasi, cazzo\color{black} eq.~\eqref{eq:comm-poincare-lorentzmomentum}.
+    which is eq.~\eqref{eq:comm-poincare-lorentzmomentum}.
     \item Since there's no $\epsilon \epsilon'$ on the right-hand side, we immediatly have
     \begin{equation*}
         \comm{P^\mu}{P^\nu} = 0,
@@ -194,21 +189,14 @@ The \emph{Poincaré algebra} is defined by
 \end{itemize}
 \end{proof}
 %%%%%%%% end proof
-    
 
-To derive the commutation relations of the generators, we can use the relation
+
+It is convenient to rearrange the Lorentz generators as in eq.~\eqref{eq:redef-lorentz-gen}, which is reported below for clarity,
 \begin{equation}
-    U(\Lambda, a) U(\Lambda',a') U^{-1}(\Lambda,a) = U(\Lambda \Lambda' \Lambda^{-1}, a + \Lambda a' - \Lambda \Lambda' \Lambda^{-1}a) ,
+    J^i = \frac{1}{2} \epsilon^{ijk} M^{jk} \iff M^{ij} = \epsilon^{ijk} J^k, \quad K^i = M^{i0} .
 \end{equation}
-which follows from eq.~\eqref{eq:representation-poincare-group-multiplication} and eq.~\eqref{eq:representation-poincare-inverse-element}. Inserting infinitesimal transformations~\eqref{eq:infinitesimal-poicare-transformation} for each $U(\Lambda = 1 + \epsilon, a)$, with $U^{-1} (\Lambda,a) = U(1-\epsilon,-a)$, keeping only linear terms in all group parameters $\epsilon$, $\epsilon'$, $a$ and $a'$, and comparing coefficients of the terms $\sim \epsilon\epsilon'$, $a\epsilon'$, $\epsilon a'$ and $aa'$, leads to the identities
 
-which define the Poincaré algebra.
-
-We can recast those relations in a less compact but more useful form. Since $M^{\mu\nu}$ contains six generators, we can define the generator of $SO(3)$ rotations $\vec{J}$ and the generator of the boosts $\vec{K}$ via\footnote{To see how to invert expressions with Levi-Civita symbol, look at apprendix~\ref{app:levi-civita}.}
-\begin{equation}\label{eq:poincare-boosts-rotations}
-    M^{ij} = - \epsilon_{ijk} J^k \iff J^i =- \frac{1}{2} \epsilon_{ijk} M^{jk}, \quad M^{0i} = K^i, 
-\end{equation}
-then the commutation relations takes the form
+Then, the Poincaré commutation relations~\eqref{eq:poincare-comm-relations} take the form
 
 \begin{subequations}
 \label{eq:poincare-commutation-boosts-rotations}
@@ -234,12 +222,7 @@ then the commutation relations takes the form
     \end{minipage}\bigskip
     \end{subequations}
 
-If we similarly define $\epsilon_{ij} = - \epsilon_{ijk} \phi^k$ and $\epsilon_{0i} = s^i$, we obtain
-\begin{equation}
-    \frac{i}{2} \epsilon_{\mu\nu} M^{\mu\nu} = i \vec{\phi} \cdot \vec{J} + i \vec{s} \cdot \vec{K}.
-\end{equation}
-
-$\vec{J}$ is hermitian but, because the Lorentz group is not compact, $\vec{K}$ is antihermitian for all finite-dimensional representations which prevents them from being unitary. From~\eqref{eq:poincare-commutation-boosts-rotations} we see that boosts and rotations generally do not commute unless the boost and rotation axes coincide. Moreover, $P_0$ (which becomes the Hamilton operator in the quantum theory) commutes with rotations and spatial translations but not with boosts and therefore the eigenvalues of K cannot be used for labelling physical states.
+From~\eqref{eq:poincare-commutation-boosts-rotations} we see that boosts and rotations generally do not commute unless the boost and rotation axes coincide. Moreover, $P_0$ (which becomes the Hamilton operator in the quantum theory) commutes with rotations and spatial translations but not with boosts and therefore the eigenvalues of K cannot be used for labelling physical states.
 
 
 %%%%%%%%%%%%%%% CASIMIR OPERATORS %%%%%%%%%%%%%%%%%
