@@ -289,3 +289,81 @@ Even if the vector representation is an irreducible representation of the Lorent
 \subsection{Spinorial Representation}
 \dots
 \color{black}
+
+%%%%%%%%%%%%%%%  FIELD REPRESENTATION %%%%%%%%%%%%%%%%%
+\subsection{Field Representation}\label{sec:field-representation}
+So far, we've been dealing with finite-dimensional representations $(\rho,V)$, that acted on finite-dimensional vector spaces $V$ whose elements were spacetime-independent quantities, transforming like
+\begin{equation}\label{eq:transformation-field-component}
+   \Phi^i \to  \Phi'^i  =  \tensor{\rho(\Lambda)}{^i_j} \Phi^j.
+\end{equation}
+
+However, in quantum field theory we're interested in field, that is, functions of spacetime, $\Phi^i(x)$. They will still transform like~\eqref{eq:transformation-field-component}, but the Lorentz transformation will act on the coordinates too, as $x^\mu \to \tensor{\Lambda}{^\mu_\nu}x^\nu$, with $\tensor{\Lambda}{^\mu_\nu}$ in the vector representation of the group (see sec.~\ref{sec:vector-representation}).
+
+Therefore, we have
+\begin{equation}\label{eq:lorentz-field-variation}
+   \Phi^i(x) \to \Phi'^i (x) = \tensor{\rho(\Lambda)}{^i_j} \Phi^j(\Lambda^{-1}x) \iff \Phi^i(x) \to \Phi'^i(x') = \tensor{\rho(\Lambda)}{^i_j} \Phi^j(x) .
+\end{equation}
+
+\begin{remark}
+    We have $\Lambda^{-1}$ because we used Wigner's convention for symmetry operators in quantum mechanics. In particular, for a coordinate transformation $R$, $\vec{x} \to R \vec{x}$, we assign a symmetry operator $U_R$ which acts on quantum states as $\ket{\psi} \to U_R \ket{\psi}$ such that $\bra{\vec{x}}U_R\ket{\psi} = \braket{R^{-1}\vec{x}}{\psi}$, or equivalently on functions as $\psi(\vec{x})\to U_R \psi(\vec{x})=\psi(R^{-1}\vec{x})$.
+\end{remark}
+
+Now, since both $\Phi_i$ and the coordinates $x^\mu$ transforms under (two different) Lorentz representations, we can study two types of infinitesimal variations of the field $\Phi^a(x)$ under a transformation:
+\begin{itemize}
+    \item \emph{Total variation}: represents how $\Phi^i$ change under an infinitesimal Lorentz transformation, at a fixed point $P$,
+    \begin{equation}\label{eq:lorentz-total-variation}
+        \delta \Phi^i = \Phi'^i(x') - \Phi^i(x) = - \frac{i}{2} \omega_{\mu\nu} \tensor{(S^{\mu\nu})}{^i_j} \Phi^j(x) ,
+    \end{equation}
+    with $\tensor{(S^{\mu\nu})}{^i_j}$ a finite-dimensional matrix representation of the generators $M^{\mu\nu}$ of the Lorentz group. The letter $S$ stands for \emph{spin}, as will be clear in the following. Here, both $x$ and $x'$ denote the same point $P$ in the different reference frames. Therefore, we're studying how the finite numbers of degrees of freedoms change when we change the label of $P$ from $x$ to $x'$, with $P$ fixed. As usual, the Lorentz indices $\mu\nu$ denote the particular representations, while $ij$ are the representation indices, depending on the vector space $S^{\mu\nu}$ act upon. This transformation is the one we've studied so far, represented by eq.~\eqref{eq:action-lorentz-transf}. It depends on which representation $\Phi^i$ transforms upon, and it is one of the matrices we've studied in the previous sections.
+    
+    \item \emph{Variation in form}: this is an infinitesimal variation at fixed coordinate $x$, i.e.,
+    \begin{equation}\label{eq:lorentz-variation-in-form}
+        \delta_0 \Phi^i = \Phi'^i(x) - \Phi^i(x) = \Phi'^i (x' - \delta x) - \Phi^i(x) = \delta \Phi^i - \delta x_\mu \de^\mu \Phi^i ,
+    \end{equation}
+    where, in the original frame, $x$ denotes a point $P$, while, after the transformation on the coordinates, in the new frame, $x$ denotes a different point $P'$.
+\end{itemize}
+
+Basically, $\delta \Phi^i$ always provide finite-dimensional representations of the generators, depending on the degrees of freedom of $\Phi^i$, though of as an object transforming as~\eqref{eq:transformation-field-component}. Indeed, the point $P$ is kept fixed, and the base space is made of $\Phi^i(P)$, and so its dimension is provided by the range of the index $i$, which depends on the representation $\Phi^i$ transforms upon. Conversely, $\delta_0 \Phi^i$ compares the fields at two different space-time points $P$ and $P'$, and so, it compares different degrees of freedom. In particular, the base space is now the set $\Phi^i(P)$, with $P$ varying now over the whole space-time. In other words, the base space is a \emph{space of functions}, and so it's an infinite-dimensional base-space. We then obtain an infinite-dimensional representation of the generators.
+
+At the end, taking into account the variation in form of the field, under a Lorentz transforms, the latter transforms as
+\begin{equation}\label{eq:total-lorentz-variation}
+    \Phi'^i(x) = \Phi^i - \frac{i}{2} \omega_{\mu\nu} \tensor{\left(S^{\mu\nu} + L^{\mu\nu}\right)}{^i_j} \Phi^j (x)
+\end{equation}
+where ${S}^{\mu\nu}$ is defined by eq.~\eqref{eq:lorentz-total-variation}, while ${L}^{\mu\nu}$ is defined by
+\begin{equation}
+    {{L}}^{\mu\nu} \coloneq i (x^\mu \de^\nu - x^\nu \de^\mu), \quad  \tensor{(L^{\mu\nu})}{^i_j} \coloneq L^{\mu\nu} \delta^i_j.
+\end{equation}
+
+\begin{mdframed}
+\begin{innerproof}
+    Recalling that the infinitesimal Lorentz transformation on the coordinates is
+    \begin{equation*}
+        x^\mu \to \tensor{\Lambda}{^\mu_\nu}x^\nu \simeq \tensor{\omega}{^\mu_\nu}x^\nu \implies \delta x_\mu = \omega_{\mu\nu}x^\nu ,
+    \end{equation*}
+    we can write
+    \begin{equation*}
+        -\delta x_\mu \de^\mu \Phi^i = - \omega_{\mu\nu} x^\nu \de^\mu \Phi^i = -\frac{i}{2} \omega_{\mu\nu} \left[ i (x^\mu \de^\nu - x^\nu \de^\mu) \right] \Phi^i ,
+    \end{equation*}
+    where we added a piece in the parenthesis to make it antisymmetric with respect to $\mu\nu$. Then, inserting it in eq.~\eqref{eq:lorentz-variation-in-form} and using the definition~\eqref{eq:lorentz-total-variation}, we obtain
+    \begin{align*}
+        \delta_0 \Phi^i = \delta \Phi^i - \delta x_\mu \de^\mu \Phi^i &= -\frac{i}{2} \omega_{\mu\nu} \tensor{(S^{\mu\nu})}{^i_j} \Phi^j(x) -\frac{i}{2} \omega_{\mu\nu} \left[ i (x^\mu \de^\nu - x^\nu \de^\mu) \right] \Phi^i (x).
+    \end{align*}
+    Therefore, defining
+    \begin{equation*}
+        {{L}}^{\mu\nu} \coloneq i (x^\mu \de^\nu - x^\nu \de^\mu) ,
+    \end{equation*}
+    we can write
+    \begin{equation*}
+        \delta_0 \Phi^i (x) = -\frac{i}{2} \omega_{\mu\nu} \left[ \tensor{(S^{\mu\nu})}{^i_j} + L^{\mu\nu} \delta^i_j \right] \Phi^j (x).
+    \end{equation*}
+    Finally, defining the diagonal operator 
+    \begin{equation*}
+        \tensor{(L^{\mu\nu})}{^i_j} \coloneq L^{\mu\nu} \delta^i_j,
+    \end{equation*}
+    and using the first part of eq.~\eqref{eq:lorentz-variation-in-form}, we write
+    \begin{equation*}
+        \Phi'^i(x) = \Phi^i(x) + \delta_0 \Phi^i (x) = \Phi^i - \frac{i}{2} \omega_{\mu\nu} \tensor{\left(S^{\mu\nu} + L^{\mu\nu}\right)}{^i_j} \Phi^j (x),
+    \end{equation*}
+    which concludes the proof.
+\end{innerproof}
+\end{mdframed}

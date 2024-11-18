@@ -229,104 +229,45 @@ Then, the Poincaré commutation relations~\eqref{eq:poincare-comm-relations} tak
 From~\eqref{eq:poincare-commutation-boosts-rotations} we see that boosts and rotations generally do not commute unless the boost and rotation axes coincide. Moreover, $P_0$ (which becomes the Hamilton operator in the quantum theory) commutes with rotations and spatial translations but not with boosts and therefore the eigenvalues of K cannot be used for labelling physical states.
 
 
-%%%%%%%%%%%%%%% CASIMIR OPERATORS %%%%%%%%%%%%%%%%%
-\section{Casimir Operators}
+%%%%%%%% FIELD REPRESENTATION
+\section{Field Representation}
+Let's generalise the findings of sec.~\ref{sec:field-representation} to Poincaré group. We'll still denote a generic representation by $U(\Lambda,a)$. Even though what we are about to discuss is not uniquely true for unitary representations, we will ultimately be interested in the latter; hence the notation.
 
-
-%%%%%%%%%%%%%%%  FIELD REPRESENTATION %%%%%%%%%%%%%%%%%
-\section{Field Representation and Action}
-So far, we've been dealing with finite-dimensional represenations $(\rho,V)$, that acted on finite-dimensional vector spaces $V$ whose elements were spacetime-independent quantities, transforming like
-\begin{equation}\label{eq:transformation-field-component}
-   \Phi^i \to  \Phi'^i  =  \tensor{\rho(\Lambda)}{^i_j} \Phi^j.
-\end{equation}
-
-However, in quantum field theory we're interested in field, that is, functions of spacetime, $\Phi^i(x)$. They will still transform like~\eqref{eq:transformation-field-component}, but the Lorentz transformation will act on the coordinates too, as $x^\mu \to \tensor{\Lambda}{^\mu_\nu}x^\nu$, with $\tensor{\Lambda}{^\mu_\nu}$ in the vector representation of the group (see sec.~\ref{sec:vector-representation}).
-
-Therefore, we have
+The generalisation of eq.~\eqref{eq:lorentz-field-variation} to a generic Poincaré transformation, which acts on the coordinates as $x^\mu \to \tensor{\Lambda}{^\mu_\nu} x^\nu + a^\mu$, is
 \begin{equation}
-   \Phi^i(x) \to \Phi'^i (x) = \tensor{\rho(\Lambda)}{^i_j} \Phi^j(\Lambda^{-1}x) \iff \Phi^i(x) \to \Phi'^i(x') = \tensor{\rho(\Lambda)}{^i_j} \Phi^j(x) .
+    \Phi'^i(x) = U(\Lambda,a) \Phi^i(x) = \tensor{S(\Lambda)}{^i_j} \Phi^j(\Lambda^{-1}(x-a)) \iff \Phi'^i(x') = \tensor{S(\Lambda)}{^i_j} \Phi^j(x) .
 \end{equation}
 
-\begin{remark}
-    We have $\Lambda^{-1}$ because we used Wigner's convention for symmetry operators in quantum mechanics. In particular, for a coordinate transformation $R$, $\vec{x} \to R \vec{x}$, we assign a symmetry operator $U_R$ which acts on quantum states as $\ket{\psi} \to U_R \ket{\psi}$ such that $\bra{\vec{x}}U_R\ket{\psi} = \braket{R^{-1}\vec{x}}{\psi}$, or equivalently on functions as $\psi(\vec{x})\to U_R \psi(\vec{x})=\psi(R^{-1}\vec{x})$.
-\end{remark}
+\color{red}
+To see why, let's say $i=1, \dots n$, and that the $n$-component field $\Phi^i(x)$ is complex. We can see it as a function of $\M \otimes \C^n$, with $\M$ the Minkowski flat spacetime. Then, $U(\Lambda,a)$ acts on $\M \otimes \C^n$, $S(\Lambda)$ is a finite dimensional representation of the Lorentz group acting on $\C^n$, while each component of the field $\Phi^a(x)$, for $i=a$ fixed, is seen as a function on $\M$.
 
-Now, since both $\Phi_i$ and the coordinates $x^\mu$ transforms under (two different) Lorentz representations, we can study two types of infinitesimal variations of the field $\Phi^a(x)$ under a transformation:
-\begin{itemize}
-    \item \emph{Total variation}: represents how $\Phi^i$ change under an infinitesimal Lorentz transformation, at a fixed point $P$,
-    \begin{equation}\label{eq:poincare-total-variation}
-        \delta \Phi^i = \Phi'^i(x') - \Phi^i(x) = - \frac{i}{2} \omega_{\mu\nu} \tensor{(S^{\mu\nu})}{^i_j} \Phi^j(x) ,
-    \end{equation}
-    with $\tensor{(S^{\mu\nu})}{^i_j}$ a finite-dimensional matrix representation of the generators $M^{\mu\nu}$ of the Lorentz group. The letter $S$ stands for \emph{spin}, as will be clear in the following. Here, both $x$ and $x'$ denote the same point $P$ in the different reference frames. Therefore, we're studying how the finite numbers of degrees of freedoms change when we change the label of $P$ from $x$ to $x'$, with $P$ fixed. As usual, the Lorentz indices $\mu\nu$ denote the particular representations, while $ij$ are the representation indices, depending on the vector space $S^{\mu\nu}$ act upon. This transformation is the one we've studied so far, represented by eq.~\eqref{eq:action-lorentz-transf}. It depends on which representation $\Phi^i$ transforms upon, and it is one of the matrices we've studied in the previous sections.
-    
-    \item \emph{Variation in form}: this is an infinitesimal variation at fixed coordinate $x$, i.e.,
-    \begin{equation}\label{eq:poincare-variation-in-form}
-        \delta_0 \Phi^i = \Phi'^i(x) - \Phi^i(x) = \Phi'^i (x' - \delta x) - \Phi^i(x) = \delta \Phi^i - \delta x_\mu \de^\mu \Phi^i ,
-    \end{equation}
-    where, in the original frame, $x$ denotes a point $P$, while, after the transformation on the coordinates, in the new frame, $x$ denotes a different point $P'$.
-\end{itemize}
+In other words, we require that a field $\Phi^i(x)$ is a scalar under a Poincaré translation, and this can be thought as part of the definition of a field. This is related to the fact that the translation group is an abelian subgroup of the Poincaré group, and any representation of an abelian group is completely reducible as a direct sum of one-dimensional representations. This pysically translates into the fact that under the action of a translation, the field just picks a multiplicative factor (a phase), which can be seen as a $1 \times 1$ matrix.
+\color{black}
 
-Basically, $\delta \Phi^i$ always provide finite-dimensional representations of the generators, depending on the degrees of freedom of $\Phi^i$, though of as an object transforming as~\eqref{eq:transformation-field-component}. Indeed, the point $P$ is kept fixed, and the base space is made of $\Phi^i(P)$, and so its dimension is provided by the range of the index $i$, which depends on the representation $\Phi^i$ transforms upon. Conversely, $\delta_0 \Phi^i$ compares the fields at two different space-time points $P$ and $P'$, and so, it compares different degrees of freedom. In particular, the base space is now the set $\Phi^i(P)$, with $P$ varying now over the whole space-time. In other words, the base space is a \emph{space of functions}, and so it's an infinite-dimensional base-space. We then obtain an infinite-dimensional representation of the generators.
-
-At the end, taking into account the variation in form of the field, under a Lorentz transforms, the latter transforms as
+Therefore, we require that all fields, independently of their transformation property under the Lorentz group, behave as \emph{scalars} under space-time translations. Thus, considering a pure translation, which acts on the coordinates as $x^\mu \to x^\mu + a^\mu$, we have
 \begin{equation}
-    \Phi'^i(x) = \Phi^i - \frac{i}{2} \omega_{\mu\nu} \tensor{\left(S^{\mu\nu} + L^{\mu\nu}\right)}{^i_j} \Phi^j (x)
+    \Phi'^i(x) = \Phi^i (x-a) \iff \Phi'^i(x') = \Phi^i(x) .
 \end{equation}
-where ${S}^{\mu\nu}$ is defined by eq.~\eqref{eq:poincare-total-variation}, while ${L}^{\mu\nu}$ is defined by
+Then, the requirement of the field being a scalar under a translation, translates into $\delta \Phi^i = 0$, by means of eq.~\eqref{eq:lorentz-total-variation}. Further, for an infinitesimal tranlation, where $a^\mu = \epsilon^\mu$ and $\delta x_\mu = \epsilon_\mu$, we can easily see
 \begin{equation}
-    {{L}}^{\mu\nu} \coloneq i (x^\mu \de^\nu - x^\nu \de^\mu), \quad  \tensor{(L^{\mu\nu})}{^i_j} \coloneq L^{\mu\nu} \delta^i_j.
+    \delta \Phi^i = 0 \implies \delta_0 \Phi^i = - \delta x_\mu \de^\mu \Phi^i \equiv - i \epsilon_\mu P^\mu \Phi^i ,
+\end{equation}
+where we defined the translation operator as
+\begin{equation}
+    P^\mu \coloneq -i \de^\mu, \quad \tensor{(P^\mu)}{^i_j} \coloneq -i \de^\mu \delta^i_j
 \end{equation}
 
-\begin{mdframed}
-\begin{innerproof}
-    Recalling that the infinitesimal Lorentz transformation on the coordinates is
-    \begin{equation*}
-        x^\mu \to \tensor{\Lambda}{^\mu_\nu}x^\nu \simeq \tensor{\omega}{^\mu_\nu}x^\nu \implies \delta x_\mu = \omega_{\mu\nu}x^\nu ,
-    \end{equation*}
-    we can write
-    \begin{equation*}
-        -\delta x_\mu \de^\mu \Phi^i = - \omega_{\mu\nu} x^\nu \de^\mu \Phi^i = -\frac{i}{2} \omega_{\mu\nu} \left[ i (x^\mu \de^\nu - x^\nu \de^\mu) \right] \Phi^i ,
-    \end{equation*}
-    where we added a piece in the parenthesis to make it antisymmetric with respect to $\mu\nu$. Then, inserting it in eq.~\eqref{eq:poincare-variation-in-form} and using the definition~\eqref{eq:poincare-total-variation}, we obtain
-    \begin{align*}
-        \delta_0 \Phi^i = \delta \Phi^i - \delta x_\mu \de^\mu \Phi^i &= -\frac{i}{2} \omega_{\mu\nu} \tensor{(S^{\mu\nu})}{^i_j} \Phi^j(x) -\frac{i}{2} \omega_{\mu\nu} \left[ i (x^\mu \de^\nu - x^\nu \de^\mu) \right] \Phi^i (x).
-    \end{align*}
-    Therefore, defining
-    \begin{equation*}
-        {{L}}^{\mu\nu} \coloneq i (x^\mu \de^\nu - x^\nu \de^\mu) ,
-    \end{equation*}
-    we can write
-    \begin{equation*}
-        \delta_0 \Phi^i (x) = -\frac{i}{2} \omega_{\mu\nu} \left[ \tensor{(S^{\mu\nu})}{^i_j} + L^{\mu\nu} \delta^i_j \right] \Phi^j (x).
-    \end{equation*}
-    Finally, defining the diagonal operator 
-    \begin{equation*}
-        \tensor{(L^{\mu\nu})}{^i_j} \coloneq L^{\mu\nu} \delta^i_j,
-    \end{equation*}
-    and using the first part of eq.~\eqref{eq:poincare-variation-in-form}, we write
-    \begin{equation*}
-        \Phi'^i(x) = \Phi^i(x) + \delta_0 \Phi^i (x) = \Phi^i - \frac{i}{2} \omega_{\mu\nu} \tensor{\left(S^{\mu\nu} + L^{\mu\nu}\right)}{^i_j} \Phi^j (x),
-    \end{equation*}
-    which concludes the proof.
-\end{innerproof}
-\end{mdframed}
-
+Hence, taking into consideration the variation in form~\eqref{eq:lorentz-variation-in-form} of the field, eq.~\eqref{eq:total-lorentz-variation} is generalised into
+\begin{equation}\label{eq:total-poincare-variation}
+    \Phi'^i(x) = \Phi^i + \tensor{\left[ - \frac{i}{2} \omega_{\mu\nu} \left(S^{\mu\nu} + L^{\mu\nu}\right) - i \epsilon_\mu P^\mu \right]}{^i_j} \Phi^j (x) .
+\end{equation}
 
 \color{blue}
-To generalise this to a Poincaré transformation, let's first consider a pure translation, after which
-\begin{equation}
-    \Phi'_i(x) = \Phi_i (x-a) \iff \Phi'_i(x') = \Phi_i(x) ,
-\end{equation}
-and hence $\delta \Phi_i = 0$ and $\delta_0 \Phi_i = - \epsilon_\mu \de^\mu \Phi_i = i \epsilon_\mu \hat{P}^\mu \Phi_i$, with $\hat{P}^\mu 0 i \de^\mu$. The total change of the field is then
+One can verify that $J^{\mu\nu}$ and $P^\mu$ satisfy the Poincaré commutation relations, and thus furnish an infinite-dimensional representations of the Poincaré symmetry group.
+\color{black}
 
-
-Here, $\hat{L}^{\mu\nu}$ and $\hat{P}^\mu$ are differential operators that satisfy Poincaré algebra relations when applied to $\Phi_i(x)$. There are diagonal in $i,j$, whereas the spin matrix $\hat{S}^{\mu\nu}$ depends on the representation of the field. Moreover, we can write $\hat{J}^{\mu\nu} = \hat{S}^{\mu\nu} + \hat{L}^{\mu\nu}$ and try to find out the explicit form of those operators in the representation under study. To do so, we use eq.~\eqref{eq:poincare-boosts-rotations} for the abstract generators, and find out that we can divide the generators of the angular momentum and of the boosts in a spin and an orbital angular part too, in particular
-\begin{equation}
-    \vec{L} = \vec{x} \wedge \vec{P}, \quad \vec{K}_L = \vec{x} P^0 - x^0 \vec{P}, \quad P^\mu = i \de^\mu .
-\end{equation}
-
-
-\paragraph{Action}
+%%%%%%%% ACTION
+\section{Poincaré Invariant Action}
 One way to study and quantise a theory is starting from the classical action $S$. In order for it to be invariant, it must be a Poincaré scalar. Further, by Noether's theorem, associated to the Poincaré invariance there are some conserved charges. In particular, using eq.~\eqref{eq:total-functional-variation}, we may write
 \begin{equation}
     \delta S = \int \udq x \, \delta_0 \L + \int \udq x \, \de_\mu \L \delta x^\mu
