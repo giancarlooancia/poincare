@@ -235,53 +235,92 @@ From~\eqref{eq:poincare-commutation-boosts-rotations} we see that boosts and rot
 
 %%%%%%%%%%%%%%%  FIELD REPRESENTATION %%%%%%%%%%%%%%%%%
 \section{Field Representation and Action}
-Up to know we've seen representations acting on spacetime-independent quantities, which generically transform as
-\begin{equation}
-    \phi'_i  = D_{ij}(\Lambda) \phi_j.
+So far, we've been dealing with finite-dimensional represenations $(\rho,V)$, that acted on finite-dimensional vector spaces $V$ whose elements were spacetime-independent quantities, transforming like
+\begin{equation}\label{eq:transformation-field-component}
+   \Phi^i \to  \Phi'^i  =  \tensor{\rho(\Lambda)}{^i_j} \Phi^j.
 \end{equation}
 
-A field $\phi_i$ is a function of the coordinates with some definite transformation properties under the Poincaré group. When we consider their transformation we must consider that it acts on their argument too, $x' = \Lambda x$:
+However, in quantum field theory we're interested in field, that is, functions of spacetime, $\Phi^i(x)$. They will still transform like~\eqref{eq:transformation-field-component}, but the Lorentz transformation will act on the coordinates too, as $x^\mu \to \tensor{\Lambda}{^\mu_\nu}x^\nu$, with $\tensor{\Lambda}{^\mu_\nu}$ in the vector representation of the group (see sec.~\ref{sec:vector-representation}).
+
+Therefore, we have
 \begin{equation}
-    \phi'_i (x) = D_{ij}(\Lambda) \phi_j(\Lambda^{-1}x) \iff \phi'_i(x') = D_{ij}(\Lambda) \phi_j(x) .
+   \Phi^i(x) \to \Phi'^i (x) = \tensor{\rho(\Lambda)}{^i_j} \Phi^j(\Lambda^{-1}x) \iff \Phi^i(x) \to \Phi'^i(x') = \tensor{\rho(\Lambda)}{^i_j} \Phi^j(x) .
 \end{equation}
 
-We can define two types of infinitesimal variation the field
+\begin{remark}
+    We have $\Lambda^{-1}$ because we used Wigner's convention for symmetry operators in quantum mechanics. In particular, for a coordinate transformation $R$, $\vec{x} \to R \vec{x}$, we assign a symmetry operator $U_R$ which acts on quantum states as $\ket{\psi} \to U_R \ket{\psi}$ such that $\bra{\vec{x}}U_R\ket{\psi} = \braket{R^{-1}\vec{x}}{\psi}$, or equivalently on functions as $\psi(\vec{x})\to U_R \psi(\vec{x})=\psi(R^{-1}\vec{x})$.
+\end{remark}
+
+Now, since both $\Phi_i$ and the coordinates $x^\mu$ transforms under (two different) Lorentz representations, we can study two types of infinitesimal variations of the field $\Phi^a(x)$ under a transformation:
 \begin{itemize}
-    \item \emph{A change in perspective}:
-    \begin{equation}
-        \delta \phi_i = \phi'_i(x') - \phi_i(x) = \frac{i}{2} \epsilon_{\mu\nu} (\hat{S}^{\mu\nu})_{ij} \phi_j(x) ,
+    \item \emph{Total variation}: represents how $\Phi^i$ change under an infinitesimal Lorentz transformation, at a fixed point $P$,
+    \begin{equation}\label{eq:poincare-total-variation}
+        \delta \Phi^i = \Phi'^i(x') - \Phi^i(x) = - \frac{i}{2} \omega_{\mu\nu} \tensor{(S^{\mu\nu})}{^i_j} \Phi^j(x) ,
     \end{equation}
-    with $(\hat{S}^{\mu\nu})_{ij}$ a finite-dimensional matrix representation of the generator $M^{\mu\nu}$. The subscript will stand for \emph{spin}, as will be clear in the following.
-    \item \emph{Functional change}:
-    \begin{equation}\label{eq:total-functional-variation}
-        \delta_0 \phi_i = \phi'_i(x) - \phi(x) = \phi'_i (x' - \delta x) - \phi_i(x) = \delta \phi_i - \delta x_\mu \de^\mu \phi_i ,
+    with $\tensor{(S^{\mu\nu})}{^i_j}$ a finite-dimensional matrix representation of the generators $M^{\mu\nu}$ of the Lorentz group. The letter $S$ stands for \emph{spin}, as will be clear in the following. Here, both $x$ and $x'$ denote the same point $P$ in the different reference frames. Therefore, we're studying how the finite numbers of degrees of freedoms change when we change the label of $P$ from $x$ to $x'$, with $P$ fixed. As usual, the Lorentz indices $\mu\nu$ denote the particular representations, while $ij$ are the representation indices, depending on the vector space $S^{\mu\nu}$ act upon. This transformation is the one we've studied so far, represented by eq.~\eqref{eq:action-lorentz-transf}. It depends on which representation $\Phi^i$ transforms upon, and it is one of the matrices we've studied in the previous sections.
+    
+    \item \emph{Variation in form}: this is an infinitesimal variation at fixed coordinate $x$, i.e.,
+    \begin{equation}\label{eq:poincare-variation-in-form}
+        \delta_0 \Phi^i = \Phi'^i(x) - \Phi^i(x) = \Phi'^i (x' - \delta x) - \Phi^i(x) = \delta \Phi^i - \delta x_\mu \de^\mu \Phi^i ,
     \end{equation}
-    where we evaluate the field changes at the same position $x$.
+    where, in the original frame, $x$ denotes a point $P$, while, after the transformation on the coordinates, in the new frame, $x$ denotes a different point $P'$.
 \end{itemize}
 
-An \emph{infinitesimal Lorentz transformation} can be written as $\delta x_\mu = \omega_{\mu\nu} x^\nu$, so
-\begin{equation*}
-    -\delta x_\mu \de^\mu \phi_i = - \omega_{\mu\nu} x^\nu \de^\mu \phi_i = \frac{i}{2} \omega_{\mu\nu} \left[ -i (x^\mu \de^\nu - x^\nu \de^\mu) \right] \phi_i .
-\end{equation*} 
-Defining
+Basically, $\delta \Phi^i$ always provide finite-dimensional representations of the generators, depending on the degrees of freedom of $\Phi^i$, though of as an object transforming as~\eqref{eq:transformation-field-component}. Indeed, the point $P$ is kept fixed, and the base space is made of $\Phi^i(P)$, and so its dimension is provided by the range of the index $i$, which depends on the representation $\Phi^i$ transforms upon. Conversely, $\delta_0 \Phi^i$ compares the fields at two different space-time points $P$ and $P'$, and so, it compares different degrees of freedom. In particular, the base space is now the set $\Phi^i(P)$, with $P$ varying now over the whole space-time. In other words, the base space is a \emph{space of functions}, and so it's an infinite-dimensional base-space. We then obtain an infinite-dimensional representation of the generators.
+
+At the end, taking into account the variation in form of the field, under a Lorentz transforms, the latter transforms as
 \begin{equation}
-    {\hat{L}}^{\mu\nu} \coloneq -i (x^\mu \de^\nu - x^\nu \de^\mu),
+    \Phi'^i(x) = \Phi^i - \frac{i}{2} \omega_{\mu\nu} \tensor{\left(S^{\mu\nu} + L^{\mu\nu}\right)}{^i_j} \Phi^j (x)
 \end{equation}
-we get
+where ${S}^{\mu\nu}$ is defined by eq.~\eqref{eq:poincare-total-variation}, while ${L}^{\mu\nu}$ is defined by
 \begin{equation}
-    -\delta x_\mu \de^\mu \phi_i = \frac{i}{2} \omega_{\mu\nu} {\hat{L}}^{\mu\nu} \phi_i.
+    {{L}}^{\mu\nu} \coloneq i (x^\mu \de^\nu - x^\nu \de^\mu), \quad  \tensor{(L^{\mu\nu})}{^i_j} \coloneq L^{\mu\nu} \delta^i_j.
 \end{equation}
 
+\begin{mdframed}
+\begin{innerproof}
+    Recalling that the infinitesimal Lorentz transformation on the coordinates is
+    \begin{equation*}
+        x^\mu \to \tensor{\Lambda}{^\mu_\nu}x^\nu \simeq \tensor{\omega}{^\mu_\nu}x^\nu \implies \delta x_\mu = \omega_{\mu\nu}x^\nu ,
+    \end{equation*}
+    we can write
+    \begin{equation*}
+        -\delta x_\mu \de^\mu \Phi^i = - \omega_{\mu\nu} x^\nu \de^\mu \Phi^i = -\frac{i}{2} \omega_{\mu\nu} \left[ i (x^\mu \de^\nu - x^\nu \de^\mu) \right] \Phi^i ,
+    \end{equation*}
+    where we added a piece in the parenthesis to make it antisymmetric with respect to $\mu\nu$. Then, inserting it in eq.~\eqref{eq:poincare-variation-in-form} and using the definition~\eqref{eq:poincare-total-variation}, we obtain
+    \begin{align*}
+        \delta_0 \Phi^i = \delta \Phi^i - \delta x_\mu \de^\mu \Phi^i &= -\frac{i}{2} \omega_{\mu\nu} \tensor{(S^{\mu\nu})}{^i_j} \Phi^j(x) -\frac{i}{2} \omega_{\mu\nu} \left[ i (x^\mu \de^\nu - x^\nu \de^\mu) \right] \Phi^i (x).
+    \end{align*}
+    Therefore, defining
+    \begin{equation*}
+        {{L}}^{\mu\nu} \coloneq i (x^\mu \de^\nu - x^\nu \de^\mu) ,
+    \end{equation*}
+    we can write
+    \begin{equation*}
+        \delta_0 \Phi^i (x) = -\frac{i}{2} \omega_{\mu\nu} \left[ \tensor{(S^{\mu\nu})}{^i_j} + L^{\mu\nu} \delta^i_j \right] \Phi^j (x).
+    \end{equation*}
+    Finally, defining the diagonal operator 
+    \begin{equation*}
+        \tensor{(L^{\mu\nu})}{^i_j} \coloneq L^{\mu\nu} \delta^i_j,
+    \end{equation*}
+    and using the first part of eq.~\eqref{eq:poincare-variation-in-form}, we write
+    \begin{equation*}
+        \Phi'^i(x) = \Phi^i(x) + \delta_0 \Phi^i (x) = \Phi^i - \frac{i}{2} \omega_{\mu\nu} \tensor{\left(S^{\mu\nu} + L^{\mu\nu}\right)}{^i_j} \Phi^j (x),
+    \end{equation*}
+    which concludes the proof.
+\end{innerproof}
+\end{mdframed}
+
+
+\color{blue}
 To generalise this to a Poincaré transformation, let's first consider a pure translation, after which
 \begin{equation}
-    \phi'_i(x) = \phi_i (x-a) \iff \phi'_i(x') = \phi_i(x) ,
+    \Phi'_i(x) = \Phi_i (x-a) \iff \Phi'_i(x') = \Phi_i(x) ,
 \end{equation}
-and hence $\delta \phi_i = 0$ and $\delta_0 \phi_i = - \epsilon_\mu \de^\mu \phi_i = i \epsilon_\mu \hat{P}^\mu \phi_i$, with $\hat{P}^\mu 0 i \de^\mu$. The total change of the field is then
-\begin{equation}
-    \phi'_i(x) = \phi_i(x) + \left[ \frac{i}{2} \omega_{\mu\nu} ({\hat{S}}^{\mu\nu} + {\hat{L}}^{\mu\nu}) + i \epsilon_\mu \hat{P}^\mu \right]_{ij} \phi_j(x) .
-\end{equation}
+and hence $\delta \Phi_i = 0$ and $\delta_0 \Phi_i = - \epsilon_\mu \de^\mu \Phi_i = i \epsilon_\mu \hat{P}^\mu \Phi_i$, with $\hat{P}^\mu 0 i \de^\mu$. The total change of the field is then
 
-Here, $\hat{L}^{\mu\nu}$ and $\hat{P}^\mu$ are differential operators that satisfy Poincaré algebra relations when applied to $\phi_i(x)$. There are diagonal in $i,j$, whereas the spin matrix $\hat{S}^{\mu\nu}$ depends on the representation of the field. Moreover, we can write $\hat{J}^{\mu\nu} = \hat{S}^{\mu\nu} + \hat{L}^{\mu\nu}$ and try to find out the explicit form of those operators in the representation under study. To do so, we use eq.~\eqref{eq:poincare-boosts-rotations} for the abstract generators, and find out that we can divide the generators of the angular momentum and of the boosts in a spin and an orbital angular part too, in particular
+
+Here, $\hat{L}^{\mu\nu}$ and $\hat{P}^\mu$ are differential operators that satisfy Poincaré algebra relations when applied to $\Phi_i(x)$. There are diagonal in $i,j$, whereas the spin matrix $\hat{S}^{\mu\nu}$ depends on the representation of the field. Moreover, we can write $\hat{J}^{\mu\nu} = \hat{S}^{\mu\nu} + \hat{L}^{\mu\nu}$ and try to find out the explicit form of those operators in the representation under study. To do so, we use eq.~\eqref{eq:poincare-boosts-rotations} for the abstract generators, and find out that we can divide the generators of the angular momentum and of the boosts in a spin and an orbital angular part too, in particular
 \begin{equation}
     \vec{L} = \vec{x} \wedge \vec{P}, \quad \vec{K}_L = \vec{x} P^0 - x^0 \vec{P}, \quad P^\mu = i \de^\mu .
 \end{equation}
@@ -302,8 +341,8 @@ To construct a Poincaré invariant theory, we start from a \emph{classical} acti
 It turns out that the currents associated to the Poincaré symmetry of a classical action are
 \begin{subequations}
 \begin{gather}
-T^{\mu\alpha} = -i \frac{\de \L}{\de(\de_\mu \phi_i)} P^\alpha \phi_j - g^{\mu\alpha} \L , \\
-m^{\mu,\alpha\beta} = -i \frac{\de \L}{\de (\de_\mu \phi_i)} M^{\alpha\beta}_{ij} \phi_j + (x^\alpha g^{\mu\beta} - x^\beta g^{\mu\alpha}) \L .
+T^{\mu\alpha} = -i \frac{\de \L}{\de(\de_\mu \Phi_i)} P^\alpha \Phi_j - g^{\mu\alpha} \L , \\
+m^{\mu,\alpha\beta} = -i \frac{\de \L}{\de (\de_\mu \Phi_i)} M^{\alpha\beta}_{ij} \Phi_j + (x^\alpha g^{\mu\beta} - x^\beta g^{\mu\alpha}) \L .
 \end{gather}
 \end{subequations}
 
@@ -319,14 +358,14 @@ Those, after quantization, will form a representation of the Poincaré group tha
 
 Further, in the quantum setting, Wigner's theorem states that continuous symmetries must be implemented by unitary operators on the state space. The Lorentz group is not compact because it contains boosts, hence all unitary representations must be infinite-dimensional. 
 
-This is realized in the quantum field theory: the fields $\phi_i(x)$ become operators on the Fock space, and the constants of motion in eq.~\eqref{eq:const-motion} are hermitian operators that define a unitary representation of the Poincaré algebra on the state space:
+This is realized in the quantum field theory: the fields $\Phi_i(x)$ become operators on the Fock space, and the constants of motion in eq.~\eqref{eq:const-motion} are hermitian operators that define a unitary representation of the Poincaré algebra on the state space:
 \begin{equation}
     U(\Lambda,a) = e^{\frac{i}{2} \omega_{\mu\nu} \hat{M}^{\mu\nu} + i \epsilon_\mu \hat{P}^\mu} \simeq 1 + \frac{i}{2} \omega_{\mu\nu} \hat{M}^{\mu\nu} + i \epsilon_\mu \hat{P}^\mu .
 \end{equation}
 
 The irreducible state space those operators act on is the one-particle state space we constructed above, using Casimir operators and so on.
 
-\color{red} How, from this, we get to $U(\Lambda,a) \phi_i(x) U(\Lambda,a)^{-1} = D(\Lambda)^{-1}_ij \phi_j (\Lambda x + a)$
+\color{red} How, from this, we get to $U(\Lambda,a) \Phi_i(x) U(\Lambda,a)^{-1} = D(\Lambda)^{-1}_ij \Phi_j (\Lambda x + a)$
 \color{black}
 
 %%%%%%%%%%%%%%% UNITARY REPRESENTATIONS %%%%%%%%%%%%%%%%%

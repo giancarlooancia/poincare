@@ -73,12 +73,12 @@ We've seen that the Lorentz group is characterised by six independent parameters
 \end{equation}
 which acts on $V$, where $M^{\mu\nu}_\rho$ are the Lorentz group generators in the representation $\rho$. Further, the elements of $V$ transform, under a Lorentz transformation, as
 \begin{equation}
-    \phi^i \to \tensor{\left[ e^{-\frac{i}{2} \omega_{\mu\nu} M^{\mu\nu}_\rho} \right]}{^i_j}  \, \phi^j .
+    \Phi^i \to \tensor{\left[ e^{-\frac{i}{2} \omega_{\mu\nu} M^{\mu\nu}_\rho} \right]}{^i_j}  \, \Phi^j .
 \end{equation}
 
-For an infinitesimal Lorentz transformation, with infinitesimal parameters $\omega_{\mu\nu}$, the variation of $\phi^i$ is
+For an infinitesimal Lorentz transformation, with infinitesimal parameters $\omega_{\mu\nu}$, the variation of $\Phi^i$ is
 \begin{equation}\label{eq:action-lorentz-transf}
-    \delta \phi^i = -\frac{i}{2} \omega_{\mu\nu} \tensor{\left(  M^{\mu\nu}_\rho \right)}{^i_j} \, \phi^j, 
+    \delta \Phi^i = -\frac{i}{2} \omega_{\mu\nu} \tensor{\left(  M^{\mu\nu}_\rho \right)}{^i_j} \, \Phi^j, 
 \end{equation}
 where in $\tensor{\left(  M^{\mu\nu}_\rho \right)}{^i_j}$, the indices $\mu,\nu$ identify the generator\footnote{Beware the index $\rho$! It isn't a Lorentz index, but it stands for “representation”.}, while the indices $i,j$ are the matrix indices of the representation which has been considered. We can then classify all physical quantities according to their transformation properties under the Lorentz group.
 
@@ -144,7 +144,7 @@ so that the generators, which are $1 \times 1$ matrices, identically vanish,
 The representation is called \emph{trivial}, since the algebra commutation relations~\eqref{eq:structure-contants} are trivially satisfied.
 
 %%%%%%%%%%%%%%%  VECTOR REPRESENTATION %%%%%%%%%%%%%%%%%
-\subsection{Vector Representation}
+\subsection{Vector Representation}\label{sec:vector-representation}
 This is the \emph{defining representation} and acts on a \emph{four-vector} $V^\mu$, which has transformation law
 \begin{equation}\label{eq:lorentz-transf-four-vector}
     V^\mu \to \tensor{\Lambda}{^\mu_\nu} V^\nu,
