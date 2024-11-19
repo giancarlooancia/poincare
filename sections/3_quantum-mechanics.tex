@@ -3,7 +3,7 @@ In this section, we review the concepts of states and observables in quantum mec
 Let us begin by outlining some fundamental aspects of quantum mechanics.
 \begin{itemize}
     \item \emph{Physical states} are represented by \emph{rays} in a Hilbert space $\H$, which is a complex vector space with a \emph{scalar product} $\langle \cdot, \cdot \rangle$, defined by
-    \begin{subequations}\label{eq:scalar-product}
+    \begin{subequations}
         \begin{align}
         \scalar{\phi}{\psi} &= \scalar{\psi}{\phi}^* , \\
         \scalar{\phi}{\xi_1 \psi_1 + \xi_2 \psi_2} &= \xi_1 \scalar{\phi}{\psi_1} + \xi_2 \scalar{\phi}{\psi_2} ,\\
@@ -73,3 +73,63 @@ This type of representation is called \emph{projective representation}. Unlike a
 \end{equation}
 
 Therefore, in a quantum theory, we're interested in \emph{unitary projective representations} of a symmetry group $G$. Then, according to theorem~\ref{th:unitary-rep}, \emph{all} unitary projective representations of $G$ can be derived from unitary \emph{linear} representations of the universal covering group $\tilde{G}$. These, in turn, arise from representations of the Lie algebra. Further, by theorem~\ref{th:non-compact-group-rep}, since the Poincaré group is non-compact, we must study infinite dimensional representations in order to have unitary ones, which can then be associated with physical observables.
+
+\section{Written anew}
+In this section, we review the concepts of states and observables in quantum mechanics, with a focus on the role of projective representations as opposed to standard representations. Let us begin by outlining some fundamental aspects of quantum mechanics.
+
+A Hilbert space $\H$ is a complex vector space with a \emph{scalar product} $\langle \cdot, \cdot \rangle$, defined by
+    \begin{subequations}\label{eq:scalar-product}
+        \begin{align}
+        \scalar{\phi}{\psi} &= \scalar{\psi}{\phi}^* , \\
+        \scalar{\phi}{\xi_1 \psi_1 + \xi_2 \psi_2} &= \xi_1 \scalar{\phi}{\psi_1} + \xi_2 \scalar{\phi}{\psi_2} ,\\
+        \scalar{\eta_1 \phi_1 + \eta_2 \phi_2}{\psi} &= {\eta_1}^* \scalar{\phi_1}{\psi} + {\eta_2}^* \scalar{\phi_2}{\psi} ,
+        \end{align}
+        \end{subequations}
+with $\phi,\psi \in \H$. The \emph{norm} is defined as $\mynorm{\psi} \coloneq \scalar{\psi}{\psi} \geq 0$, and it vanishes if and only if $\psi \equiv 0$.
+
+There is a correspondence (which is not 1-1) between a physical state and a vector of the Hilbert space, $\psi \in \H$. The \emph{Born rule} gives us the probability for a system in a state $\psi \in \H$ to be in a state $\phi \in \H$:
+\begin{equation}
+    P(\psi, \phi) = \frac{\abs{\scalar{\psi}{\phi}}^2}{\mynorm{\psi}\mynorm{\phi}} .
+\end{equation}
+
+Now, $\forall c \in \C \setminus \{0\}$, we can see $P(c\psi, \phi) = P(\psi, c\phi) = P(\psi,\phi)$. In particular, $P(\psi,\psi) = P(\psi, c\psi) = 1$, which means that the probability of $c \psi$ to be found in the state $\psi$ is $1$, i.e., $\psi$ and $c\psi$ are the same physical state. This leads to the definition of a \emph{ray} as a one-dimensional subspace of $\H$ spanned by all such $c\psi$, in particular
+\begin{equation}
+    \ray_\psi \coloneq \{ \phi \in \H | \exists c \in \C : \phi = c \psi \} .
+\end{equation}
+
+Therefore, a \emph{physical state} is represented by a ray in a Hilbert space. This can be implemented by defining an equivalence class
+\begin{equation}
+    \psi \sim \phi \iff \psi \in \ray_\phi ,
+\end{equation}
+which leads to the definition of the space of rays, also called \emph{projective Hilbert space}
+\begin{equation}
+    \P(\H) \coloneq (\H \setminus \{0\}) / \sim .
+\end{equation}
+
+Therefore, by construction, each element of $\P(\H)$ will correspond to a distinct state, i.e., an element is a different ray\footnote{This is true if we neglect additional gauge symmetries.}.
+
+We can define a \emph{ray product} $\Phi \cdot \Psi$, with $\Phi,\Psi \in \ray$, is defined by $\Phi \cdot \Psi \coloneq \abs{\scalar{\phi}{\psi}}$, where $\phi,\psi \in \H$ are two chosen representatives of $\Phi$ and $\Psi$. Then, the probabilities of various measurements can be ultimately expressed in terms of ray products.
+
+Then, we can define a \emph{symmetry transformation} as an automorphism\footnote{An automorphism is \dots} $T: \ray \to \ray$, such that for all $\Phi,\Psi \in \ray$,
+\begin{equation}
+    T(\Phi) \cdot T(\Psi) = \Phi \cdot \Psi .
+\end{equation}
+
+If we take a (non necessarily linear) map $A: \H \to \H$, it induces a map on the rays, $A_\ray: \ray \to \ray$, in the obvious way. Then, unitary maps on $\H$ induce symmetry transformations on $\ray$, as do antiunitary maps, since \dots. \emph{Wigner's theorem} states that \emph{all} symmetry transformations on $\ray$ can be induced by either a unitary or antiunitary map on $\H$. From now on, we'll focus only on unitary operators, since antiunitary ones are not relevant in physics, apart from the time reflection operator, which won't be treated here. Note that the correspondence is not $1-1$, since if $U: \H \to \H$ induces a symmetry transformation $U_\ray$, the operator $U' = e^{i\theta}U$ induces the same $U_\ray$, since \dots.
+
+Therefore, given a symmetry group $G$, we look for unitary representations of $G$ on $\H$, and those will induce a symmetry transformation on $\ray$, which is our objective. However, requiring a linear representation is too strong requirement, let's see why.
+
+If $T_1 \colon \ray_n \to \ray'_n$, then $U(T_1)$ acts on $\psi_n \in \ray_n$ and gives a vector $U(T_1)\psi_n \in \ray'_n$. Similarly, if $T_2 \colon \ray'_n \to \ray''_n$, then $\ray'_n \ni U(T_1)\psi_n \mapsto U(T_2)U(T_1)\psi_n \in \ray''_n$. However, $U(T_2 T_1)$ is also in this ray, since $T_2 T_1 \colon \ray_n \to \ray''_n$, so the vectors $U(T_2)U(T_1)\psi_n$ and $U(T_2T_1)\psi_n$ must differ by a phase factor $\phi_n (T_2, T_1)$
+\begin{equation}
+    U(T_2)U(T_1)\psi_n = e^{i\phi (T_2, T_1)} U(T_2T_1)\psi_n ,
+\end{equation}
+where we dropped the index $n$ for the phase since one can prove that it doesn't depend on the state (see Weinberg~\cite{weinberg}).
+
+This type of representation is called \emph{projective representation}. Unlike a linear representation~\eqref{eq:representation-property}, it includes a phase factor. Turning back to the notation of sec.~\ref{sec:group-representation}, a symmetry group $G$ acts on the Hilbert space $\H$ via a unitary operator $\rho(g) \colon \H \to \H$, for $g \in G$, which defines a projective representation:
+\begin{equation}
+    \rho(g) \rho(h) = e^{i\phi(g,h)} \rho(g \circ h), \quad \phi(g,h) \in R.
+\end{equation}
+
+Therefore, in a quantum theory, we're interested in \emph{unitary projective representations} of a symmetry group $G$. Those descents to group actions on $\ray$ which leaves ray products, and then the probabilities of various measurement outcomes, invariant.
+
+Further, according to theorem~\ref{th:unitary-rep}, \emph{all} unitary projective representations of $G$ can be derived from unitary \emph{linear} representations of the universal covering group $\tilde{G}$. These, in turn, arise from representations of the Lie algebra. Further, by theorem~\ref{th:non-compact-group-rep}, since the Poincaré group is non-compact, we must study infinite dimensional representations in order to have unitary ones, which can then be associated with physical observables.
