@@ -263,50 +263,7 @@ Hence, taking into consideration the variation in form~\eqref{eq:lorentz-variati
 \end{equation}
 
 \color{blue}
-One can verify that $J^{\mu\nu}$ and $P^\mu$ satisfy the Poincaré commutation relations, and thus furnish an infinite-dimensional representations of the Poincaré symmetry group.
-\color{black}
-
-%%%%%%%% ACTION
-\section{Poincaré Invariant Action}
-One way to study and quantise a theory is starting from the classical action $S$. In order for it to be invariant, it must be a Poincaré scalar. Further, by Noether's theorem, associated to the Poincaré invariance there are some conserved charges. In particular, using eq.~\eqref{eq:total-functional-variation}, we may write
-\begin{equation}
-    \delta S = \int \udq x \, \delta_0 \L + \int \udq x \, \de_\mu \L \delta x^\mu
-\end{equation}
-
-
-
-To construct a Poincaré invariant theory, we start from a \emph{classical} action which has the same property. We can then apply Noether theorem to find out the conserved charges related to the Poincaré symmetry. 
-\dots
-\dots
-
-It turns out that the currents associated to the Poincaré symmetry of a classical action are
-\begin{subequations}
-\begin{gather}
-T^{\mu\alpha} = -i \frac{\de \L}{\de(\de_\mu \Phi_i)} P^\alpha \Phi_j - g^{\mu\alpha} \L , \\
-m^{\mu,\alpha\beta} = -i \frac{\de \L}{\de (\de_\mu \Phi_i)} M^{\alpha\beta}_{ij} \Phi_j + (x^\alpha g^{\mu\beta} - x^\beta g^{\mu\alpha}) \L .
-\end{gather}
-\end{subequations}
-
-The corresponding charges are
-\begin{subequations}\label{eq:const-motion}
-\begin{align}
-    \hat{P}^\alpha &= \int \udt x \, T^{0\alpha} , \\
-   \hat{M}^{\alpha\beta} &= \int \udt x \, m^{0 ,\alpha\beta} .
-\end{align}
-\end{subequations}
-
-Those, after quantization, will form a representation of the Poincaré group that acts on the state space.
-
-Further, in the quantum setting, Wigner's theorem states that continuous symmetries must be implemented by unitary operators on the state space. The Lorentz group is not compact because it contains boosts, hence all unitary representations must be infinite-dimensional. 
-
-This is realized in the quantum field theory: the fields $\Phi_i(x)$ become operators on the Fock space, and the constants of motion in eq.~\eqref{eq:const-motion} are hermitian operators that define a unitary representation of the Poincaré algebra on the state space:
-\begin{equation}
-    U(\Lambda,a) = e^{\frac{i}{2} \omega_{\mu\nu} \hat{M}^{\mu\nu} + i \epsilon_\mu \hat{P}^\mu} \simeq 1 + \frac{i}{2} \omega_{\mu\nu} \hat{M}^{\mu\nu} + i \epsilon_\mu \hat{P}^\mu .
-\end{equation}
-
-The irreducible state space those operators act on is the one-particle state space we constructed above, using Casimir operators and so on.
-
-\color{red} How, from this, we get to $U(\Lambda,a) \Phi_i(x) U(\Lambda,a)^{-1} = D(\Lambda)^{-1}_ij \Phi_j (\Lambda x + a)$
+One can verify that $M^{\mu\nu}$ and $P^\mu$ satisfy the Poincaré commutation relations, and thus furnish an infinite-dimensional representations of the Poincaré symmetry group.
 \color{black}
 
 %%%%%%%%%%%%%%% UNITARY REPRESENTATIONS %%%%%%%%%%%%%%%%%
