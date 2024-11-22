@@ -1,36 +1,66 @@
 \section{Lie Groups and Algebra}\label{sec:lie-groups-algebras}
+
+The concept of symmetry is ubiquitous in Physics and is the basis of every fundamental theory, as well as in their respective applications. In fact, if on the one hand fundamental physics is determined by the symmetries that characterise the various theories, on the other hand the presence of such symmetries reduces the complexity of the models and the resolution of the equations determining the dynamical evolution of a given physical system. In broad terms, without deliberately going into more precise and formal characterisations (which are however possible, with different degrees of abstractness and generality, using for example the invariance of the action or Category Theory), a symmetry can be defined as following.
+
+\begin{definition}[Symmetry]
+    A \emph{symmetry} is a transformation of a physical system that preserves its dynamics.
+\end{definition}
+
+The mathematical formalisation of such a concept can be realised by considering the properties that the symmetries are hypothesised to satisfy. In particular, since a symmetry does not change the dynamics of a system, it is reasonable to assume that the composition of two symmetries must be a symmetry itself. It is worth noting that the order in which these transformations act is not, in general, arbitrary. However, respecting the arrangements, the composition of more than two symmetries does not have to depend on how the symmetries are grouped. Given these observations, one can deduce that an abstract set of symmetries is associated to a physical system, and the operation that combines these transformations must satisfy the closure and associativity properties. Furthermore, in the abstract set there must be also present the identity symmetry, since it does not change the features of a physical system, and the inverse symmetry, which is the transformation that nullifies the action of a symmetry. Hence, the natural algebraic structure that allows to describe symmetries is the group. 
+
+
 \begin{definition}[Group]\label{def:group-axioms}
-    A \emph{group} $(G,\circ)$ is a set $G$ equipped with a composition map,
-    \begin{equation}
-        \circ \colon G \times G \to G, \quad (g,h) \mapsto g \circ h \in G ,
-    \end{equation}
-    called \emph{group multiplication}, which satisfies the following axioms:
-    \begin{enumerate}
-        \item \emph{Closure}: $\forall g_1, g_2 \in G \implies g_1 \circ g_2 \in G$.
-        \item \emph{Associativity}: $\forall g_1, g_2, g_3 \in G \implies (g_1 \circ g_2) \circ g_3 = g_1 \circ (g_2 \circ g_3)$.
-        \item \emph{Neutral element}: $\exists e \in G$ such that $\forall g \in G \implies g \circ e = e \circ g = g$.
-        \item \emph{Inverse element}: $\forall g \in G, \exists g^{-1}$ such that $g \circ g^{-1} = g^{-1} \circ g = e$.
-    \end{enumerate}
-    If, in addition, $\forall g_1, g_2 \in G \implies g_1 \circ g_2 = g_2 \circ g_1$, then $G$ is said to be \emph{abelian}.
+    A \emph{group} $(G,\circ)$ is a set $G$ equipped with an internal binary operation,
+    \begin{align*}
+        \circ \colon G \times G \to G \\
+        \left(g , h \right) \mapsto g \circ h 
+    \end{align*} 
+    called \emph{group operation}, which satisfies the following axioms:
+    \begin{itemize}
+        \item \emph{associativity}: $(g_1 \circ g_2) \circ g_3 = g_1 \circ (g_2 \circ g_3) \quad \forall g_1, g_2, g_3 \in G \qquad ;$
+        \item \emph{neutral element}: $\exists e \in G$ such that $ g \circ e = e \circ g = g \quad \forall g \in G \qquad ;$
+        \item \emph{inverse element}: $\forall g \in G \exists g^{-1} \in G$ such that $g \circ g^{-1} = g^{-1} \circ g = e \qquad .$
+    \end{itemize}
+    If, in addition, the group operation satisfies the commutativity property, that is, 
+    \begin{equation*}
+        g_1 \circ g_2 = g_2 \circ g_1 \quad \forall g_1, g_2 \in G \qquad ,
+    \end{equation*}
+    then $(G,\circ)$ is said to be \emph{Abelian}.
 \end{definition}
 
 \begin{definition}[Subgroup]
-    Given a group $(G, \circ)$, a \emph{subgroup} $(H,\circ)$ is a subset $H \subset G$ that satisfies the group axioms with the composition inherited from $G$.
+    Let $(G, \circ)$ be a group. A \emph{subgroup} $(H,\circ)$ is a subset $H$ of $G$ that satisfies the group axioms with the composition inherited from $G$.
 \end{definition}
 
 \begin{remark}
-    For $H$ to be a subgroup, it must contain the same identity element $e \in G$. While abelian group admits \emph{only} abelian subgroups, a non abelian group \emph{can} have both abelian and non abelian subgroups.
+    The subgroup of a group has the same identity element. \\
+    It is trivial to prove that Abelian group admits \emph{only} abelian subgroups. In contrast, a non-Abelian group \emph{can} have both Abelian and non-Abelian subgroups.
 \end{remark}
 
-A group can be \emph{finite} or \emph{infinite} based on its number of elements. The \emph{dimension} of a group $G$, denoted by $\dim(G)$, represents the number of \emph{real} parameters required to specify an element of $G$.
+\begin{definition}[Order of a group]
+    The \emph{order} of a group is the number of its elements.
+\end{definition}
+
+\begin{remark}
+    A group is finite or infinite whether is order is finite or infinite.
+\end{remark}
+
+\begin{definition}[Dimension of a group]
+    The \emph{dimension} of a group $(G,\circ)$ is the order of the minimal subset $S$ of $G$ whose elements generate every other element of $G$ via the group operation.
+    
+\end{definition}
+
+\begin{remark}
+     The \emph{dimension} of a group $(G,\circ)$ can be put into correspondence with the number of parameters required to specify an element of $G$.
+\end{remark}
 
 \begin{definition}[Group homomorphism and isomorphism]\label{def:group-homomorphism}
-    A \emph{group homomorphism} is a function between two groups which preserves the group structure. For groups $(G_1, \circ)$ and $(G_2, \bcdot)$, given $g_1, g_2 \in G_1$, a map $f\colon G_1 \to G_2$ is a homomorphism if
+    Let $(G, \circ)$ and $(H, \star)$ be two groups. A \emph{group homomorphism} is a map $f\colon G \to H$  that preserves the group structure, that is
     \begin{equation}
-        f(g_1) \bcdot f(g_2) = f(g_1 \circ g_2).
+        f(g_1) \star f(g_2) = f(g_1 \circ g_2) \qquad .
     \end{equation}
 
-    A \emph{group isomorphism} is a bijective homomorphism.
+    A \emph{group isomorphism} is a bijective group homomorphism.
 \end{definition}
 
 \begin{definition}[One-parameter subgroup]\label{def:one-parameter}
